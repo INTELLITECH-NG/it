@@ -68,25 +68,25 @@
   </ul>
   <div class="sf-menu so">
     <div class="social">
-      <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="" title="FACEBOOK"><i class="fa fa-facebook" aria-hidden="true"></i></a>
     </div>
     <div class="social">
-      <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="" title="TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     </div>
     <div class="social">
-      <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+      <a href="" title="GOOGLE PLUS"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
     </div> 
     <div class="social">
-      <a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+      <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
     </div>    
     <div class="social">
-      <a href="" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <a href="" target="_blank" title="INSTAGRAM"><i class="fa fa-instagram" aria-hidden="true"></i></a>
     </div>    
     <div class="social">
-      <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+      <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
     </div>
     <div class="social">
-      <a href=""><i class="fa fa-github" aria-hidden="true"></i></a>
+      <a href="" title="GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
     </div>
   </div>
 </nav>
