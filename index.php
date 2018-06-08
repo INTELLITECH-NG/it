@@ -41,7 +41,7 @@
         <div class="container">
           <div class="brand">
             <h1 class="brand_name"><a href="./">INTELLITECH</a></h1><sup>&#174;</sup>
-            <p class="slogan">CONFIGURE | CREATE | INNOVATE</p>
+            <p class="slogan"><span class="sl">CONFIGURE</span> | <span class="sl">CREATE</span> | <span class="sl">INNOVATE</span></p>
           </div>
         </div>
         <div id="stuck_container" class="stuck_container">

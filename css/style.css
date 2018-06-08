@@ -43,7 +43,12 @@ img {
 .so a:hover {
     color: #62bfe6;
 }
-
+.sl {
+    padding: 0 5px;
+}
+.sl:hover {
+    color: #62bfe6;
+}
 .grid_7 img {
     width: 300px;
     margin-left: 35%;
