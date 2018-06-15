@@ -130,7 +130,7 @@
             </div>
           </div>
         </section>
-        <section class="well1 ins4 bg-image bgimage" style="background-position:left; background-repeat: repeat-x;">
+        <section class="well1 ins4 bg-image bgimage container" style="background-position:left; background-repeat: repeat-x;">
           <div class="container">
             <div class="row">
               <div class="grid_7 preffix_5">

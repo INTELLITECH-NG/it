@@ -134,7 +134,7 @@
           </div><!--/ .flexslider-->
         </section><!--/ #slider-->
 
-        <section id="carousel">
+        <section id="carousel" class="container">
           <ul class="slides clearfix">
             <li>
               <a href="" title="Everything Starts With a"><h6 >Everything Starts With a</h6></a>
