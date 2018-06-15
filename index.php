@@ -287,45 +287,45 @@
                 <div class="owl-carousel">
                   <div class="item">
                     <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img02.jpg" alt=""></div>
+                      <div class="box_aside"><img src="images/page-1_img02.jpeg" alt="Image" class="bqu"></div>
                       <div class="box_cnt__no-flow">
-                        <p>
-                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                        <p style="text-align: justify;">
+                          <q>The world won't care about your self-esteem. The world will expect you to accomplish something BEFORE you feel good about yourself.</q>
                         </p>
-                        <cite><a href="#">Incididunt ut labor</a></cite>
+                        <cite>Bill Gate</cite>
                       </div>
                     </blockquote>
                   </div>
                   <div class="item">
                     <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img03.jpg" alt=""></div>
+                      <div class="box_aside"><img src="images/page-1_img03.jpg" alt="Image" class="bqu"></div>
                       <div class="box_cnt__no-flow">
                         <p>
-                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                          <q>We chose a different path. Our belief was that if we kept putting great products in front of customers, they would continue to open their wallets.</q>
                         </p>
-                        <cite><a href="#">Incididunt ut labor</a></cite>
+                        <cite>Steve Jobs</cite>
                       </div>
                     </blockquote>
                   </div>
                   <div class="item">
                     <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img04.jpg" alt=""></div>
+                      <div class="box_aside"><img src="images/page-1_img04.jpg" alt="Image" class="bqu"></div>
                       <div class="box_cnt__no-flow">
                         <p>
-                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                          <q>Technology is best when it brings people together.</q>
                         </p>
-                        <cite><a href="#">Incididunt ut labor</a></cite>
+                        <cite>Matt Mullenweg</cite>
                       </div>
                     </blockquote>
                   </div>
                   <div class="item">
                     <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img05.jpg" alt=""></div>
+                      <div class="box_aside"><img src="images/page-1_img05.jpg" alt="Image" class="bqu"></div>
                       <div class="box_cnt__no-flow">
                         <p>
-                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                          <q>Study hard so that you can master technology, which allows us to master nature.</q>
                         </p>
-                        <cite><a href="#">Incididunt ut labor</a></cite>
+                        <cite>Che Guevara</cite>
                       </div>
                     </blockquote>
                   </div>

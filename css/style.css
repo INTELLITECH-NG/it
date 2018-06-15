@@ -53,6 +53,10 @@ img {
     text-align: center;
     margin-top: 10px;
 }
+.bqu {
+    width: 80px;
+    height: 80px;
+}
 .grid_7 img {
     width: 300px;
     margin-left: 35%;
@@ -196,6 +200,10 @@ hr {
     .fun {
         text-align: center;
         margin: 0 auto;
+    }
+    .bqu {
+        width: auto;
+        height: auto;
     }
 }
 
