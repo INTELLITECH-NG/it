@@ -49,6 +49,10 @@ img {
 .sl:hover {
     color: #62bfe6;
 }
+.tech {
+    text-align: center;
+    margin-top: 10px;
+}
 .grid_7 img {
     width: 300px;
     margin-left: 35%;

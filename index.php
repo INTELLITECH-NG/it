@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/camera.css">
-	<link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/owl-carousel.css">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
-	<script src="js/jquery.flexslider-min.js"></script>
-  <script type="text/javascript" src="js/intel.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="js/intel.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script><!--[if lt IE 9]>
     <html class="lt-ie9">
       <div style="clear: both; text-align:center; position: relative;"><a href="http://windows.microsoft.com/en-US/internet-explorer/.."><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -31,7 +31,7 @@
     <script src="js/device.min.js"></script>
   </head>
   <body>
-    <div>
+    <div class="page">
       <!--
       ========================================================
       							HEADER
@@ -45,156 +45,152 @@
           </div>
         </div>
         <div id="stuck_container" class="stuck_container">
-<div class="container">
-<nav class="nav">
-  <ul data-type="navbar" class="sf-menu">
-    <li class="active"><a href="./">Home</a></li>
-    <li><a href="Services">Services</a>
-      <ul>
-        <li><a href="Maintenance">MAINTENENCE</a></li>
-        <li><a href="Training">TRAINING</a></li>
-        <li><a href="Consultancy">CONSULTANCY</a></li>
-        <li><a href="Sales">SALES</a></li>
-        <li><a href="Network">NETWORK DESIGN</a>
-          <ul>
-            <li><a href="Security">SECURITY</a></li>
-          </ul>
-        </li>
-        <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
-      </ul>
-    </li>
-    <li><a href="About">About</a></li>
-    <li><a href="Contacts">Contacts</a></li>
-  </ul>
-  <div class="sf-menu so">
-    <div class="social">
-      <a href="" title="FACEBOOK"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-    </div>
-    <div class="social">
-      <a href="" title="TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    </div>
-    <div class="social">
-      <a href="" title="GOOGLE PLUS"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-    </div> 
-    <div class="social">
-      <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-    </div>    
-    <div class="social">
-      <a href="" target="_blank" title="INSTAGRAM"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    </div>    
-    <div class="social">
-      <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-    </div>
-    <div class="social">
-      <a href="" title="GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
-    </div>
-  </div>
-</nav>
-</div>
-</div>
-</header>
+          <div class="container">
+            <nav class="nav">
+              <ul data-type="navbar" class="sf-menu">
+                <li class="active"><a href="./">Home</a></li>
+                <li><a href="Services">Services</a>
+                  <ul>
+                    <li><a href="Maintenance">MAINTENENCE</a></li>
+                    <li><a href="Training">TRAINING</a></li>
+                    <li><a href="Consultancy">CONSULTANCY</a></li>
+                    <li><a href="Sales">SALES</a></li>
+                    <li><a href="Network">NETWORK DESIGN</a>
+                      <ul>
+                        <li><a href="Security">SECURITY</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
+                  </ul>
+                </li>
+                <li><a href="About">About</a></li>
+                <li><a href="Contacts">Contacts</a></li>
+              </ul>
+              <div class="sf-menu so">
+                <div class="social">
+                  <a href="" title="FACEBOOK"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" title="TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" title="GOOGLE PLUS"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" target="_blank" title="INSTAGRAM"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </div>
+                <div class="social">
+                  <a href="" title="GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
       <!--
       ========================================================
                                   CONTENT
       ========================================================
       -->
-            <section id="slider">
-                <div class="flexslider">
-                    <ul class="slides clearfix ">
-                                <li>
-									<center><img src="images/page-1_slide01.jpg" alt="Everything Starts With a" /></center>
-									<section class="caption-1">
-                                            <a  href="" title="Everything Starts With a"><h2 >Everything Starts With a</h2></a>
-                                        <p class="desc tcolor" >GREAT SOLUTIONS</p>
-                                    </section>
-                                </li>
-                                <li>
-                                    <center><img src="images/page-1_slide02.jpg" alt="Innovative Ways" /></center>
-                                    <section class="caption-2">
-                                            <a  href="" title="Innovative Ways"><h2 >Innovative Ways</h2></a>
-                                        <p class="desc tcolor" >PERFECT RESULTS!</p>
-                                    </section>
-                                </li>
-                                <li>
-                                    <center><img src="images/page-1_slide04.jpg" alt="a Driving Force" /></center>
-                                    <section class="caption-3">
-                                            <a  href="" title="a Driving Force"><h2 >a Driving Force</h2></a>
-                                        <p class="desc tcolor" >IN YOUR BUSINESS</p>
-                                    </section>
-                                </li>
-                                <li>
-                                    <center><img src="images/page-1_slide03.jpg" alt="Is the One and Only Best" /></center>
-                                    <section class="caption-4">
-                                            <a  href="" title="Is the One and Only Best"><h2 >Is the One and Only Best</h2></a>
-                                        <p class="desc tcolor" >IT COMPANY</p>
-                                    </section>
-                                </li>
-                    </ul><!--/ .slides-->
-                </div><!--/ .flexslider-->
-            </section><!--/ #slider-->
+      <main>
+        <section id="slider">
+          <div class="flexslider">
+            <ul class="slides clearfix ">
+              <li>
+                <img src="images/page-1_slide01.jpg" alt="Everything Starts With a" />
+                <section class="caption-1">
+                  <a href="" title="Everything Starts With a"><h2 >Everything Starts With a</h2></a>
+                  <p class="desc tcolor" >GREAT SOLUTIONS</p>
+                </section>
+              </li>
+              <li>
+                <img src="images/page-1_slide02.jpg" alt="Innovative Ways" />
+                <section class="caption-2">
+                  <a href="" title="Innovative Ways"><h2 >Innovative Ways</h2></a>
+                  <p class="desc tcolor" >PERFECT RESULTS!</p>
+                </section>
+              </li>
+              <li>
+                <img src="images/page-1_slide04.jpg" alt="a Driving Force" />
+                <section class="caption-3">
+                  <a href="" title="a Driving Force"><h2 >a Driving Force</h2></a>
+                  <p class="desc tcolor" >IN YOUR BUSINESS</p>
+                </section>
+              </li>
+              <li>
+                <img src="images/page-1_slide03.jpg" alt="Is the One and Only Best" />
+                <section class="caption-4">
+                  <a  href="" title="Is the One and Only Best"><h2 >Is the One and Only Best</h2></a>
+                  <p class="desc tcolor" >IT COMPANY</p>
+                </section>
+              </li>
+            </ul><!--/ .slides-->
+          </div><!--/ .flexslider-->
+        </section><!--/ #slider-->
 
-			<section id="carousel">
-                <ul class="slides clearfix">
-                            <li>
-                                <a>
-                                    <a  href="" title="Everything Starts With a"><h6 >Everything Starts With a</h6></a>
-                                    <p class="desc tcolor" >GREAT SOLUTIONS</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <a  href="" title="Innovative Ways"><h6 >Innovative Ways</h6></a>
-                                    <p class="desc tcolor" >PERFECT RESULTS!</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <a  href="" title="a Driving Force"><h6 >a Driving Force</h6></a>
-                                    <p class="desc tcolor" >IN YOUR BUSINESS</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <a  href="" title="Is the One and Only Best"><h6 >Is the One and Only Best</h6></a>
-                                    <p class="desc tcolor" >IT COMPANY</p>
-                                </a>
-                            </li>
-                </ul><!--/ .slides-->
-            </section><!--/ #carousel-->
-        </div><!--/ .slider-->
-		<br>
+        <section id="carousel">
+          <ul class="slides clearfix">
+            <li>
+              <a href="" title="Everything Starts With a"><h6 >Everything Starts With a</h6></a>
+              <p class="desc tcolor" >GREAT SOLUTIONS</p>
+            </li>
+            <li>
+              <a href="" title="Innovative Ways"><h6 >Innovative Ways</h6></a>
+              <p class="desc tcolor" >PERFECT RESULTS!</p>
+            </li>
+            <li>
+              <a  href="" title="a Driving Force"><h6 >a Driving Force</h6></a>
+              <p class="desc tcolor" >IN YOUR BUSINESS</p>
+            </li>
+            <li>
+              <a href="" title="Is the One and Only Best"><h6 >Is the One and Only Best</h6></a>
+              <p class="desc tcolor" >IT COMPANY</p>
+            </li>
+          </ul><!--/ .slides-->
+        </section><!--/ #carousel-->
+
         <section>
           <div class="container banner_wr">
             <ul class="banner">
               <li>
-                <div class="fa-globe"><a href="Services"></div></a>
+                <div class="fa-globe"><a href="Services"></a></div>
                 <h3>IT SUPPORT &#38; IT MANAGED SERVICE</h3>
                 <p>Whether you only need basic maintenance and support or you would like to free up the time of your key people, the choice is yours.</p>
               </li>
               <li>
-                <div class="fa-lightbulb-o"><a href="Web"></div></a>
+                <div class="fa-lightbulb-o"><a href="Web"></a></div>
                 <h3>WEB &#38; SOFTWARE DEVELOPMENT</h3>
                 <p>In the modern business world, a website is a crucial asset. We can ensure your website represents your brand values.</p>
               </li>
               <li>
-                <div class="fa-cog"><a href="Network"></div></a>
+                <div class="fa-cog"><a href="Network"></a></div>
                 <h3>NETWORK DESIGN</h3>
                 <p>We can design and implement a new network, or troubleshoot and maintain your existing one. From your broadband connection, through your router and firewall, all the way to your servers and desktops.</p>
               </li>
               <li>
-                <div class="fa-briefcase"><a href="Consultancy"></div></a>
+                <div class="fa-briefcase"><a href="Consultancy"></a></div>
                 <h3>CONSULTANCY</h3>
                 <p>Let us help you. Using our consultants with over 5 years of experience in the ICT industry, we will find the right solution for you and your clients.</p>
               </li>
             </ul>
           </div>
-			<div class="container top">
-			<div class="box wow fadeInLeft">
-			<br><center><h1 style="color:#62BFE6;">TECHNOLOGY WITH A HUMAN FACE</h1></center>
-			<center><p class="lead">At INTELLITECH, we see it as our purpose is to help our customers to do their own jobs, it’s that simple.  We deliver all manner of services from installing and managing your on-site systems, to cloud and hybrid solutions.</p></center>
-            </div>
-		  </div>
         </section>
+
+        <section class="tech">
+          <div class="container top">
+            <div class="box wow fadeInLeft">
+              <h1 style="color:#62BFE6;">TECHNOLOGY WITH A HUMAN FACE</h1>
+              <p class="lead">At INTELLITECH, we see it as our purpose is to help our customers to do their own jobs, it’s that simple.  We deliver all manner of services from installing and managing your on-site systems, to cloud and hybrid solutions.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="well ins1">
           <div class="container hr">
             <ul class="row product-list">
@@ -243,6 +239,7 @@
             </ul>
           </div>
         </section>
+
         <section class="well1">
           <div class="container">
             <div class="row">
@@ -250,16 +247,18 @@
                 <h2>About Us</h2><a href="About"><img src="images/page-1_img01.jpg" alt=""></a>
                 <p>INTELLITECH is an information Technology Company, focused on providing optimal, Contemporary and Prospective ICT solutions in the World.</p></p><a href="About" class="btn">Read more</a>
               </div>
+
               <div class="grid_4">
                 <h2>Services</h2>
                 <p>The entire INTELLITECH organization is aligned behind one mission: Deliver superior, long-term investment results and service.</p>
                 <ul class="marked-list">
                   <li><a href="Maintenance">MAINTENANCE</a></li>
-				  <li><a href="Network">NETWORKING</a></li>
+                  <li><a href="Network">NETWORKING</a></li>
                   <li><a href="Training">TRAINING</a></li>
                   <li><a href="Consultancy">CONSULTANT SERVICES</a></li>
                   <li><a href="Sales">SALES AND SUPPLY</a></li>
-                </ul><a href="Services" class="btn">Read more</a>
+                </ul>
+                <a href="Services" class="btn">Read more</a>
               </div>
               <div class="grid_4">
                 <div class="info-box">
@@ -283,6 +282,53 @@
                   <dl>
                     <dt>+234-080-6701-3794</dt>
                   </dl>
+                </div>
+
+                <div class="owl-carousel">
+                  <div class="item">
+                    <blockquote class="box">
+                      <div class="box_aside"><img src="images/page-1_img02.jpg" alt=""></div>
+                      <div class="box_cnt__no-flow">
+                        <p>
+                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                        </p>
+                        <cite><a href="#">Incididunt ut labor</a></cite>
+                      </div>
+                    </blockquote>
+                  </div>
+                  <div class="item">
+                    <blockquote class="box">
+                      <div class="box_aside"><img src="images/page-1_img03.jpg" alt=""></div>
+                      <div class="box_cnt__no-flow">
+                        <p>
+                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                        </p>
+                        <cite><a href="#">Incididunt ut labor</a></cite>
+                      </div>
+                    </blockquote>
+                  </div>
+                  <div class="item">
+                    <blockquote class="box">
+                      <div class="box_aside"><img src="images/page-1_img04.jpg" alt=""></div>
+                      <div class="box_cnt__no-flow">
+                        <p>
+                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                        </p>
+                        <cite><a href="#">Incididunt ut labor</a></cite>
+                      </div>
+                    </blockquote>
+                  </div>
+                  <div class="item">
+                    <blockquote class="box">
+                      <div class="box_aside"><img src="images/page-1_img05.jpg" alt=""></div>
+                      <div class="box_cnt__no-flow">
+                        <p>
+                          <q>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</q>
+                        </p>
+                        <cite><a href="#">Incididunt ut labor</a></cite>
+                      </div>
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
