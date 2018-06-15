@@ -331,6 +331,9 @@ p+.btn_wr {
     color: #5ab7de;
     vertical-align: bottom;
 }
+.brand_name:hover {
+    color: #070247
+}
 
 .brand_slogan {
     display: inline-block;
