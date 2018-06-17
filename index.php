@@ -342,56 +342,6 @@
       ========================================================
       -->
       <footer>
-        <section class="well3">
-          <div class="container">
-            <ul class="row contact-list">
-              <li class="grid_4">
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-map-marker"></div>
-                  </div>
-                  <div class="box_cnt__no-flow">
-                    <address>Trans Amadi,Port Harcourt<br/> Nigeria</address>
-                  </div>
-                </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-envelope"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="mailto:#">info@intellitech.ng</a></div>
-                </div>
-              </li>
-              <li class="grid_4">
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-phone"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="callto:#">+234-080-6701-3794</a></div>
-                </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-fax"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="callto:#">+234-080-6701-3794</a></div>
-                </div>
-              </li>
-              <li class="grid_4">
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-facebook"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="#">Follow on facebook</a></div>
-                </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-twitter"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="#">Follow on Twitter</a></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
         <section>
           <div class="container">
             <div class="copyright">INTELLITECH © <span id="copyright-year"></span>
