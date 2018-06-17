@@ -44,8 +44,8 @@
           <div class="container">
             <nav class="nav">
               <ul data-type="navbar" class="sf-menu">
-                <li class="active"><a href="./">Home</a></li>
-                <li><a href="Services">Services</a>
+                <li><a href="./">Home</a></li>
+                <li class="active"><a href="Services">Services</a>
                   <ul>
                     <li><a href="Maintenance">MAINTENENCE</a></li>
                     <li><a href="Training">TRAINING</a></li>
@@ -59,6 +59,7 @@
                     <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
                   </ul>
                 </li>
+                <li><a href="Blog">Blog</a></li>
                 <li><a href="About">About</a></li>
                 <li><a href="Contacts">Contacts</a></li>
               </ul>

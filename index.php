@@ -63,6 +63,7 @@
                     <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
                   </ul>
                 </li>
+                <li><a href="Blog">Blog</a></li>
                 <li><a href="About">About</a></li>
                 <li><a href="Contacts">Contacts</a></li>
               </ul>

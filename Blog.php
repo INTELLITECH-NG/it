@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Consultancy</title>
+    <title>Blog</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="INTELLITECH offer Consultancy based on IT Support, Web and Software Development and Network Design">
-    <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
-    <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />
-  <meta name="author" content="Bright Robert">
-  <meta name="Copyright" content="Intellitech Technologies">
-  <meta name="country" content="Nigeria">
-  <meta name="city" content="Port Harcourt, Nigeria">
-  <meta name="zipcode" content="500272">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
@@ -45,7 +37,7 @@
             <nav class="nav">
               <ul data-type="navbar" class="sf-menu">
                 <li><a href="./">Home</a></li>
-                <li class="active"><a href="Services">Services</a>
+                <li><a href="Services">Services</a>
                   <ul>
                     <li><a href="Maintenance">MAINTENENCE</a></li>
                     <li><a href="Training">TRAINING</a></li>
@@ -59,7 +51,7 @@
                     <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
                   </ul>
                 </li>
-                <li><a href="Blog">Blog</a></li>
+                <li class="active"><a href="Blog">Blog</a></li>
                 <li><a href="About">About</a></li>
                 <li><a href="Contacts">Contacts</a></li>
               </ul>
@@ -96,28 +88,9 @@
       ========================================================
       -->
 	  <main>
-	  <div class="container">
-	  <br>
-	  <h2>IT Consultancy</h2>
-		<p>See and feel massive improvements right across your business utilising INTELLITECH IT consultancy services, giving your business unrivalled web and IT expertise.</p>
-		<p>Our consultants have vast experience in the field of:</p>
-		<ul class="guru">
-		<li><a href="#">Website Development</a></li>
-		<li><a href="#">Network Security</a></li>
-		<li><a href="#">IT Infrastructure</a></li>
-		<li><a href="#">Virtualisation</a></li>
-		<li><a href="#">Data Loss Prevention</a></li>
-		</ul>
-		<p>We have helped hundreds of companies achieve their goals, within budget.</p>
-		<p>We can help your company in the following ways:</p>
-		<ul class="guru">
-		<li><a href="#">Increased productivity</a></li>
-		<li><a href="#">Maximised revenues</a></li>
-		<li><a href="#">Enhanced security</a></li>
-		<li><a href="#">Improved disaster recovery</a></li>
-		</ul>
-		<p>To see how INTELLITECH can improve your business, with fixed-cost solutions, call <strong>+234-080-6701-3794</strong>.</p>
-</div>
+      <div class="container">
+        
+      </div>
 		</main>
       <!--
       ========================================================
