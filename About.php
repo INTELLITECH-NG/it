@@ -123,14 +123,12 @@
                       <dt>Expertise</dt>
                       <dd>
                         <ul>
-                          <li>Windows IT Support</li>
-                          <li>Linux IT Support</li>
-                          <li>MAC IT Support</li>
+                          <li>Windows, Mac, Linux</li>
+                          <li>Wireless and Lan</li>
                           <li>VoIP and Asterisk</li>
-                          <li>Virtualisation</li>
+                          <li>Virtualization</li>
                           <li>Web Developers</li>
                           <li>Software Deleveloper</li>
-						  <li>MikroTik</li>
                         </ul>
                       </dd>
                     </dl>
@@ -223,7 +221,7 @@
                 <hr>
                 <div class="box">
                   <div class="box_aside">
-                    <div class="icon fa-bed"></div>
+                    <div class="icon fa-terminal"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h3>Hotels</h3>
