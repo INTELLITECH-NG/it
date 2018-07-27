@@ -53,6 +53,35 @@ img {
     text-align: center;
     margin-top: 10px;
 }
+.post {
+    padding-top: 7px;
+    background-color: black;
+}
+.left {
+    width: 65%;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.right {
+    width: 33%;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #62bfe6;
+    padding: 10px 0px 10px 10px;
+}
+.lf {
+    width: 50%;
+    float: left;
+}
+.rt {
+    width: 50%;
+    float: right;
+}
+.clear {
+    clear: both;
+}
 .bqu {
     width: 80px;
     height: 80px;
@@ -194,6 +223,14 @@ hr {
     .bqu {
         width: auto;
         height: auto;
+    }
+    .left {
+        float: none;
+        width: 100%;
+    }
+    .right {
+        float: none;
+        width: 100%;
     }
 }
 
