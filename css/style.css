@@ -58,18 +58,23 @@ img {
     background-color: black;
 }
 .left {
-    width: 65%;
+    width: 63%;
     float: left;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 .right {
-    width: 33%;
+    width: 35%;
     float: right;
     margin-top: 10px;
     margin-bottom: 10px;
     border-left: 4px solid #62bfe6;
     padding: 10px 0px 10px 10px;
+}
+.right a:hover {
+    text-decoration: none;
+    color: red;
+    border-bottom: 1px solid #62bfe6;
 }
 .lf {
     width: 50%;
@@ -79,8 +84,15 @@ img {
     width: 50%;
     float: right;
 }
+.author {
+    border-bottom: 1px solid red;
+    color: #62bfe6;
+}
 .clear {
     clear: both;
+}
+.postbo {
+    margin-bottom: 15px;
 }
 .bqu {
     width: 80px;

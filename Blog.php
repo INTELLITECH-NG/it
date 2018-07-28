@@ -40,15 +40,29 @@
           <div class="container">
             <div class="row">
               <div class="grid_8">
-                <img src="images/750x300.png" class="post" alt="">
-                <div class="left">
-                  <h2>Luching of New Software</h2>
-                </div>
-                <div class="right">
-                  <p>Posted on January 1, 2017 by <a href="#">Admin </a></p>
-                </div>
-                <div class="clear"></div>
-                <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><a href="#" class="btn">Read more</a>
+                <?php $query = "SELECT * FROM post";
+                $post_query = mysqli_query($conn, $query);
+
+                while ($Datarow = mysqli_fetch_assoc($post_query)) {
+                     $post_title = $Datarow['title'];
+                     $post_author = $Datarow['author'];
+                     $post_date = $Datarow['date'];
+                     $post_image = $Datarow['image'];
+                     $post_content = $Datarow['content'];
+
+                     ?>
+                    <img src="images/750x300.png" class="post" alt="">
+                    <div class="left">
+                    <h2><?php echo htmlentities($post_title); ?></h2>
+                    </div>
+                    <div class="right">
+                    <p>Posted on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
+                    </div>
+                    <div class="clear"></div>
+                    <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
+
+                <?php } ?>
+                
               </div>
               <div class="grid_4">
                 <div class="info-box">
