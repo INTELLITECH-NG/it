@@ -79,6 +79,14 @@ img {
     width: 50%;
     float: left;
 }
+.lf input[type="text"] 
+  {
+    border: none;
+    outline: none;
+    height: 50px;
+    background-color: #62bfe6;
+    padding: 5px;
+}
 .rt {
     width: 50%;
     float: right;
@@ -242,6 +250,16 @@ hr {
     .right {
         float: none;
         width: 100%;
+    }
+    .rt {
+        float: none;
+        width: 100%;
+        
+    }
+    .lf {
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
 

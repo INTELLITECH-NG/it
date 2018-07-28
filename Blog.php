@@ -64,6 +64,38 @@
                     <?php } ?>
                   </div>
               <div class="grid_4">
+                <?php 
+                if (isset($_POST['submit'])) {
+                  $search = $_POST['search'];
+
+                  $query = "SELECT * FROM post WHERE tags LIKE '%$search%'";
+                  $search_query = mysqli_query($conn, $query);
+
+                  if (!$search_query) {
+                    die("Search die". mysqli_error($conn));
+                  }
+
+                  $count = mysqli_num_rows($search_query);
+
+                  if ($count == 0) {
+                    echo "<h1>NO RESULT</h1>";
+                  }
+                }
+                 ?>
+                <form action="" method="post">
+                  <div class="info-box">
+                  <hr>
+                  <div class="clear"></div>
+                    <div class="lf">
+                      <input type="text" name="search" placeholder="Search for..." >
+                    </div>
+                    <div class="rt">
+                      <button class="btn" name="submit" type="submit">search</button>
+                    </div>
+                    <div class="clear"></div>
+                    <hr>
+                  </div>
+                </form>
                 <div class="info-box">
                   <h2>Help center</h2>
                   <hr>
