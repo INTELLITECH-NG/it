@@ -51,7 +51,7 @@
                      $post_content = $Datarow['content'];
 
                      ?>
-                    <img src="images/750x300.png" class="post" alt="">
+                    <img src="upload/<?php echo $post_image ?>" class="post" alt="">
                     <div class="left">
                     <h2><?php echo htmlentities($post_title); ?></h2>
                     </div>
@@ -61,9 +61,8 @@
                     <div class="clear"></div>
                     <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
 
-                <?php } ?>
-                
-              </div>
+                    <?php } ?>
+                  </div>
               <div class="grid_4">
                 <div class="info-box">
                   <h2>Help center</h2>
