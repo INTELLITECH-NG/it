@@ -284,7 +284,6 @@
                     <dt>+234-080-6701-3794</dt>
                   </dl>
                 </div>
-
                 <div class="owl-carousel">
                   <div class="item">
                     <blockquote class="box">
@@ -342,12 +341,7 @@
       ========================================================
       -->
       <footer>
-        <section>
-          <div class="container">
-            <div class="copyright"><a href="http://www.intellitech.ng"></a>INTELLITECH © <span id="copyright-year"></span>.&nbsp;&nbsp;<a href="Privacy Policy">Privacy Policy</a>
-            </div>
-          </div>
-        </section>
+        <?php include("inc/footer.php"); ?>
       </footer>
     </div>
     <script src="js/script.js"></script>
