@@ -40,15 +40,20 @@
           <div class="container">
             <div class="row">
               <div class="grid_8">
-                <?php $query = "SELECT * FROM post";
+                <?php 
+                if (isset($_GET["searchbutton"])) {
+                  $Search = $_GET["Search"];
+                  $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
+                }else {
+                $query = "SELECT * FROM post ORDER BY date desc";}
                 $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
-                     $post_title = $Datarow['title'];
-                     $post_author = $Datarow['author'];
-                     $post_date = $Datarow['date'];
-                     $post_image = $Datarow['image'];
-                     $post_content = $Datarow['content'];
+                       $post_title = $Datarow['title'];
+                       $post_author = $Datarow['author'];
+                       $post_date = $Datarow['date'];
+                       $post_image = $Datarow['image'];
+                       $post_content = $Datarow['content'];
 
                      ?>
                     <img src="upload/<?php echo $post_image ?>" class="post" alt="">
@@ -56,36 +61,23 @@
                     <h2><?php echo htmlentities($post_title); ?></h2>
                     </div>
                     <div class="right">
-                    <p>Posted on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
+                    <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
                     </div>
                     <div class="clear"></div>
                     <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
                     <?php } ?>
                   </div>
               <div class="grid_4">
-                <?php 
-                if (isset($_POST['submit'])) {
-                  $search = $_POST['search'];
-
-                  $query = "SELECT * FROM post WHERE tags LIKE '%$search%' ";
-                  $search_query = mysqli_query($conn, $query);
-
-                  if (!$search_query) {
-                    die("QUERY FAILLED" . mysqli_error($conn));
-                  }
-                }
-                
-                ?>
                 <!-- Search form -->
-                 <form action="#" method="post">
+                 <form action="Blog.php" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
                         <div class="clear"></div>
                         <div class="lf">
-                          <input type="text" name="search" placeholder="Search for..." >
+                          <input type="text" name="Search" placeholder="Search for...">
                         </div>
                         <div class="rt">
-                          <button class="btn" name="submit" type="submit">search</button>
+                          <button class="btn" name="searchbutton" type="submit">search</button>
                         </div>
                         <div class="clear"></div>
                         <hr>
@@ -93,14 +85,13 @@
                   </form>
                   <!-- end of serach form -->
                 <div class="info-box">
-                  <h2>Help center</h2>
+                  <h2>Category</h2>
                   <hr>
-                  <h3>Category:</h3>
                   <div class="clear"></div>
                   <div>
                     <ul>
                     <?php 
-                    $query = "SELECT * FROM categories";
+                    $query = "SELECT * FROM categories LIMIT 4";
                     $categories_query = mysqli_query($conn, $query);
 
                     while ($row = mysqli_fetch_assoc($categories_query)) {
