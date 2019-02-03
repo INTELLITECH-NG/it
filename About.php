@@ -65,7 +65,6 @@
                 <li><a href="Contacts">Contacts</a></li>
               </ul>
               <?php include('social.php') ?>
-              <?php include ?>
             </nav>
           </div>
         </div>
