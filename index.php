@@ -67,29 +67,7 @@
                 <li><a href="About">About</a></li>
                 <li><a href="Contacts">Contacts</a></li>
               </ul>
-              <div class="sf-menu so">
-                <div class="social">
-                  <a href="" title="FACEBOOK"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="GOOGLE PLUS"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" target="_blank" title="INSTAGRAM"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
-                </div>
-              </div>
+              <?php include('social.php') ?>
             </nav>
           </div>
         </div>
@@ -107,7 +85,7 @@
                 <img src="images/page-1_slide01.jpg" alt="Everything Starts With a" />
                 <section class="caption-1">
                   <a href="" title="Everything Starts With a"><h2 >Everything Starts With a</h2></a>
-                  <p class="desc tcolor" >GREAT SOLUTIONS</p>
+                  <p class="desc tcolor" >GREAT SOLUTION</p>
                 </section>
               </li>
               <li>
@@ -139,7 +117,7 @@
           <ul class="slides clearfix">
             <li>
               <a href="" title="Everything Starts With a"><h6 >Everything Starts With a</h6></a>
-              <p class="desc tcolor" >GREAT SOLUTIONS</p>
+              <p class="desc tcolor" >GREAT SOLUTION</p>
             </li>
             <li>
               <a href="" title="Innovative Ways"><h6 >Innovative Ways</h6></a>
@@ -283,52 +261,6 @@
                   <dl>
                     <dt>+234-080-6701-3794</dt>
                   </dl>
-                </div>
-                <div class="owl-carousel">
-                  <div class="item">
-                    <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img02.jpeg" alt="Image" class="bqu"></div>
-                      <div class="box_cnt__no-flow">
-                        <p style="text-align: justify;">
-                          <q>The world won't care about your self-esteem. The world will expect you to accomplish something BEFORE you feel good about yourself.</q>
-                        </p>
-                        <cite>Bill Gate</cite>
-                      </div>
-                    </blockquote>
-                  </div>
-                  <div class="item">
-                    <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img03.jpg" alt="Image" class="bqu"></div>
-                      <div class="box_cnt__no-flow">
-                        <p>
-                          <q>We chose a different path. Our belief was that if we kept putting great products in front of customers, they would continue to open their wallets.</q>
-                        </p>
-                        <cite>Steve Jobs</cite>
-                      </div>
-                    </blockquote>
-                  </div>
-                  <div class="item">
-                    <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img04.jpg" alt="Image" class="bqu"></div>
-                      <div class="box_cnt__no-flow">
-                        <p>
-                          <q>Technology is best when it brings people together.</q>
-                        </p>
-                        <cite>Matt Mullenweg</cite>
-                      </div>
-                    </blockquote>
-                  </div>
-                  <div class="item">
-                    <blockquote class="box">
-                      <div class="box_aside"><img src="images/page-1_img05.jpg" alt="Image" class="bqu"></div>
-                      <div class="box_cnt__no-flow">
-                        <p>
-                          <q>Study hard so that you can master technology, which allows us to master nature.</q>
-                        </p>
-                        <cite>Che Guevara</cite>
-                      </div>
-                    </blockquote>
-                  </div>
                 </div>
               </div>
             </div>

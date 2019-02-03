@@ -58,29 +58,7 @@
                 <li><a href="About">About</a></li>
                 <li class="active"><a href="Contacts">Contacts</a></li>
               </ul>
-              <div class="sf-menu so">
-                <div class="social">
-                  <a href="" title="FACEBOOK"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="GOOGLE PLUS"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" target="_blank" title="INSTAGRAM"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                </div>
-                <div class="social">
-                  <a href="" title="GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
-                </div>
-              </div>
+              <?php include('social.php') ?>
             </nav>
           </div>
         </div>
@@ -136,12 +114,6 @@
                     <address>Trans Amadi, Port Harcourt<br/> Nigeria</address>
                   </div>
                 </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-envelope"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="mailto:#">info@intellitech.ng</a></div>
-                </div>
               </li>
               <li class="grid_4">
                 <div class="box">
@@ -150,28 +122,17 @@
                   </div>
                   <div class="box_cnt__no-flow"><a href="callto:#">+234-080-6701-3794</a></div>
                 </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-fax"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="callto:#">+234-080-6701-3794</a></div>
-                </div>
               </li>
               <li class="grid_4">
                 <div class="box">
                   <div class="box_aside">
-                    <div class="icon2 fa-facebook"></div>
+                    <div class="icon2 fa-envelope"></div>
                   </div>
-                  <div class="box_cnt__no-flow"><a href="#">Follow on facebook</a></div>
-                </div>
-                <div class="box">
-                  <div class="box_aside">
-                    <div class="icon2 fa-twitter"></div>
-                  </div>
-                  <div class="box_cnt__no-flow"><a href="#">Follow on Twitter</a></div>
+                  <div class="box_cnt__no-flow"><a href="mailto:#">info@intellitech.ng</a></div>
                 </div>
               </li>
             </ul>
+            <hr class="down">
           </div>
         </section>
       </main>
