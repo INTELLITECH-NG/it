@@ -11,7 +11,4 @@
   <div class="social">
     <a href="" title="LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
   </div>
-  <div class="social">
-    <a href="" title="YOUTUBE"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-  </div>
 </div>

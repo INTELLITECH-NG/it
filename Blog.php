@@ -28,7 +28,7 @@
       
       -->
       <header>
-        <?php include('inc/header.php'); ?>
+        <?php include('head.php'); ?>
       </header>
       <!--
       ========================================================
@@ -119,7 +119,7 @@
       ========================================================
       -->
       <footer>
-        <?php include("inc/footer.php"); ?>
+        <?php include("footer.php"); ?>
       </footer>
     </div>
     <script src="js/script.js"></script>
