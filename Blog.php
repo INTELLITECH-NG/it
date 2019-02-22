@@ -42,7 +42,7 @@
               <div class="grid_8">
                 <?php 
                 if (isset($_GET["searchbutton"])) {
-                  $Search = $_GET["Search"];
+                  $Search = mysqli_real_escape_string($conn, $_GET["Search"]);
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
                 }else {
                 $query = "SELECT * FROM post ORDER BY date desc";}

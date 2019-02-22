@@ -618,6 +618,12 @@ pre code {
   padding-left: 15px;
 }
 
+/* Custom Css */
+.fl {
+  clear: both;
+}
+
+/* End Custom Css */
 .col {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
