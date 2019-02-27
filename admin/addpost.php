@@ -66,39 +66,6 @@
             <hr>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xl-6">
-            <?php Add_category(); ?>
-            <form action="" method="POST">
-              <div class="form-group">
-                <label for="title">Add Category</label>
-                <input type="text" id="title" name="main_title" placeholder="Category Title" class="form-control">
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Add Category" name="submit" class="btn btn-primary">
-              </div>
-            </form>            
-            <?php if (isset($_GET['edit'])) {
-              $id = $_GET['edit'];
-
-              include 'inc/update.php';
-            } ?>
-          </div>
-          <div class="col-xl-6">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Category Title</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <?php Table(); ?>
-  
-            </table>
-          </div>
-        </div>
       </div>
       </div>
       <!-- /.container-fluid -->

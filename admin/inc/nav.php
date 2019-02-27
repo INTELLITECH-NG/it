@@ -28,7 +28,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="#">All Post</a>
-          <a class="dropdown-item" href="#">Add Post</a>
+          <a class="dropdown-item" href="addpost">Add Post</a>
           <a class="dropdown-item" href="categories">Category</a>
           <a class="dropdown-item" href="#">Tags</a>
           <a class="dropdown-item" href="#">Comment</a>

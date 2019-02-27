@@ -681,7 +681,7 @@ html[xmlns] .slides {
 
 #carousel {
     position: absolute;
-    bottom: 10%;
+    bottom: 0.1%;
     left: 9%;
 }
 
@@ -754,6 +754,7 @@ html[xmlns] .slides {
     #slider section .desc {
         font-size: 43px;
     }
+
 }
 
 
@@ -785,7 +786,6 @@ html[xmlns] .slides {
         font-size: 12px;
     }
 }
-
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 
