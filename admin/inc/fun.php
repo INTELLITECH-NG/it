@@ -42,16 +42,51 @@ function Table() {
 		} 
 
 		if (isset($_GET['del'])) {
-		$the_id = $_GET['del'];
+			$the_id = $_GET['del'];
 
 			$query = "DELETE FROM categories WHERE id = {$the_id}";
 			$delete_category = mysqli_query($conn, $query) ;
 
-			header("Location: categories.php");
+			header("Location: categories");
 		}
 		
 	}
+// Add Post
+function AddPost() {
+	global $conn;
+	if (isset($_POST['publish'])) {
+		
+		$title = $_POST['post_title'];
+		$author = $_POST['Post_author'];
+		$category = $_POST['category'];
 
+		$image = $_FILES['Post_image']['name'];
+		$image_temp = $_FILES['Post_image']['tmp_name'];
+		move_uploaded_file($image_temp, "../upload/$image");
+
+        $tag = $_POST['post_tag'];
+        $status = $_POST['post_status'];
+        $content = $_POST['post_content'];
+
+        $query = "INSERT INTO post(category, author, date, tags, content, title, status, image) 
+        VALUE('$category', '$author', now(), '$tag', '$content', '$title', '$status', '$image')";
+
+        $create_category = mysqli_query($conn, $query);
+	}
+}
+// ViewPost
+function ViewPost () {
+	global $conn;
+	$query = "SELECT * FROM categories";
+	$categories_query = mysqli_query($conn, $query);
+
+	while ($row = mysqli_fetch_assoc($categories_query)) {
+		$id = $row['id'];
+		$title = $row['title'];
+		
+		echo "<option value='$title'>$title</option>";
+	}
+}
 
 
  ?>

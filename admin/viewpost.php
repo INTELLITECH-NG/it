@@ -64,47 +64,77 @@
               Welcome <span>Admin</span>
             </h2>
             <hr>
+            <div >
+              <a href='addpost' class="btn btn-success" style="margin-bottom: 10px">Add Post</a>
+            </div>
+            <div>
+              <table class="table table-hover table-responsive">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Image</th>
+                    <th>Tags</th>
+                    <th>Comment</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+
+                  // View Post 
+                  $query = "SELECT * FROM post";
+                  $Select_post_query = mysqli_query($conn, $query);
+
+                  while ($row = mysqli_fetch_assoc($Select_post_query)) {
+                  $id = $row['id'];
+                  $Cat_id = $row['category'];
+                  $title = $row['title'];
+                  $author = $row['author'];
+                  $date = $row['date'];
+                  $image = $row['image'];
+                  $content = $row['content'];
+                  $tags = $row['tags'];
+                  $comment = $row['comment_count'];
+                  $status = $row['status'];
+
+                  // Post Table
+
+                    echo "<tr>";
+                    echo "<td>$id</td>";
+                    echo "<td>$author</td>";
+                    echo "<td>$title</td>";
+                    echo "<td>$Cat_id</td>";
+                    echo "<td>$status</td>";
+                    echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
+                    echo "<td>$tags</td>";
+                    echo "<td>$comment</td>";
+                    echo "<td>$date</td>";
+                    echo "<td><a href='viewpost?edit={$id}'>Edit</a></td>";
+                    echo "<td><a href='viewpost?del={$id}'>Delete</a></td>";
+                    echo "</tr>";
+                  }
+
+                  /// Delete Post
+                      if (isset($_GET['del'])) {
+                      $the_id = $_GET['del'];
+
+                        $query = "DELETE FROM post WHERE id = {$the_id}";
+                        $delete_category = mysqli_query($conn, $query) ;
+
+                        header("Location: viewpost");
+                      }
+                  ?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <?php AddPost() ?>
-        <form action="addpost" method="POST" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-xl-6 form-group">
-              <label for="title">Title</label>
-              <input type="text" name="post_title" class="form-control" placeholder="Post Title">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Author</label>
-              <input type="text" name="Post_author" class="form-control" placeholder="Author Title">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Image</label>
-              <input type="file" name="Post_image" class="form-control">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Category</label>
-              <select name="category" id="" class="form-control">
-                <option disabled selected>Select Category</option>
-                <?php ViewPost () ?>
-              </select>
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Tag</label>
-              <input type="text" name="post_tag" class="form-control" placeholder="Tag">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Status</label>
-              <input type="text" name="post_status" class="form-control" placeholder="Status">
-            </div>
-            <div class="col-xl-12 form-group">
-              <label for="title">Content</label>
-              <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="col-xl-12 form-group">
-              <input type="submit" value="Publish" name="publish" class="btn btn-primary">
-            </div>
-          </div>
-        </form>        
       </div>
       </div>
       <!-- /.container-fluid -->
