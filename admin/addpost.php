@@ -67,6 +67,9 @@
           </div>
         </div>
         <?php AddPost() ?>
+        <div><?php 
+        echo Error_Message();
+        echo Success_Message(); ?></div>
         <form action="addpost" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-xl-6 form-group">

@@ -69,6 +69,9 @@
         <div class="row">
           <div class="col-xl-6">
             <?php Add_category(); ?>
+            <div><?php 
+            echo Error_Message();
+            echo Success_Message(); ?></div>
             <form action="" method="POST">
               <div class="form-group">
                 <label for="title">Add Category</label>

@@ -111,6 +111,42 @@ img {
     margin-top: 5%;
 }
 
+/* New Line for Traning */
+section.padsection4{ padding:11px 0 56px 0;}
+.padtitle{ padding-bottom:11px !important;}
+.wrapper{overflow:hidden;position:relative;}
+.imgindent4{ float:left;margin:6px 20px 15px 0;}
+.color1{color:#000;}
+.list-1{ padding:5px 0 24px;}
+.list-1.padlist{ padding-bottom:9px;}
+.padbot2{ padding-bottom:14px;}
+.banner1{ display:block; background:url(../images/4page_img2.jpg) 0 0 no-repeat; width:271px; height:164px;}
+.banner2{ display:block; background:url(../images/4page_img3.jpg) 0 0 no-repeat; width:271px; height:164px;}
+    .list-2 li{ background:url(../images/marker2.png) 0 17px no-repeat; padding:13px 0 11px 41px; font-size:13px;}
+    .list-2 li a{ color:#949494;}
+    .list-2 li a strong{ display:block; color:#000;}
+    .list-2 li a:hover{ text-decoration:none;}
+    .list-2 li a:hover strong{ text-decoration:underline;}
+.h44 {font-size: 26px;}
+.omega{margin-right:0;}
+.alpha{margin-left:0;}
+.lineH{ background:url(../images/lineH.png) 0 0 repeat; height:5px; width:100%;}
+.padline5{ padding:46px 0 58px;}
+.padtitle2{ padding-bottom:7px !important;}
+.pdf-link{ display:block; background:url(../images/pdf-image.png) 0 0 no-repeat; color:#000; height:51px; padding:2px 0 0 65px; margin:13px 0 0 0;}
+.pdf-link span{ display:block;color:#000; text-decoration:underline;}
+.pdf-link:hover, .pdf-link:hover span{ text-decoration:none;}
+.padtitle22{ padding-bottom:6px !important;}
+.partners{ position:relative; overflow: hidden; margin-top:-1px;}
+.partners li{ float:left; margin:0 60px 0 0px;}
+.partners li a{ display:block;}
+.partners li a img{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease;}
+.partners li a:hover img{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);-o-transform:scale(0.9);transform:scale(0.9);}
+.con {
+    margin: 0px 15% 10px 0px;
+}
+/* End Line for traning */
+
 h1,
 h2,
 h3,

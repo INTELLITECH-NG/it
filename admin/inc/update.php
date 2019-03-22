@@ -19,9 +19,9 @@
                   $update_title = $_POST['main_title'];
 
                   $query = "UPDATE categories SET title = '{$update_title}' WHERE id = {$id} " ;
-                  $update_category = mysqli_query($conn, $query) ;
+                  $update_post = mysqli_query($conn, $query) ;
 
-                  if (!$update_category ) {
+                  if (!$update_post ) {
                     die('Am a Killer' . mysqli_error($conn)) ;
                   }
                 } ?>

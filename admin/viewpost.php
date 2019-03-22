@@ -64,6 +64,9 @@
               Welcome <span>Admin</span>
             </h2>
             <hr>
+            <div><?php 
+            echo Error_Message();
+            echo Success_Message(); ?></div>
             <div >
               <a href='addpost' class="btn btn-success" style="margin-bottom: 10px">Add Post</a>
             </div>
@@ -73,6 +76,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Author</th>
+                    <th>Content</th>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Status</th>
@@ -80,56 +84,12 @@
                     <th>Tags</th>
                     <th>Comment</th>
                     <th>Date</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php View_All_Post () ?>
 
-                  // View Post 
-                  $query = "SELECT * FROM post";
-                  $Select_post_query = mysqli_query($conn, $query);
-
-                  while ($row = mysqli_fetch_assoc($Select_post_query)) {
-                  $id = $row['id'];
-                  $Cat_id = $row['category'];
-                  $title = $row['title'];
-                  $author = $row['author'];
-                  $date = $row['date'];
-                  $image = $row['image'];
-                  $content = $row['content'];
-                  $tags = $row['tags'];
-                  $comment = $row['comment_count'];
-                  $status = $row['status'];
-
-                  // Post Table
-
-                    echo "<tr>";
-                    echo "<td>$id</td>";
-                    echo "<td>$author</td>";
-                    echo "<td>$title</td>";
-                    echo "<td>$Cat_id</td>";
-                    echo "<td>$status</td>";
-                    echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
-                    echo "<td>$tags</td>";
-                    echo "<td>$comment</td>";
-                    echo "<td>$date</td>";
-                    echo "<td><a href='viewpost?edit={$id}'>Edit</a></td>";
-                    echo "<td><a href='viewpost?del={$id}'>Delete</a></td>";
-                    echo "</tr>";
-                  }
-
-                  /// Delete Post
-                      if (isset($_GET['del'])) {
-                      $the_id = $_GET['del'];
-
-                        $query = "DELETE FROM post WHERE id = {$the_id}";
-                        $delete_category = mysqli_query($conn, $query) ;
-
-                        header("Location: viewpost");
-                      }
-                  ?>
                 </tbody>
               </table>
             </div>

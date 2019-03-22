@@ -46,7 +46,7 @@
       ========================================================
       -->
       <main>
-        <section id="slider">
+        <section id="slider" class="container-full">
           <div class="flexslider">
             <ul class="slides clearfix ">
               <li>
@@ -81,7 +81,7 @@
           </div><!--/ .flexslider-->
         </section><!--/ #slider-->
 
-        <section id="carousel" class="container">
+        <section id="carousel">
           <ul class="slides clearfix">
             <li>
               <a href="" title="Everything Starts With a"><h6 >Everything Starts With a</h6></a>
@@ -230,6 +230,23 @@
                     <dt>+234-080-6701-3794</dt>
                   </dl>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container well">
+            <div class="wrapper">
+              <div class="grid_12">
+                <h2 class="padtitle22">Our Clients</h2>
+                <ul class="partners">
+                  <li><a href="more.html"><img src="images/1page_img9.png" alt=""></a></li>
+                  <li><a href="more.html"><img src="images/1page_img10.png" alt=""></a></li>
+                  <li><a href="more.html"><img src="images/1page_img11.png" alt=""></a></li>
+                  <li><a href="more.html"><img src="images/1page_img12.png" alt=""></a></li>
+                  <li><a href="more.html"><img src="images/1page_img13.png" alt=""></a></li>
+                  <li><a href="more.html"><img src="images/1page_img13.png" alt=""></a></li>
+                </ul>
               </div>
             </div>
           </div>

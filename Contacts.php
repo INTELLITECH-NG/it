@@ -88,7 +88,7 @@
                   <div class="box_aside">
                     <div class="icon2 fa-phone"></div>
                   </div>
-                  <div class="box_cnt__no-flow"><a href="callto:#">+234-080-6701-3794</a></div>
+                  <div class="box_cnt__no-flow"><a href="callto:#">+23480224422</a></div>
                 </div>
               </li>
               <li class="grid_4">
