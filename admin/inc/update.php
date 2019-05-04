@@ -2,21 +2,21 @@
               <div class="form-group">
                 <label for="title">Edit Category</label>
                 <?php if (isset($_GET['edit'])) {
-                  $edit_id  = $_GET['edit'];
+                  $edit_id = mysqli_real_escape_string($conn, $_GET['edit']);
 
                   $query = "SELECT * FROM categories WHERE id = $edit_id" ;
                   $edit_category = mysqli_query($conn, $query);
 
                   while ($row = mysqli_fetch_assoc($edit_category)) {
-                    $id = $row['id'];
-                    $title = $row['title'];
+                    $id = mysqli_real_escape_string($conn, $row['id']);
+                    $title = mysqli_real_escape_string($conn, $row['title']);
                   } ?>
 
                 <input type="text" id="title" name="main_title" class="form-control" value="<?php if (isset($title)) { echo $title ;} ?>">
 
                 <?php } ?>
                 <?php if (isset($_POST['update'])) {
-                  $update_title = $_POST['main_title'];
+                  $update_title = mysqli_real_escape_string($conn, $_POST['main_title']);
 
                   $query = "UPDATE categories SET title = '{$update_title}' WHERE id = {$id} " ;
                   $update_post = mysqli_query($conn, $query) ;

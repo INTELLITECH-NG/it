@@ -49,6 +49,7 @@
                 $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
+                       $post_id = $Datarow['id'];
                        $post_title = $Datarow['title'];
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
@@ -58,7 +59,8 @@
                      ?>
                     <img src="upload/<?php echo $post_image ?>" class="post" alt="">
                     <div class="left">
-                    <h2><?php echo htmlentities($post_title); ?></h2>
+                    <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
+                    <h2></h2>
                     </div>
                     <div class="right">
                     <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
@@ -69,7 +71,7 @@
                   </div>
               <div class="grid_4">
                 <!-- Search form -->
-                 <form action="Blog.php" method="get" enctype="multipart/form-data">
+                 <form action="Blog" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
                         <div class="clear"></div>
@@ -95,9 +97,10 @@
                     $categories_query = mysqli_query($conn, $query);
 
                     while ($row = mysqli_fetch_assoc($categories_query)) {
+                         $cat_id = $row['id'];
                          $cat_title = $row['title'];
 
-                         echo "<li><a href='#'>{$cat_title}</a></li>";
+                         echo "<li><a href='Category?category=$cat_id'>{$cat_title}</a></li>";
                      } ?>
                    </ul>
                   </div>

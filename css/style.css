@@ -101,6 +101,9 @@ img {
 .postbo {
     margin-bottom: 15px;
 }
+.postbo2 {
+    margin-top: 15px;
+}
 .bqu {
     width: 80px;
     height: 80px;
@@ -110,6 +113,14 @@ img {
     margin-left: 35%;
     margin-top: 5%;
 }
+
+/* Coment Form */
+.comment {
+    border-radius: 10px;
+    border: 3px solid #62bfe6;
+}
+
+/* Comment form end */
 
 /* New Line for Traning */
 section.padsection4{ padding:11px 0 56px 0;}

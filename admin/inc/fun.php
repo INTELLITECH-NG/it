@@ -30,7 +30,7 @@ function Redirect($New_Location) {
 function Add_category() {
 			global $conn ;
 			if (isset($_POST['submit'])) {
-			$title = $_POST['main_title'];
+			$title = mysqli_real_escape_string($conn, $_POST['main_title']);
 
 			// Check if it is Empty
 			if ($title == "" || empty($title)) {
@@ -73,7 +73,7 @@ function Table() {
 
 		while ($row = mysqli_fetch_assoc($categories_query)) {
 		$id = $row['id'];
-		$title = $row['title'];
+		$title = mysqli_real_escape_string($conn, $row['title']);
 
 			echo "<tr>";
 			echo "<td>$id</td>";
@@ -84,7 +84,7 @@ function Table() {
 		} 
 
 		if (isset($_GET['del'])) {
-			$the_id = $_GET['del'];
+			$the_id = mysqli_real_escape_string($conn, $_GET['del']);
 
 			$query = "DELETE FROM categories WHERE id = {$the_id}";
 			$delete_category = mysqli_query($conn, $query) ;
@@ -99,17 +99,17 @@ function AddPost() {
 	global $conn;
 	if (isset($_POST['publish'])) {
 		
-		$title = $_POST['post_title'];
-		$author = $_POST['Post_author'];
-		$category = $_POST['category'];
+		$title = mysqli_real_escape_string($conn, $_POST['post_title']);
+		$author = mysqli_real_escape_string($conn, $_POST['Post_author']);
+		$category = mysqli_real_escape_string($conn, $_POST['category']);
 
 		$image = $_FILES['Post_image']['name'];
 		$image_temp = $_FILES['Post_image']['tmp_name'];
 		move_uploaded_file($image_temp, "../upload/$image");
 
-        $tag = $_POST['post_tag'];
-        $status = $_POST['post_status'];
-        $content = $_POST['post_content'];
+        $tag = mysqli_real_escape_string($conn, $_POST['post_tag']);
+        $status = mysqli_real_escape_string($conn, $_POST['post_status']);
+        $content = mysqli_real_escape_string($conn, $_POST['post_content']);
 
         if ($title == "" || empty($title)) {
         	$_SESSION['ErrorMessage'] = "All This Fields Should Not Be Empty";
@@ -139,8 +139,8 @@ function ViewPost () {
 	$categories_query = mysqli_query($conn, $query);
 
 	while ($row = mysqli_fetch_assoc($categories_query)) {
-		$id = $row['id'];
-		$title = $row['title'];
+		$id = mysqli_real_escape_string($conn, $row['id']);
+		$title = mysqli_real_escape_string($conn, $row['title']);
 		
 		echo "<option value='$title'>$title</option>";
 	}
@@ -153,16 +153,16 @@ function View_All_Post() {
       $Select_post_query = mysqli_query($conn, $query);
 
       while ($row = mysqli_fetch_assoc($Select_post_query)) {
-      $id = $row['id'];
-      $Cat_id = $row['category'];
-      $title = $row['title'];
-      $author = $row['author'];
-      $date = $row['date'];
-      $image = $row['image'];
-      $content = $row['content'];
-      $tags = $row['tags'];
-      $comment = $row['comment_count'];
-      $status = $row['status'];
+      $id = mysqli_real_escape_string($conn, $row['id']);
+      $Cat_id = mysqli_real_escape_string($conn, $row['category']);
+      $title = mysqli_real_escape_string($conn, $row['title']);
+      $author = mysqli_real_escape_string($conn, $row['author']);
+      $date = mysqli_real_escape_string($conn, $row['date']);
+      $image = mysqli_real_escape_string($conn, $row['image']);
+      $content = mysqli_real_escape_string($conn, $row['content']);
+      $tags = mysqli_real_escape_string($conn, $row['tags']);
+      $comment = mysqli_real_escape_string($conn, $row['comment_count']);
+      $status = mysqli_real_escape_string($conn, $row['status']);
 
       // Post Table
 
@@ -184,7 +184,7 @@ function View_All_Post() {
 
       /// Delete Post
           if (isset($_GET['del'])) {
-          $the_id = $_GET['del'];
+          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
 
             $query = "DELETE FROM post WHERE id = {$the_id}";
             $delete_category = mysqli_query($conn, $query) ;
