@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Blog</title>
+    <title>POST</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,11 +46,12 @@
                   $Search = mysqli_real_escape_string($conn, $_GET["Search"]);
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
                 }else {
-                $query = "SELECT * FROM post ORDER BY date desc";}
-                $post_query = mysqli_query($conn, $query);
+
+                  $the_post_id = $_GET['post'];
+                  $query = "SELECT * FROM post WHERE id = $the_post_id"; }
+                  $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
-                       $post_id = $Datarow['id'];
                        $post_title = $Datarow['title'];
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
@@ -58,21 +59,33 @@
                        $post_content = $Datarow['content'];
 
                      ?>
-                     <a href="post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
+                    <img src="upload/<?php echo $post_image ?>" class="post" alt="">
                     <div class="left">
-                    <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
-                    <h2></h2>
+                    <h2><?php echo htmlentities($post_title); ?></h2>
                     </div>
                     <div class="right">
                     <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
                     </div>
                     <div class="clear"></div>
-                    <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
+                    <p><?php echo $post_content; ?></p>
+                    <hr>
+                    <h3>Leave a comment</h3>
+                    <form action="" class="well1">
+                      <div class="row">
+                        <div class="mfControls grid_12">
+                          <textarea name="" id="" cols="60" rows="10" class="comment"></textarea>
+                        </div>
+                        <div class="grid_12">
+                          <input type="submit" value="Comment" name="comment" class="btn postbo2">
+                        </div>
+                      </div>
+                    </form>
                     <?php } ?>
+
                   </div>
               <div class="grid_4">
                 <!-- Search form -->
-                 <form action="Blog" method="get" enctype="multipart/form-data">
+                 <form action="Blog.php" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
                         <div class="clear"></div>
@@ -93,7 +106,7 @@
                   <div class="clear"></div>
                   <div>
                     <ul>
-                    <?php Category ()?>
+                    <?php Category () ?>
                    </ul>
                   </div>
                   <a href="" target=""></a>

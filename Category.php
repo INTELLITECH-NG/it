@@ -1,9 +1,8 @@
 <?php include('inc/database.php') ?>
-<?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Blog</title>
+    <title>Category</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,9 +44,13 @@
                 if (isset($_GET["searchbutton"])) {
                   $Search = mysqli_real_escape_string($conn, $_GET["Search"]);
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
-                }else {
-                $query = "SELECT * FROM post ORDER BY date desc";}
-                $post_query = mysqli_query($conn, $query);
+                }else { 
+                  if (isset($_GET['category'])) {
+                    $post_category = $_GET['category'];
+                  }
+                  
+                  $query = "SELECT * FROM post WHERE id = $post_category";}
+                  $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
                        $post_id = $Datarow['id'];
@@ -58,7 +61,7 @@
                        $post_content = $Datarow['content'];
 
                      ?>
-                     <a href="post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
+                    <img src="upload/<?php echo $post_image ?>" class="post" alt="">
                     <div class="left">
                     <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
                     <h2></h2>
