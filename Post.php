@@ -59,6 +59,7 @@
                        $post_content = $Datarow['content'];
 
                      ?>
+                    <?php Success_Message(); ?>
                     <img src="upload/<?php echo $post_image ?>" class="post" alt="">
                     <div class="left">
                     <h2><?php echo htmlentities($post_title); ?></h2>
@@ -69,11 +70,44 @@
                     <div class="clear"></div>
                     <p><?php echo $post_content; ?></p>
                     <hr>
+                    <?php 
+                    $query = "SELECT * FROM comment WHERE post = $the_post_id AND status = 'approved' ORDER by id desc ";
+
+                    $view_comment = mysqli_query($conn, $query);
+
+                    if (!$view_comment) {
+                      die('Query Falied' . mysqli_error($conn));
+                    }
+
+                    while ($row = mysqli_fetch_array($view_comment)) {
+                      $author = $row['author'];
+                      $date = $row['date'];
+                      $comment = $row['comment'];
+
+                      ?>
+
+                      <div class="box_cnt__no-flow">
+
+                        <h3><?php echo $author; ?> <small><?php echo $date; ?></small> </h3>
+
+                        <p><?php echo $comment; ?></p>
+
+                      </div>
+
+                    <?php } ?>
+                    <hr>
                     <h3>Leave a comment</h3>
-                    <form action="" class="well1">
+                    <?php Comment_database ();?>
+                    <form action="" method="POST" class="well1">
                       <div class="row">
-                        <div class="mfControls grid_12">
-                          <textarea name="" id="" cols="60" rows="10" class="comment"></textarea>
+                        <div class="grid_4 comment1">
+                          <input type="text" name="author" placeholder="Full Name">
+                        </div>
+                        <div class="grid_4 comment2">
+                          <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="grid_8 comment3">
+                          <textarea name="content" id="" cols="60" rows="10" class="comment"></textarea>
                         </div>
                         <div class="grid_12">
                           <input type="submit" value="Comment" name="comment" class="btn postbo2">

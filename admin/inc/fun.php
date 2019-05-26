@@ -1,4 +1,19 @@
-<?php 
+<?php
+/// Function for session
+ob_start();
+session_start();
+
+/// Date and Time
+function Datetime () {
+	global $conn;
+	date_default_timezone_set("Africa/Lagos");
+	$CurrentTime = time();
+	//$Datetime = strftime("%Y-%m-%d %H:%M:%S", $CurrentTime);
+	$Datetime = strftime("%B-%d-%Y %h:%M:%S", $CurrentTime);
+	$Datetime;
+}
+
+
 /// Error Message Echo
 function Error_Message() {
 	if (isset($_SESSION['ErrorMessage'])) {
@@ -63,7 +78,7 @@ function Add_category() {
 
 }
 
-// Table Function
+//Categories Table Function
 
 function Table() {
 
@@ -109,6 +124,7 @@ function AddPost() {
 
         $tag = mysqli_real_escape_string($conn, $_POST['post_tag']);
         $status = mysqli_real_escape_string($conn, $_POST['post_status']);
+        /*$comment = 5;*/
         $content = mysqli_real_escape_string($conn, $_POST['post_content']);
 
         if ($title == "" || empty($title)) {
@@ -142,12 +158,12 @@ function ViewPost () {
 		$id = mysqli_real_escape_string($conn, $row['id']);
 		$title = mysqli_real_escape_string($conn, $row['title']);
 		
-		echo "<option value='$title'>$title</option>";
+		echo "<option value='$id'>$title</option>";
 	}
 }
 
+/// View Post
 function View_All_Post() {
-      // View Post
       global $conn; 
       $query = "SELECT * FROM post";
       $Select_post_query = mysqli_query($conn, $query);
@@ -171,7 +187,18 @@ function View_All_Post() {
         echo "<td>$author</td>";
         echo "<td>$content</td>";
         echo "<td>$title</td>";
-        echo "<td>$Cat_id</td>";
+
+        /// View Category from post where id
+        $query = "SELECT * FROM categories WHERE id = '$Cat_id'";
+        $categories_view = mysqli_query($conn, $query);
+
+        while ($row = mysqli_fetch_array($categories_view)) {
+        	
+        	$cat_id = $row['id'];
+        	$cat_title = $row['title'];
+
+        	echo "<td>$cat_title</td>";
+	} /// View category Post
         echo "<td>$status</td>";
         echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
         echo "<td>$tags</td>";
@@ -193,4 +220,120 @@ function View_All_Post() {
             Redirect("viewpost");
         }
     }
- ?>
+/// View Comment
+function View_Comment () {
+      global $conn; 
+      $query = "SELECT * FROM comment";
+      $Select_post_query = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_assoc($Select_post_query)) {
+      $id = mysqli_real_escape_string($conn, $row['id']);
+      $Post = mysqli_real_escape_string($conn, $row['post']);
+      $date = mysqli_real_escape_string($conn, $row['date']);
+      $author = mysqli_real_escape_string($conn, $row['author']);
+      $email = mysqli_real_escape_string($conn, $row['email']);
+      $comment = mysqli_real_escape_string($conn, $row['comment']);;
+      $status = mysqli_real_escape_string($conn, $row['status']);
+
+      // Comment Table
+
+        echo "<tr>";
+        echo "<td>$id</td>";
+        echo "<td>$author</td>";
+        echo "<td>$comment</td>";
+        echo "<td>$email</td>";
+        echo "<td>$status</td>";
+
+        $query = "SELECT * FROM post WHERE id = '$Post'";
+        $select_post_id = mysqli_query($conn, $query);
+
+        while ($row = mysqli_fetch_assoc($select_post_id)) {
+        	$post_id = $row['id'];
+        	$post_title = $row['title'];
+
+        	echo "<td><a href='../Post?post=$post_id'>$post_title</a></td>";
+        }
+        
+
+        echo "<td>$date</td>";
+        echo "<td><a href='comment?approve={$id}'>Approve</a></td>";
+        echo "<td><a href='comment?unapprove={$id}'>Unapprove</a></td>";
+        echo "<td><a href='comment?del={$id}'>Delete</a></td>";
+        echo "</tr>";
+    }
+
+      /// Delete Comment
+          if (isset($_GET['del'])) {
+          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+
+            $query = "DELETE FROM comment WHERE id = {$the_id}";
+            $delete_comment = mysqli_query($conn, $query) ;
+
+            $_SESSION['ErrorMessage'] = "Comment as Been Deleted";
+            Redirect("comment");
+        }
+
+    /// Unapprove Comment
+        if (isset($_GET['unapprove'])) {
+        	$unapprove_id = mysqli_real_escape_string($conn, $_GET['unapprove']);
+
+        	$query = "UPDATE comment SET status = 'unapproved' WHERE id = $unapprove_id ";
+        	$unapprove_comment = mysqli_query($conn, $query);
+
+        	$_SESSION['ErrorMessage'] = "Comment Has been Un-Approve";
+        	Redirect("comment");
+
+        }
+    /// Approve Comment
+        if (isset($_GET['approve'])) {
+        	$approve_id = mysqli_real_escape_string($conn, $_GET['approve']);
+
+        	$query = "UPDATE comment SET status = 'approved' WHERE id = $approve_id ";
+        	$approve_comment = mysqli_query($conn, $query);
+
+        	$_SESSION['SuccessMessage'] = "Comment Has been Approve";
+        	Redirect("comment");
+        }
+    }
+
+/// View Category in Blog Page
+function Category () {
+	global $conn;
+	$query = "SELECT * FROM categories LIMIT 4";
+	$categories_query = mysqli_query($conn, $query);
+
+	while ($row = mysqli_fetch_assoc($categories_query)) {
+		$cat_id = $row['id'];
+		$cat_title = $row['title'];
+		echo "<li><a href='Category?category=$cat_id'>{$cat_title}</a></li>";
+	}
+}
+
+/// Post Comment to Database
+function Comment_database () {
+	global $conn;
+	if (isset($_POST['comment'])) {
+
+		$the_post_id = $_GET['post'];
+		$author = $_POST['author'];
+		$email = $_POST['email'];
+		$content = $_POST['content'];
+
+		$query = "INSERT INTO comment (post, date, author, email, comment, status)";
+
+		$query .= "VALUES ('$the_post_id', now(), '$author', '$email', '$content', 'unapprove')";
+
+		$create_comment = mysqli_query($conn, $query);
+
+		if (!$create_comment) {
+
+			die('Query Failed' .mysqli_error($conn));
+
+		}
+
+		$query = "UPDATE post SET comment_count = comment_count + 1 WHERE id = $the_post_id";
+		$count_comment = mysqli_query($conn, $query);
+	}
+}
+
+?>

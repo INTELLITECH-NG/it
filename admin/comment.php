@@ -64,50 +64,33 @@
               Welcome <span>Admin</span>
             </h2>
             <hr>
+            <div><?php 
+            echo Error_Message();
+            echo Success_Message(); ?></div>
+            <div>
+              <table class="table table-hover table-responsive">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Author</th>
+                    <th>Comment</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>In Response to</th>
+                    <th>Date</th>
+                    <th>Approve</th>
+                    <th>Unapprove</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php View_Comment () ?>
+
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <?php AddPost() ?>
-        <div><?php 
-        echo Error_Message();
-        echo Success_Message(); ?></div>
-        <form action="addpost" method="POST" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-xl-6 form-group">
-              <label for="title">Title</label>
-              <input type="text" name="post_title" class="form-control" placeholder="Post Title">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Author</label>
-              <input type="text" name="Post_author" class="form-control" placeholder="Author Title">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Image</label>
-              <input type="file" name="Post_image" class="form-control">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Category</label>
-              <select name="category" required="" id="" class="form-control">
-                <option disabled selected>Select Category</option>
-                <?php ViewPost () ?>
-              </select>
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Tag</label>
-              <input type="text" name="post_tag" class="form-control" placeholder="Tag">
-            </div>
-            <div class="col-xl-6 form-group">
-              <label for="title">Status</label>
-              <input type="text" name="post_status" class="form-control" placeholder="Status">
-            </div>
-            <div class="col-xl-12 form-group">
-              <label for="title">Content</label>
-              <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="col-xl-12 form-group">
-              <input type="submit" value="Publish" name="publish" class="btn btn-primary">
-            </div>
-          </div>
-        </form>        
       </div>
       </div>
       <!-- /.container-fluid -->

@@ -1,8 +1,5 @@
 <?php include '../inc/database.php'; ?>
 <?php include 'inc/fun.php'; ?>
-<?php ob_start() ?>
-
-<?php session_start() ?>
 
 <!DOCTYPE html>
 <html lang="en">

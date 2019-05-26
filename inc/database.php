@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost";
 $username = "intellitech";
 $password = "intellitech";
@@ -13,6 +12,4 @@ $connDB = mysqli_select_db($conn,'intellitech');
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-echo "Connected successfully";
 ?>

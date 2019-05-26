@@ -55,10 +55,17 @@
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
                        $post_image = $Datarow['image'];
-                       $post_content = $Datarow['content'];
+                       $post_content = substr($Datarow['content'], 0,100);
+                       $post_status = $Datarow['status'];
+
+                       if ($post_status !== 'Published') {
+
+                         echo "<h1>NO POST HERE SORRY</h1>";
+
+                       }else {
 
                      ?>
-                     <a href="post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
+                     <a href="Post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
                     <div class="left">
                     <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
                     <h2></h2>
@@ -68,7 +75,7 @@
                     </div>
                     <div class="clear"></div>
                     <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
-                    <?php } ?>
+                    <?php } } ?>
                   </div>
               <div class="grid_4">
                 <!-- Search form -->

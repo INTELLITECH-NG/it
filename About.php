@@ -103,9 +103,18 @@
               <div class="grid_6">
                 <h3>Our Partners</h3>
                 <div class="row">
-                  <div class="grid_2 wow fadeInRight"><img src="images/page-2_img03.jpg" alt=""><img src="images/page-2_img06.jpg" alt=""></div>
-                  <div data-wow-delay="0.2s" class="grid_2 wow fadeInRight"><img src="images/page-2_img04.jpg" alt=""><img src="images/page-2_img07.jpg" alt=""></div>
-                  <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight"><img src="images/page-2_img05.jpg" alt=""><img src="images/page-2_img08.jpg" alt=""></div>
+                  <div class="grid_2 wow fadeInRight">
+                    <img src="images/page-2_img03.jpg" alt="">
+                    <img src="images/page-2_img06.jpg" alt="">
+                  </div>
+                  <div data-wow-delay="0.2s" class="grid_2 wow fadeInRight">
+                    <img src="images/page-2_img04.jpg" alt="">
+                    <img src="images/page-2_img07.jpg" alt="">
+                  </div>
+                  <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight">
+                    <img src="images/page-2_img05.jpg" alt="">
+                    <img src="images/page-2_img08.jpg" alt="">
+                  </div>
                 </div>
                 <p style="text-align: justify;">We believe that every company needs great partners, so we choose ours very carefully. We feel the same way about the importance of our clients, to that of our chosen partners and third party suppliers on the basis of professionality. We only choose premium brand partners, enabling us to provide high quality services. We continually monitor the relationship of our partners to ensure that the quality of our brand is been maintain.</p>
                 <hr>

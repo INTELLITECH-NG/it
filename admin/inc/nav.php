@@ -31,7 +31,6 @@
           <a class="dropdown-item" href="addpost">Add Post</a>
           <a class="dropdown-item" href="categories">Category</a>
           <a class="dropdown-item" href="#">Tags</a>
-          <a class="dropdown-item" href="#">Comment</a>
         </div>
       </li>       
       <li class="nav-item dropdown">
@@ -47,11 +46,21 @@
       <li class="nav-item">
         <a class="nav-link" href="charts">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Manage Admin</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+        <a class="nav-link" href="comment">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Comment</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="charts">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Live Blog</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-"></i>
+          <span>Logout</span></a>
       </li>
     </ul>

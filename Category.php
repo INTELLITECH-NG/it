@@ -1,4 +1,5 @@
 <?php include('inc/database.php') ?>
+<?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,7 +50,7 @@
                     $post_category = $_GET['category'];
                   }
                   
-                  $query = "SELECT * FROM post WHERE id = $post_category";}
+                  $query = "SELECT * FROM post WHERE category = '$post_category'";}
                   $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
@@ -58,10 +59,10 @@
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
                        $post_image = $Datarow['image'];
-                       $post_content = $Datarow['content'];
+                       $post_content = substr($Datarow['content'], 0,100);
 
                      ?>
-                    <img src="upload/<?php echo $post_image ?>" class="post" alt="">
+                    <a href="post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
                     <div class="left">
                     <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
                     <h2></h2>

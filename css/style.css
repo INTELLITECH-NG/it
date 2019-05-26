@@ -56,6 +56,9 @@ img {
 .post {
     padding-top: 7px;
 }
+small {
+    font-size: 15px;
+}
 .left {
     width: 63%;
     float: left;
@@ -91,6 +94,28 @@ img {
     width: 50%;
     float: right;
 }
+.comment1 input{
+    width: 100%;
+    height: 50px;
+    padding: 0 5px;
+    border: none;
+    background-color: #f5f5f5;
+}
+.comment2 input{
+    width: 100%;
+    height: 50px;
+    padding: 0 5px;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+.comment3 textarea {
+    margin-top: 2.5%;
+    width: 100%;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: none;
+}
 .author {
     border-bottom: 1px solid red;
     color: #62bfe6;
@@ -113,14 +138,6 @@ img {
     margin-left: 35%;
     margin-top: 5%;
 }
-
-/* Coment Form */
-.comment {
-    border-radius: 10px;
-    border: 3px solid #62bfe6;
-}
-
-/* Comment form end */
 
 /* New Line for Traning */
 section.padsection4{ padding:11px 0 56px 0;}
