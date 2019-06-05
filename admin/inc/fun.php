@@ -165,7 +165,7 @@ function ViewPost () {
 /// View Post
 function View_All_Post() {
       global $conn; 
-      $query = "SELECT * FROM post";
+      $query = "SELECT * FROM post ORDER BY date";
       $Select_post_query = mysqli_query($conn, $query);
 
       while ($row = mysqli_fetch_assoc($Select_post_query)) {
@@ -244,7 +244,7 @@ function View_Comment () {
         echo "<td>$email</td>";
         echo "<td>$status</td>";
 
-        $query = "SELECT * FROM post WHERE id = '$Post'";
+        $query = "SELECT * FROM post WHERE id = '$Post' ORDER BY id";
         $select_post_id = mysqli_query($conn, $query);
 
         while ($row = mysqli_fetch_assoc($select_post_id)) {
@@ -336,4 +336,174 @@ function Comment_database () {
 	}
 }
 
+/// View All Users
+function View_All_User() {
+      global $conn; 
+      $query = "SELECT * FROM users";
+      $Select_post_query = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_assoc($Select_post_query)) {
+      $id = mysqli_real_escape_string($conn, $row['id']);
+      $username = mysqli_real_escape_string($conn, $row['username']);
+      $firstname = mysqli_real_escape_string($conn, $row['firstname']);
+      $date = mysqli_real_escape_string($conn, $row['date']);
+      $lastname = mysqli_real_escape_string($conn, $row['lastname']);
+      $email = mysqli_real_escape_string($conn, $row['email']);
+      $image = mysqli_real_escape_string($conn, $row['image']);
+      $role = mysqli_real_escape_string($conn, $row['role']);
+
+      // User Table
+
+        echo "<tr>";
+        echo "<td>$id</td>";
+        echo "<td>$username</td>";
+        echo "<td>$firstname</td>";
+        echo "<td>$lastname</td>";
+        echo "<td>$email</td>";
+        echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
+        echo "<td>$role</td>";
+        echo "<td>$date</td>";
+        echo "<td><a href='viewusers?ad={$id}'>Admin</a></td>";
+        echo "<td><a href='viewusers?sub={$id}'>Subscriber</a></td>";
+        echo "<td><a href='edituser?edit={$id}'>Edit</a></td>";
+        echo "<td><a href='viewusers?del={$id}'>Delete</a></td>";
+        echo "</tr>";
+    }
+
+      /// Delete User
+          if (isset($_GET['del'])) {
+          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+
+            $query = "DELETE FROM users WHERE id = {$the_id}";
+            $delete_user = mysqli_query($conn, $query) ;
+
+            $_SESSION['ErrorMessage'] = "User as Been Deleted";
+            Redirect("viewusers");
+        }
+     /// Change User to Admin
+        if (isset($_GET['ad'])) {
+        	$admin = mysqli_real_escape_string($conn, $_GET['ad']);
+
+        	$admin_role = "UPDATE users SET role = 'Admin' WHERE id = $admin ";
+        	$admiral = mysqli_query($conn, $admin_role);
+
+        	$_SESSION['SuccessMessage'] = "User as Been Change to Admin";
+        	Redirect("viewusers");
+        }
+     /// Change User to Subscriber
+        if (isset($_GET['sub'])) {
+        	$Subscribe = mysqli_real_escape_string($conn, $_GET['sub']);
+
+        	$subscribe_role = "UPDATE users SET role = 'Subscriber' WHERE id = $Subscribe ";
+        	$subscri = mysqli_query($conn, $subscribe_role);
+
+        	$_SESSION['ErrorMessage'] = "User as Been Change to Subscribe";
+        	Redirect("viewusers");
+        }
+    }
+
+// Add Users
+function AddUser() {
+	global $conn;
+	if (isset($_POST['adduser'])) {
+		
+		$firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+		$lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+		$username = mysqli_real_escape_string($conn, $_POST['username']);
+		$password = mysqli_real_escape_string($conn, $_POST['password']);
+		$email = mysqli_real_escape_string($conn, $_POST['email']);
+		$role = mysqli_real_escape_string($conn, $_POST['role']);
+
+
+        if ($firstname == "" || empty($firstname)) {
+        	$_SESSION['ErrorMessage'] = "All This Fields Should Not Be Empty";
+        	Redirect("viewusers");
+        }
+        else {
+
+        $query = "INSERT INTO users(username, firstname, date, lastname, email, role) 
+        VALUE('$username', '$firstname', now(), '$lastname', '$email', '$role')";
+
+        $create_user = mysqli_query($conn, $query);
+
+        if (!$create_user) {
+        	die("Am a Killer" . mysqli_error($conn));
+        }elseif ($create_user) {
+        	$_SESSION['SuccessMessage'] = "$username Has Been Added Successfuly";
+        	redirect("viewusers");
+        }
+    }
+}
+
+}
+
+// View User Role
+
+function ViewRole () {
+	global $conn;
+	$query = "SELECT * FROM users";
+	$select_users = mysqli_query($conn, $query);
+
+	while ($row = mysqli_fetch_assoc($select_users)) {
+		$id = mysqli_real_escape_string($conn, $row['id']);
+		$role = mysqli_real_escape_string($conn, $row['role']);
+		
+		echo "<option value='$id'>$role</option>";
+	}
+}
+
+/// Login 
+function Login () {
+		global $conn;
+	if (isset($_GET['login'])) {
+		$username = mysqli_real_escape_string($conn, $_GET['username']);
+		$password = mysqli_real_escape_string($conn, $_GET['password']);
+
+		$query = "SELECT * FROM users WHERE username = '$username' ";
+		$login_user = mysqli_query($conn, $query);
+
+		if (!$login_user) {
+			die("I Have Killed you" . mysqli_error($conn));
+		}
+
+		while ($row = mysqli_fetch_array($login_user)) {
+			$id = $row['id'];
+			$user = $row['username'];
+			$word = $row['password'];
+			$firstname = $row['firstname'];
+			$lastname = $row['lastname'];
+			$role = $row['role'];
+		}
+		if ($username !== $user && $password !== $word) {
+			$_SESSION['ErrorMessage'] = "$user Is not in the Database";
+        	redirect("login");
+		} else if ($username == $user && $password == $word) {
+			$_SESSION['SuccessMessage'] = "$user Has Been Login Successfuly";
+        	redirect("index");
+		} else {
+			$_SESSION['ErrorMessage'] = "Invalid Username or Password";
+		}
+	}
+}
+
+function Name () {
+	global $conn;
+
+	$id = $_GET['id'];
+	$username = $_GET['username'];
+
+
+
+	$query = "SELECT * FROM users WHERE id = '$id' ";
+	$view_name = mysqli_query($conn, $query);
+
+	while ($row = mysqli_fetch_assoc($view_name)) {
+		$id = $row['id'];
+		$username = $row['username'];
+
+		echo "<span>$username</span>";
+
+	}
+
+}
 ?>

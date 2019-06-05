@@ -1,3 +1,5 @@
+<?php include '../inc/database.php'; ?>
+<?php include 'inc/fun.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,22 +21,28 @@
 
 </head>
 
-<body class="bg-dark">
-
+<body class="">
+  <?php Login (); ?>
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
+      <div class="col-lg-12 card-body">
+        <?php 
+        echo Error_Message();
+        echo Success_Message(); 
+         ?>
+      </div>
       <div class="card-body">
         <form>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
+              <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username"  autofocus="autofocus">
+              <label for="inputEmail">Username</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password">
               <label for="inputPassword">Password</label>
             </div>
           </div>
@@ -46,12 +54,12 @@
               </label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="index">Login</a>
+          <input type="submit" class="btn btn-primary btn-block" name="login" value="Login">
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="register">Register an Account</a>
-          <a class="d-block small" href="forgot-password">Forgot Password?</a>
-        </div>
+<!--         <div class="text-center">
+  <a class="d-block small mt-3" href="register">Register an Account</a>
+  <a class="d-block small" href="forgot-password">Forgot Password?</a>
+</div> -->
       </div>
     </div>
   </div>

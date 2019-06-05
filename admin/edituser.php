@@ -1,3 +1,4 @@
+
 <?php include 'inc/head.php'; ?>
 
 <body id="page-top">
@@ -56,33 +57,104 @@
     <?php include 'inc/nav.php'; ?>
 
     <div id="content-wrapper">
-
       <div class="container-fluid">
-
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">
-              Welcome <?php Name (); ?>
+              Welcome <span>Admin</span>
             </h2>
             <hr>
-          <div><?php 
-        echo Error_Message();
-        echo Success_Message(); ?></div>
           </div>
         </div>
-        <!-- page content -->
-        <div></div>
+        <?php 
+
+        // Extract User
+          if (isset($_GET['edit'])) {
+          $theid = mysqli_real_escape_string($conn, $_GET['edit']);
+
+          $query = "SELECT * FROM users WHERE id = {$theid}";
+          $select_post = mysqli_query($conn, $query);
+
+          while ($row = mysqli_fetch_array($select_post)) {
+            $username = mysqli_real_escape_string($conn, $row['username']);
+            $firstname = mysqli_real_escape_string($conn, $row['firstname']);
+            $image = $row['image'];
+            $lastname = mysqli_real_escape_string($conn, $row['lastname']);
+            $email = mysqli_real_escape_string($conn, $row['email']);
+            $password = mysqli_real_escape_string($conn, $row['password']);
+            $role = mysqli_real_escape_string($conn, $row['role']);
+          }
+        }
+
+          /// Update Post
+          if (isset($_POST['updateuser'])) {
+            $username = mysqli_real_escape_string($conn, $_POST['username']);
+            $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+            $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $password = mysqli_real_escape_string($conn, $_POST['password']);
+            $role = mysqli_real_escape_string($conn, $_POST['role']);
+
+            $query = "UPDATE users SET username = '$username', firstname = '$firstname', date = now(), image = '$image', lastname = '$lastname', email = '$email', password = '$password', role = '$role' WHERE id = {$theid} ";
+
+            $update_post = mysqli_query($conn, $query);
+
+            $_SESSION['SuccessMessage'] = "$username Has Been Updated";
+            redirect("viewusers");
+          }
+        ?>
+        <form action="" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <label for="title">First Name</label>
+              <input type="text" name="firstname" class="form-control" placeholder="First Name" value="<?php echo $firstname; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Last Name</label>
+              <input type="text" name="lastname" class="form-control" placeholder="Last Name" value="<?php echo $lastname; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Username</label>
+              <input type="text" name="username" class="form-control" placeholder="User Name" value="<?php echo $username; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Role</label><br>
+              <select name="role" required id="" class="form-control">
+                <option selected><?php echo $role; ?></option>
+                <?php 
+                if ($role == 'admin') {
+                  echo "<option value='subscriber'>subscriber</option>";
+                } else {
+                  echo "<option value='admin'>admin</option>";
+                }
+                 ?>
+              </select>
+            </div>
+            <div class="col-xl-12 form-group">
+              <input type="submit" value="Update User" name="updateuser" class="btn btn-success">
+            </div>
+          </div>
+        </form>        
+      </div>
       </div>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+<!-- <footer class="sticky-footer">
+  <div class="container my-auto fl">
+    <div class="copyright text-center my-auto">
+      <span>Copyright © Your Website 2019</span>
+    </div>
+  </div>
+</footer> -->
 
     </div>
     <!-- /.content-wrapper -->

@@ -1,3 +1,4 @@
+
 <?php include 'inc/head.php'; ?>
 
 <body id="page-top">
@@ -56,33 +57,57 @@
     <?php include 'inc/nav.php'; ?>
 
     <div id="content-wrapper">
-
       <div class="container-fluid">
-
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">
-              Welcome <?php Name (); ?>
+              Welcome <span>Admin</span>
             </h2>
             <hr>
-          <div><?php 
-        echo Error_Message();
-        echo Success_Message(); ?></div>
+            <div><?php 
+            echo Error_Message();
+            echo Success_Message(); ?></div>
+            <div >
+              <a href='adduser' class="btn btn-success" style="margin-bottom: 10px">Add User</a>
+            </div>
+            <div>
+              <table class="table table-hover table-responsive">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>First name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Role</th>
+                    <th>Date</th>
+                    <th>Admin</th>
+                    <th>Subscribe</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php View_All_User () ?>
+
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <!-- page content -->
-        <div></div>
+      </div>
       </div>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+<!-- <footer class="sticky-footer">
+  <div class="container my-auto fl">
+    <div class="copyright text-center my-auto">
+      <span>Copyright © Your Website 2019</span>
+    </div>
+  </div>
+</footer> -->
 
     </div>
     <!-- /.content-wrapper -->
