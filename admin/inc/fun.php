@@ -475,9 +475,13 @@ function Login () {
 			$role = $row['role'];
 		}
 		if ($username !== $user && $password !== $word) {
-			$_SESSION['ErrorMessage'] = "$user Is not in the Database";
+			$_SESSION['ErrorMessage'] = "No User Like That in Our Database";
         	redirect("login");
 		} else if ($username == $user && $password == $word) {
+			$_SESSION['username'] = $user;
+			$_SESSION['firstname'] = $firstname;
+			$_SESSION['lastname'] = $lastname;
+			$_SESSION['role'] = $role;
 			$_SESSION['SuccessMessage'] = "$user Has Been Login Successfuly";
         	redirect("index");
 		} else {
@@ -486,24 +490,16 @@ function Login () {
 	}
 }
 
-function Name () {
-	global $conn;
-
-	$id = $_GET['id'];
-	$username = $_GET['username'];
-
-
-
-	$query = "SELECT * FROM users WHERE id = '$id' ";
-	$view_name = mysqli_query($conn, $query);
-
-	while ($row = mysqli_fetch_assoc($view_name)) {
-		$id = $row['id'];
-		$username = $row['username'];
-
-		echo "<span>$username</span>";
-
-	}
-
-}
+function Check_Admin () {
+  global $conn;
+  if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] !==  'Admin') {
+      $_SESSION['ErrorMessage'] = "Your account cannot access Admin Panel";
+      Redirect("login");
+    }
+  } elseif (!isset($_SESSION['role'])) {
+    $_SESSION['ErrorMessage'] = "Login in your Admin Account";
+    Redirect("login");
+  }
+ }
 ?>

@@ -1,5 +1,8 @@
 
-<?php include 'inc/head.php'; ?>
+<?php 
+include 'inc/head.php'; 
+/*SESSION ();*/
+?>
 
 <body id="page-top">
 
@@ -66,33 +69,82 @@
             <hr>
             <div><?php 
             echo Error_Message();
-            echo Success_Message(); ?></div>
-            <div >
-              <a href='adduser' class="btn btn-success" style="margin-bottom: 10px">Add User</a>
-            </div>
-            <div>
-              <table class="table table-hover table-responsive">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>First name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Image</th>
-                    <th>Role</th>
-                    <th>Date</th>
-                    <th>Admin</th>
-                    <th>Subscribe</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php View_All_User () ?>
+            echo Success_Message();
+            // Extract User
+          if (isset($_SESSION['username'])) {
+          $user = mysqli_real_escape_string($conn, $_SESSION['username']);
 
-                </tbody>
-              </table>
+          $query = "SELECT * FROM users WHERE username = '$user' ";
+          $select_user = mysqli_query($conn, $query);
+
+          while ($row = mysqli_fetch_array($select_user)) {
+            $username = mysqli_real_escape_string($conn, $row['username']);
+            $firstname = mysqli_real_escape_string($conn, $row['firstname']);
+            $image = $row['image'];
+            $lastname = mysqli_real_escape_string($conn, $row['lastname']);
+            $email = mysqli_real_escape_string($conn, $row['email']);
+            $password = mysqli_real_escape_string($conn, $row['password']);
+            $role = mysqli_real_escape_string($conn, $row['role']);
+          }
+        }
+
+          /// Update User
+          if (isset($_POST['updateuser'])) {
+            $username = mysqli_real_escape_string($conn, $_POST['username']);
+            $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+            $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $password = mysqli_real_escape_string($conn, $_POST['password']);
+            $role = mysqli_real_escape_string($conn, $_POST['role']);
+
+            $query = "UPDATE users SET username = '$username', firstname = '$firstname', date = now(), image = '$image', lastname = '$lastname', email = '$email', password = '$password', role = '$role' WHERE username = '$user' ";
+
+            $update_post = mysqli_query($conn, $query);
+
+            $_SESSION['SuccessMessage'] = "$username Has Been Updated";
+            redirect("viewusers");
+          }
+        ?>
+        <form action="" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <label for="title">First Name</label>
+              <input type="text" name="firstname" class="form-control" placeholder="First Name" value="<?php echo $firstname; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Last Name</label>
+              <input type="text" name="lastname" class="form-control" placeholder="Last Name" value="<?php echo $lastname; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Username</label>
+              <input type="text" name="username" class="form-control" placeholder="User Name" value="<?php echo $username; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Role</label><br>
+              <select name="role" required id="" class="form-control">
+                <option selected><?php echo $role; ?></option>
+                <?php 
+                if ($role == 'Admin') {
+                  echo "<option value='Subscriber'>Subscriber</option>";
+                } else {
+                  echo "<option value='Admin'>Admin</option>";
+                }
+                 ?>
+              </select>
+            </div>
+            <div class="col-xl-12 form-group">
+              <input type="submit" value="Update User" name="updateuser" class="btn btn-success">
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

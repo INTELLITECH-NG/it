@@ -64,38 +64,47 @@
               Welcome <span><?php echo $_SESSION['username'] ?></span>
             </h2>
             <hr>
-            <div><?php 
-            echo Error_Message();
-            echo Success_Message(); ?></div>
-            <div >
-              <a href='adduser' class="btn btn-success" style="margin-bottom: 10px">Add User</a>
-            </div>
-            <div>
-              <table class="table table-hover table-responsive">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>First name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Image</th>
-                    <th>Role</th>
-                    <th>Date</th>
-                    <th>Admin</th>
-                    <th>Subscribe</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php View_All_User () ?>
-
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
+        <?php AddUser () ?>
+        <div><?php 
+        echo Error_Message();
+        echo Success_Message(); ?></div>
+        <form action="adduser" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <label for="title">First Name</label>
+              <input type="text" name="firstname" class="form-control" placeholder="First Name">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Last Name</label>
+              <input type="text" name="lastname" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Username</label>
+              <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="col-xl-6 form-group">
+              <label for="title">Role</label>
+              <select name="role" id="" class="form-control">
+                <option value="" disabled="" selected="">Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Subcriber">Subcriber</option>
+              </select>
+            </div>
+            <div class="col-xl-12 form-group">
+              <input type="submit" value="Add User" name="adduser" class="btn btn-primary">
+            </div>
+          </div>
+        </form>        
       </div>
       </div>
       <!-- /.container-fluid -->

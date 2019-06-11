@@ -61,7 +61,7 @@
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">
-              Welcome <span>Admin</span>
+              Welcome <span><?php echo $_SESSION['username'] ?></span>
             </h2>
             <hr>
           </div>
@@ -131,9 +131,9 @@
                 <option selected><?php echo $role; ?></option>
                 <?php 
                 if ($role == 'admin') {
-                  echo "<option value='subscriber'>subscriber</option>";
+                  echo "<option value='Subscriber'>Subscriber</option>";
                 } else {
-                  echo "<option value='admin'>admin</option>";
+                  echo "<option value='Admin'>Admin</option>";
                 }
                  ?>
               </select>
@@ -180,7 +180,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login">Logout</a>
+          <a class="btn btn-primary" href="logout">Logout</a>
         </div>
       </div>
     </div>

@@ -5,25 +5,15 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+      <li class="nav-item">
+        <a class="nav-link" href="profile">
+          <i class="fas fa-users"></i>
+          <span>Profile</span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login">Login</a>
-          <a class="dropdown-item" href="register">Register</a>
-          <a class="dropdown-item" href="forgot-password">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404">404 Page</a>
-          <a class="dropdown-item" href="blank">Blank Page</a>
-        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-pin"></i>
+          <i class="fas fa-mail-bulk"></i>
           <span>Posts</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -35,7 +25,7 @@
       </li>       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-pin"></i>
+          <i class="fas fa-user-circle"></i>
           <span>User</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -44,23 +34,23 @@
         </div>
       </li>      
       <li class="nav-item">
-        <a class="nav-link" href="charts">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <a class="nav-link" href="#">
+          <i class="fas fa-users-cog"></i>
           <span>Manage Admin</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="comment">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-comments"></i>
           <span>Comment</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <a class="nav-link" href="#">
+          <i class="fas fa-blog"></i>
           <span>Live Blog</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-"></i>
+        <a class="nav-link" href="logout">
+          <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span></a>
       </li>
     </ul>

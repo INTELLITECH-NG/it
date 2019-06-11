@@ -33,7 +33,7 @@
          ?>
       </div>
       <div class="card-body">
-        <form>
+        <form action="login">
           <div class="form-group">
             <div class="form-label-group">
               <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username"  autofocus="autofocus">
