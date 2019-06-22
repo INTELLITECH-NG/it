@@ -78,7 +78,7 @@
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Author</label>
-              <input type="text" name="Post_author" class="form-control" placeholder="Author Title">
+              <input type="text" name="Post_author" class="form-control" placeholder="Author Title" value="<?php echo $_SESSION['firstname'] ?>">
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Image</label>
@@ -97,11 +97,14 @@
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Status</label>
-              <input type="text" name="post_status" class="form-control" placeholder="Status">
+              <select name="post_status" id="" class="form-control">
+                <option value="Draft">Draft</option>
+                <option value="Published">Published</option>
+              </select>
             </div>
             <div class="col-xl-12 form-group">
               <label for="title">Content</label>
-              <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+              <textarea name="post_content" id="mytextarea" cols="30" rows="10" class="form-control"></textarea>
             </div>
             <div class="col-xl-12 form-group">
               <input type="submit" value="Publish" name="publish" class="btn btn-primary">

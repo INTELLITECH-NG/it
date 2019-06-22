@@ -164,11 +164,20 @@
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Status</label>
-              <input type="text" name="post_status" class="form-control" placeholder="Status" value="<?php echo $status; ?>">
+              <select name="post_status" class="form-control" id="">
+                <option value="<?php echo $status ?>"><?php echo $status; ?></option>
+                <?php 
+                if ($post_status == 'Published') {
+                  echo "<option value='Draft'>Draft</option>";
+                }else {
+                  echo "<option value='Published'>Published</option>";
+                }
+                 ?>
+              </select>
             </div>
             <div class="col-xl-12 form-group">
               <label for="title">Content</label>
-              <textarea name="post_content" id="" cols="30" rows="10" class="form-control"><?php echo $content; ?></textarea>
+              <textarea name="post_content" id="mytextarea" cols="30" rows="10" class="form-control"><?php echo $content; ?></textarea>
             </div>
             <div class="col-xl-12 form-group">
               <input type="submit" value="Update Post" name="update" class="btn btn-success">

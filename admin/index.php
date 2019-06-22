@@ -76,11 +76,17 @@
             <div class="card text-white bg-primary o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
+                  <i class="fas fa-file-alt"></i>
                 </div>
-                <div class="mr-5">26 New Messages!</div>
+                <?php 
+                $query = "SELECT * FROM post";
+                $select_all_post = mysqli_query($conn, $query);
+                $post_count = mysqli_num_rows($select_all_post);
+
+                echo "<div class='mr-5'><h1>{$post_count}</h1> Post</div>";
+                 ?>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="viewpost">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -92,11 +98,17 @@
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
+                  <i class="fas fa-comments"></i>
                 </div>
-                <div class="mr-5">11 New Tasks!</div>
+                <?php 
+                $query = "SELECT * FROM comment";
+                $select_all_comment = mysqli_query($conn, $query);
+                $comment_count = mysqli_num_rows($select_all_comment);
+
+                echo "<div class='mr-5'><h1>{$comment_count}</h1> Comment</div>";
+                 ?>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="comment">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -108,11 +120,17 @@
             <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
+                  <i class="fas fa-user"></i>
                 </div>
-                <div class="mr-5">123 New Orders!</div>
+                <?php 
+                $query = "SELECT * FROM users";
+                $select_all_users = mysqli_query($conn, $query);
+                $user_count = mysqli_num_rows($select_all_users);
+
+                echo "<div class='mr-5'><h1>{$user_count}</h1> Users</div>";
+                 ?>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="viewusers">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -124,11 +142,17 @@
             <div class="card text-white bg-danger o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-life-ring"></i>
+                  <i class="fas fa-database"></i>
                 </div>
-                <div class="mr-5">13 New Tickets!</div>
+                <?php 
+                $query = "SELECT * FROM categories";
+                $select_all_category = mysqli_query($conn, $query);
+                $count_category = mysqli_num_rows($select_all_category);
+
+                echo "<div class='mr-5'><h1>{$count_category}</h1> Category</div>";
+                ?>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="categories">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -138,12 +162,62 @@
           </div>
         </div>
         <div class="row">
+          <?php 
+          $query = "SELECT * FROM post WHERE status = 'Draft' ";
+          $select_all_draft_post = mysqli_query($conn, $query);
+          $draft_count = mysqli_num_rows($select_all_draft_post);
+
+          $query = "SELECT * FROM comment WHERE status = 'unapproved' ";
+          $select_unapprove = mysqli_query($conn, $query);
+          $unapproved_count = mysqli_num_rows($select_unapprove);
+
+          $query = "SELECT * FROM comment WHERE status = 'approved' ";
+          $select_approve = mysqli_query($conn, $query);
+          $approved_count = mysqli_num_rows($select_approve);
+
+          $query = "SELECT * FROM users WHERE role = 'Subscriber' ";
+          $select_subscriber = mysqli_query($conn, $query);
+          $subscriber_count = mysqli_num_rows($select_subscriber);
+
+          $query = "SELECT * FROM users WHERE role = 'Admin' ";
+          $select_admin = mysqli_query($conn, $query);
+          $admin_count = mysqli_num_rows($select_admin);
+
+           ?>
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+          ['Data', 'Count'], 
+          <?php 
+          $elements_text = ['Active Posts', 'Draft Post', 'Approved Comment', 'Unapproved Comment', 'Comments', 'Users', 'Admin', 'Subscriber', 'Caterories'];
+          $elements_count = [$post_count, $draft_count, $approved_count, $unapproved_count, $comment_count, $user_count, $admin_count, $subscriber_count, $count_category];
+
+          for($i = 0; $i < 9; $i++) {
+            echo "['{$elements_text[$i]}'" . "," . "{$elements_count[$i]}]," ;
+          }
+
+          ?>
+          /*['Posts', 1000],*/
+
+        ]);
+
+        var options = {
+          chart: {
+            title: '',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
           <div class="col-lg-12">
             <div class="card mb-3">
-              <div id="resizable" style="height: 370px;">
-                <div id="chartContainer1" style="height: 100%; width: 100%;"></div>
-              </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div id="columnchart_material" style="width: auto; height: 500px;"></div>
             </div>
           </div>
         </div>

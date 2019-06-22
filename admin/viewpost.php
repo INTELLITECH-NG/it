@@ -67,13 +67,27 @@
             <div><?php 
             echo Error_Message();
             echo Success_Message(); ?></div>
-            <div >
-              <a href='addpost' class="btn btn-success" style="margin-bottom: 10px">Add Post</a>
-            </div>
             <div>
+              <form action="" method="post">
               <table class="table table-hover table-responsive">
+                <div class="row">
+                  <div class="col-xl-3">
+                    <select name="bulk_options" id="" class="form-control">
+                      <option value="">Select Option</option>
+                      <option value="Published">Publish</option>
+                      <option value="Draft">Draft</option>
+                      <option value="Delete">Delete</option>
+                    </select>
+                  </div>
+                  <div class="col-xl-1">
+                    <input type="submit" name="select" class="btn btn-success" value="Apply">
+                  </div>
+                  <div class="col-xl-2">
+                    <a href='addpost' class="btn btn-primary" style="margin-bottom: 10px">Add Post</a></div>
+                </div>
                 <thead>
                   <tr>
+                    <th><input type="checkbox" id="selectAllBoxes"></th>
                     <th>Id</th>
                     <th>Author</th>
                     <th>Content</th>
@@ -92,6 +106,7 @@
 
                 </tbody>
               </table>
+            </form>
             </div>
           </div>
         </div>
@@ -140,6 +155,7 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->

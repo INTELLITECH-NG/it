@@ -28,46 +28,25 @@ Check_Admin ();
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
   <link href="css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   <script>
-window.onload = function () {
+  tinymce.init({
+    selector: '#mytextarea',
+    height: '400',
+    plugins: [
+    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen',
+      'insertdatetime media nonbreaking save table contextmenu directionality',
+      'emoticons template paste textcolor colorpicker textpattern imagetools'
+    ],
+    toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    toolbar2: 'print preview media | forecolor backcolor emoticons',
+    image_advtab: true,
+  });
+  </script>
 
-// Construct options first and then pass it as a parameter
-var options1 = {
-  animationEnabled: true,
-  /*title: {
-    text: "Chart inside a jQuery Resizable Element"
-  },*/
-  data: [{
-    type: "column", //change it to line, area, bar, pie, etc
-    legendText: "Try Resizing with the handle to the bottom right",
-    showInLegend: true,
-    dataPoints: [
-      { y: 10 },
-      { y: 6 },
-      { y: 14 },
-      { y: 12 },
-      { y: 19 },
-      { y: 14 },
-      { y: 26 },
-      { y: 10 },
-      { y: 22 }
-      ]
-    }]
-};
-
-$("#resizable").resizable({
-  create: function (event, ui) {
-    //Create chart.
-    $("#chartContainer1").CanvasJSChart(options1);
-  },
-  resize: function (event, ui) {
-    //Update chart size according to its container size.
-    $("#chartContainer1").CanvasJSChart().render();
-  }
-});
-
-}
-</script>
 
 </head>

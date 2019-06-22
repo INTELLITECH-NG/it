@@ -183,6 +183,7 @@ function View_All_Post() {
       // Post Table
 
         echo "<tr>";
+        echo "<td><input type='checkbox' class='checkBoxes' name='checkBoxArray[]' value='$id'></td>";
         echo "<td>$id</td>";
         echo "<td>$author</td>";
         echo "<td>$content</td>";
@@ -206,6 +207,8 @@ function View_All_Post() {
         echo "<td>$date</td>";
         echo "<td><a href='editpost?edit={$id}'>Edit</a></td>";
         echo "<td><a href='viewpost?del={$id}'>Delete</a></td>";
+        echo "<td><a href='viewpost?draft={$id}'>Draft</a></td>";
+        echo "<td><a href='viewpost?publish={$id}'>Published</a></td>";
         echo "</tr>";
     }
 
@@ -218,6 +221,61 @@ function View_All_Post() {
 
             $_SESSION['ErrorMessage'] = "Post as Been Deleted";
             Redirect("viewpost");
+        }
+      /// Draft Post
+        if (isset($_GET['draft'])) {
+          $draft_id = mysqli_real_escape_string($conn, $_GET['draft']);
+
+          $query = "UPDATE post SET status = 'Draft' WHERE id = $draft_id ";
+          $draft = mysqli_query($conn, $query);
+
+          $_SESSION['ErrorMessage'] = "Post Has Been Draft";
+          Redirect("viewpost");
+        }
+
+
+      /// Published Post 
+        if (isset($_GET['publish'])) {
+          $publish_id = mysqli_real_escape_string($conn, $_GET['publish']);
+
+          $query = "UPDATE post SET status = 'Published' WHERE id = '$publish_id' ";
+          $publish = mysqli_query($conn, $query);
+
+          $_SESSION['SuccessMessage'] = "Post Has Been Published";
+          Redirect("viewpost");
+        }
+
+     /// CheckBox 
+        if (isset($_POST['checkBoxArray'])) {
+          foreach ($_POST['checkBoxArray'] as $checkboxValue) {
+            $bulk_options = $_POST['bulk_options'];
+
+            switch ($bulk_options) {
+              case 'Published':
+              $query = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
+              $publish = mysqli_query($conn, $query);
+
+              $_SESSION['SuccessMessage'] = "Published Successfully";
+              Redirect("viewpost");
+              break;
+
+              case 'Draft':
+              $query = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
+              $draft = mysqli_query($conn, $query);
+
+              $_SESSION['ErrorMessage'] = "Draft Successfully";
+              Redirect("viewpost");
+              break;
+
+              case 'Delete':
+              $query = "DELETE FROM post WHERE id = '$checkboxValue' ";
+              $delete = mysqli_query($conn, $query);
+
+              $_SESSION['ErrorMessage'] = "Deleted Successfully";
+              Redirect("viewpost");
+              break;
+            }
+          }
         }
     }
 /// View Comment
