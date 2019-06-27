@@ -58,11 +58,8 @@
                        $post_content = substr($Datarow['content'], 0,100);
                        $post_status = $Datarow['status'];
 
-                       if ($post_status !== 'Published') {
+                       if ($post_status == 'Published') {
 
-                         echo "<h1>NO POST HERE SORRY</h1>";
-
-                       }else {
 
                      ?>
                      <a href="Post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
@@ -74,7 +71,7 @@
                     <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
                     </div>
                     <div class="clear"></div>
-                    <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
+                    <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
                     <?php } } ?>
                   </div>
               <div class="grid_4">
