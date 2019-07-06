@@ -29,8 +29,8 @@
           <span>User</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="viewusers">All User</a>
           <a class="dropdown-item" href="adduser">Add User</a>
-          <a class="dropdown-item" href="viewusers">View User</a>
         </div>
       </li>      
       <li class="nav-item">

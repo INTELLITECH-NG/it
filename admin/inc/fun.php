@@ -93,8 +93,8 @@ function Table() {
 			echo "<tr>";
 			echo "<td>$id</td>";
 			echo "<td>$title</td>";
-			echo "<td><a href='categories.php?edit={$id}'>Edit</a></td>";
-			echo "<td><a href='categories.php?del={$id}'>Delete</a></td>";
+			echo "<td><a href='categories.php?edit={$id}' class='btn btn-dark'>Edit</a></td>";
+			echo "<td><a href='categories.php?del={$id}' class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 		} 
 
@@ -165,7 +165,7 @@ function ViewPost () {
 /// View Post
 function View_All_Post() {
       global $conn; 
-      $query = "SELECT * FROM post ORDER BY date";
+      $query = "SELECT * FROM post ORDER BY date DESC";
       $Select_post_query = mysqli_query($conn, $query);
 
       while ($row = mysqli_fetch_assoc($Select_post_query)) {
@@ -175,10 +175,11 @@ function View_All_Post() {
       $author = mysqli_real_escape_string($conn, $row['author']);
       $date = mysqli_real_escape_string($conn, $row['date']);
       $image = mysqli_real_escape_string($conn, $row['image']);
-      $content = mysqli_real_escape_string($conn, $row['content']);
+      $content = substr($row['content'], 0,15);
       $tags = mysqli_real_escape_string($conn, $row['tags']);
       $comment = mysqli_real_escape_string($conn, $row['comment_count']);
       $status = mysqli_real_escape_string($conn, $row['status']);
+      $view_count = mysqli_real_escape_string($conn, $row['view_count']);
 
       // Post Table
 
@@ -186,7 +187,7 @@ function View_All_Post() {
         echo "<td><input type='checkbox' class='checkBoxes' name='checkBoxArray[]' value='$id'></td>";
         echo "<td>$id</td>";
         echo "<td>$author</td>";
-        echo "<td>$content</td>";
+        /*echo "<td>$content</td>";*/
         echo "<td>$title</td>";
 
         /// View Category from post where id
@@ -204,11 +205,13 @@ function View_All_Post() {
         echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
         echo "<td>$tags</td>";
         echo "<td>$comment</td>";
+        echo "<td><a href='viewpost?reset={$id}' onClick=\"javascript: return confirm('Are you sure you want to Reset View count') \">$view_count</a></td>";
         echo "<td>$date</td>";
-        echo "<td><a href='editpost?edit={$id}'>Edit</a></td>";
-        echo "<td><a href='viewpost?del={$id}'>Delete</a></td>";
-        echo "<td><a href='viewpost?draft={$id}'>Draft</a></td>";
-        echo "<td><a href='viewpost?publish={$id}'>Published</a></td>";
+        echo "<td><a href='../Post?post={$id}' class='btn btn-dark' target='_blank'>View Post</a></td>";
+        echo "<td><a href='editpost?edit={$id}' class='btn btn-info'>Edit</a></td>";
+        echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete') \" href='viewpost?del={$id}' class='btn btn-danger'>Delete</a></td>";
+        echo "<td><a href='viewpost?draft={$id}' class='btn btn-secondary'>Draft</a></td>";
+        echo "<td><a href='viewpost?publish={$id}' class='btn btn-success'>Published</a></td>";
         echo "</tr>";
     }
 
@@ -222,6 +225,16 @@ function View_All_Post() {
             $_SESSION['ErrorMessage'] = "Post as Been Deleted";
             Redirect("viewpost");
         }
+      /// Reset Count
+         if (isset($_GET['reset'])) {
+          $the_id = mysqli_real_escape_string($conn, $_GET['reset']);
+
+          $reset = "UPDATE post SET view_count = 0 WHERE id = $the_id ";
+          $reset_count = mysqli_query($conn, $reset);
+
+          $_SESSION['SuccessMessage'] = "View Reset";
+          Redirect("viewpost");
+         }
       /// Draft Post
         if (isset($_GET['draft'])) {
           $draft_id = mysqli_real_escape_string($conn, $_GET['draft']);
@@ -252,27 +265,56 @@ function View_All_Post() {
 
             switch ($bulk_options) {
               case 'Published':
-              $query = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
-              $publish = mysqli_query($conn, $query);
+              $Publish = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
+              $publish = mysqli_query($conn, $Publish);
 
               $_SESSION['SuccessMessage'] = "Published Successfully";
               Redirect("viewpost");
               break;
 
               case 'Draft':
-              $query = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
-              $draft = mysqli_query($conn, $query);
+              $Draft = "UPDATE post SET status = '$bulk_options' WHERE id = '$checkboxValue' ";
+              $draft = mysqli_query($conn, $Draft);
 
               $_SESSION['ErrorMessage'] = "Draft Successfully";
               Redirect("viewpost");
               break;
 
               case 'Delete':
-              $query = "DELETE FROM post WHERE id = '$checkboxValue' ";
-              $delete = mysqli_query($conn, $query);
+              $Delete = "DELETE FROM post WHERE id = '$checkboxValue' ";
+              $delete = mysqli_query($conn, $Delete);
 
               $_SESSION['ErrorMessage'] = "Deleted Successfully";
               Redirect("viewpost");
+              break;
+
+              case 'Clone':
+              $Clone = "SELECT * FROM post WHERE id = '$checkboxValue' ";
+              $clone = mysqli_query($conn, $Clone);
+
+              while ($row = mysqli_fetch_array($clone)) {
+                $Cat_id = mysqli_real_escape_string($conn, $row['category']);
+                $title = $row['title'];
+                $author = mysqli_real_escape_string($conn, $row['author']);
+                $image = mysqli_real_escape_string($conn, $row['image']);
+                $content = $row['content'];
+                $tags = mysqli_real_escape_string($conn, $row['tags']);
+                $comment = mysqli_real_escape_string($conn, $row['comment_count']);
+                $status = mysqli_real_escape_string($conn, $row['status']);
+
+              }
+
+              $clonedb = "INSERT INTO post(category, title, author, date, image, content, tags, comment_count, status)
+              VALUE('$Cat_id', '$title', '$author', now(), '$image', '$content', '$tags', '$comment', '$status')";
+
+              $clone_db = mysqli_query($conn, $clonedb);
+
+              $_SESSION['SuccessMessage'] = "Successfully Added";
+              Redirect("viewpost");
+
+              if (!$clone_db) {
+                die("Am a Killer " . mysqli_error($conn));
+              }
               break;
             }
           }
@@ -314,9 +356,9 @@ function View_Comment () {
         
 
         echo "<td>$date</td>";
-        echo "<td><a href='comment?approve={$id}'>Approve</a></td>";
-        echo "<td><a href='comment?unapprove={$id}'>Unapprove</a></td>";
-        echo "<td><a href='comment?del={$id}'>Delete</a></td>";
+        echo "<td><a href='comment?approve={$id}' class='btn btn-success'>Approve</a></td>";
+        echo "<td><a href='comment?unapprove={$id}' class='btn btn-dark'>Unapprove</a></td>";
+        echo "<td><a onClick=\"javascript: return confirm('Are you Sure you want to delete'); \" href='comment?del={$id}' class='btn btn-danger'>Delete</a></td>";
         echo "</tr>";
     }
 
@@ -377,27 +419,28 @@ function Comment_database () {
 		$email = $_POST['email'];
 		$content = $_POST['content'];
 
-		$query = "INSERT INTO comment (post, date, author, email, comment, status)";
+    if (!empty($author) && !empty($email) && !empty($content)) {
 
-		$query .= "VALUES ('$the_post_id', now(), '$author', '$email', '$content', 'unapprove')";
+      $query = "INSERT INTO comment (post, date, author, email, comment, status)";
+      $query .= "VALUES ('$the_post_id', now(), '$author', '$email', '$content', 'unapprove')";
+      $create_comment = mysqli_query($conn, $query);
 
-		$create_comment = mysqli_query($conn, $query);
+      if (!$create_comment) {
+        die('Query Failed' .mysqli_error($conn));
+      }
 
-		if (!$create_comment) {
+      $query = "UPDATE post SET comment_count = comment_count + 1 WHERE id = $the_post_id";
+      $count_comment = mysqli_query($conn, $query);
 
-			die('Query Failed' .mysqli_error($conn));
-
-		}
-
-		$query = "UPDATE post SET comment_count = comment_count + 1 WHERE id = $the_post_id";
-		$count_comment = mysqli_query($conn, $query);
-	}
+      echo "<script>alert('Commented Successfully')</script>";
+    }
+  }
 }
 
 /// View All Users
 function View_All_User() {
       global $conn; 
-      $query = "SELECT * FROM users";
+      $query = "SELECT * FROM users ORDER BY date";
       $Select_post_query = mysqli_query($conn, $query);
 
       while ($row = mysqli_fetch_assoc($Select_post_query)) {
@@ -421,10 +464,10 @@ function View_All_User() {
         echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
         echo "<td>$role</td>";
         echo "<td>$date</td>";
-        echo "<td><a href='viewusers?ad={$id}'>Admin</a></td>";
-        echo "<td><a href='viewusers?sub={$id}'>Subscriber</a></td>";
-        echo "<td><a href='edituser?edit={$id}'>Edit</a></td>";
-        echo "<td><a href='viewusers?del={$id}'>Delete</a></td>";
+        echo "<td><a href='viewusers?ad={$id}' class='btn btn-success'>Admin</a></td>";
+        echo "<td><a href='viewusers?sub={$id}' class='btn btn-secondary'>Subscriber</a></td>";
+        echo "<td><a href='edituser?edit={$id}' class='btn btn-dark'>Edit</a></td>";
+        echo "<td><a href='viewusers?del={$id}' class='btn btn-danger'>Delete</a></td>";
         echo "</tr>";
     }
 
@@ -479,8 +522,19 @@ function AddUser() {
         }
         else {
 
-        $query = "INSERT INTO users(username, firstname, date, lastname, email, role) 
-        VALUE('$username', '$firstname', now(), '$lastname', '$email', '$role')";
+        $rand = "SELECT randSalt FROM users";
+        $select_rand = mysqli_query($conn, $rand);
+
+        if (!$select_rand) {
+          die("Am a killer " . mysqli_error($conn));
+        }
+
+        $row = mysqli_fetch_array($select_rand);
+        $salt = $row['randSalt'];
+        $password = crypt($password, $salt);
+
+        $query = "INSERT INTO users(username, firstname, date, lastname, email, role, password) 
+        VALUE('$username', '$firstname', now(), '$lastname', '$email', '$role', '$password')";
 
         $create_user = mysqli_query($conn, $query);
 
@@ -511,7 +565,7 @@ function ViewRole () {
 }
 
 /// Login 
-function Login () {
+function Admin_Login () {
 		global $conn;
 	if (isset($_GET['login'])) {
 		$username = mysqli_real_escape_string($conn, $_GET['username']);
@@ -532,16 +586,21 @@ function Login () {
 			$lastname = $row['lastname'];
 			$role = $row['role'];
 		}
+
+    $password = crypt($password, $word);
+    
 		if ($username !== $user && $password !== $word) {
 			$_SESSION['ErrorMessage'] = "No User Like That in Our Database";
-        	redirect("login");
+      redirect("login");
+
 		} else if ($username == $user && $password == $word) {
 			$_SESSION['username'] = $user;
 			$_SESSION['firstname'] = $firstname;
 			$_SESSION['lastname'] = $lastname;
 			$_SESSION['role'] = $role;
 			$_SESSION['SuccessMessage'] = "$user Has Been Login Successfuly";
-        	redirect("index");
+      redirect("index");
+
 		} else {
 			$_SESSION['ErrorMessage'] = "Invalid Username or Password";
 		}
@@ -560,4 +619,104 @@ function Check_Admin () {
     Redirect("login");
   }
  }
+
+function User_log () {
+  global $conn;
+  if (isset($_POST['userlog'])) {
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $email = $_POST['email'];
+
+    $Query = "SELECT * FROM users WHERE username = '$user' ";
+    $userlog = mysqli_query($conn, $Query);
+
+    if (!$userlog) {
+        die("Am a Killer" . mysqli_error($conn));
+      }
+
+      while ($row = mysqli_fetch_array($userlog)) {
+        $id = $row['id'];
+        $username = $row['username'];
+        $user_password = $row['password'];
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];
+        $email = $row['email'];
+        $role = $row['role'];
+      }
+
+      $pass = crypt($pass, $user_password);
+
+      if ($user !== $username && $pass !== $user_password) {
+        $_SESSION['ErrorMessage'] = "User cannot be Found";
+        Redirect("login");
+
+      } elseif ($user == $username && $pass == $user_password) {
+        $_SESSION['username'] = $user;
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['lastname'] = $lastname;
+        $_SESSION['role'] = $role;
+        $_SESSION['SuccessMessage'] = "$username Has Been Login Successfuly";
+        Redirect("index");
+
+      } else {
+        $_SESSION['ErrorMessage'] = "Username or Password is incorrect";
+        Redirect("login");
+      }
+    }
+}
+
+function Check_User () {
+  global $conn;
+  if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] !==  'Admin') {
+      $_SESSION['ErrorMessage'] = "Your account cannot access Admin Panel";
+      Redirect("login");
+    }
+  } elseif (!isset($_SESSION['role'])) {
+    Redirect("login");
+  }
+ }
+function Reg_User () {
+  global $conn;
+  if (isset($_POST['reguser'])) {
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $role = "Subscriber";
+
+    if ($firstname == "" || empty($firstname) && $lastname == "" || empty($lastname) && $username == "" || empty($username) && $password == "" || empty($password) && $email == "" || empty($email)) {
+
+      $_SESSION['ErrorMessage'] = "All Fields Must be Fill";
+      Redirect("register");
+      
+    } else {
+
+      $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+
+      /*$rand = "SELECT randSalt FROM users";
+      $select_rand = mysqli_query($conn, $rand);
+
+      if (!$select_rand) {
+        die("Am a Killer " . mysqli_error($conn));
+      }
+
+      $row = mysqli_fetch_array($select_rand);
+      $salt = $row['randSalt'];
+      $password = crypt($password, $salt);*/
+
+      $Query = "INSERT INTO users(firstname, lastname, username, password, email, date, role)
+      VALUE('$firstname', '$lastname', '$username', '$password', '$email', now(), '$role')";
+
+      $user_reg = mysqli_query($conn, $Query);
+      $_SESSION['SuccessMessage'] = "Registration Successfully";
+      Redirect("login");
+
+      if (!$user_reg) {
+        die("Am a Killer " . mysqli_error($conn));
+      }
+    }
+  }
+}
 ?>

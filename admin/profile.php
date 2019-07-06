@@ -97,6 +97,13 @@ include 'inc/head.php';
             $password = mysqli_real_escape_string($conn, $_POST['password']);
             $role = mysqli_real_escape_string($conn, $_POST['role']);
 
+            $rand = "SELECT ranSalt FROM users";
+            $select_rand = mysqli_query($conn, $rand);
+
+            $row = mysqli_fetch_array($select_rand);
+            $salt = $row['randSalt'];
+            $password = crypt($password, $salt);
+
             $query = "UPDATE users SET username = '$username', firstname = '$firstname', date = now(), image = '$image', lastname = '$lastname', email = '$email', password = '$password', role = '$role' WHERE username = '$user' ";
 
             $update_post = mysqli_query($conn, $query);
@@ -130,7 +137,7 @@ include 'inc/head.php';
             <div class="col-xl-6 form-group">
               <label for="title">Role</label><br>
               <select name="role" required id="" class="form-control">
-                <option selected><?php echo $role; ?></option>
+                <option selected value="<?php echo $role; ?>"><?php echo $role; ?></option>
                 <?php 
                 if ($role == 'Admin') {
                   echo "<option value='Subscriber'>Subscriber</option>";
@@ -190,26 +197,4 @@ include 'inc/head.php';
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
-
-  <!-- Demo scripts for this page-->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
-
-</body>
-
-</html>
+<?php include 'inc/footer.php'; ?>

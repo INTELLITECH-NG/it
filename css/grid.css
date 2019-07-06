@@ -91,6 +91,9 @@ input[type='button']::-moz-focus-inner {
 .container-fluid .grid_2 {
   width: 16.66667%;
 }
+.container-fluid .grid_1_2 {
+  width: 15%;
+}
 
 .container-fluid .grid_3 {
   width: 25%;
@@ -197,6 +200,10 @@ input[type='button']::-moz-focus-inner {
 }
 .container .grid_2 {
   width: 170px;
+}
+.container .grid_1_2 {
+  width: 100px;
+  margin-left: 25%;
 }
 .container .grid_3 {
   width: 270px;

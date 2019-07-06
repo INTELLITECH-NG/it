@@ -234,46 +234,18 @@
             </div>
           </div>
         </section>
-<!--         <section>
-  <div class="container well">
-    <div class="wrapper">
-      <div class="grid_12">
-        <h2 class="padtitle22">Our Clients</h2>
-        <ul class="partners">
-          <li><a href="more.html"><img src="images/1page_img9.png" alt=""></a></li>
-          <li><a href="more.html"><img src="images/1page_img10.png" alt=""></a></li>
-          <li><a href="more.html"><img src="images/1page_img11.png" alt=""></a></li>
-          <li><a href="more.html"><img src="images/1page_img12.png" alt=""></a></li>
-          <li><a href="more.html"><img src="images/1page_img13.png" alt=""></a></li>
-          <li><a href="more.html"><img src="images/1page_img13.png" alt=""></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section> -->
         <section>
-          <div class="container well1">
-            <div class="grid_12">
-                <h3 class="padtitle22">Our Partners</h3>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight"">
-                  <img src="images/1page_img9.png" alt="">
-                </div>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight"">
-                  <img src="images/1page_img10.png" alt="">
-                </div>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight">
-                  <img src="images/1page_img11.png" alt="">
-                </div>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight">
-                  <img src="images/1page_img12.png" alt="">
-                </div>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight">
-                  <img src="images/1page_img13.png" alt="">
-                </div>
-                <div data-wow-delay="0.4s" class="grid_2 wow fadeInRight">
-                  <img src="images/1page_img13.png" alt="">
-                </div>
-          </div>
+        	<div class="container well1">
+        		<h2>Our Client</h2>
+        		<div class="row">
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+        		</div>
+        	</div>
         </section>
       </main>
       <!--

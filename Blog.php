@@ -46,7 +46,26 @@
                   $Search = mysqli_real_escape_string($conn, $_GET["Search"]);
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
                 }else {
-                $query = "SELECT * FROM post ORDER BY date desc";}
+
+                  $pre_page = 2;
+
+                if (isset($_GET['page'])) {
+                  $page = $_GET['page'];
+                } else {
+                  $page = "";
+                }
+                if ($page  == "" || $page == 1) {
+                  $page_1 = 0;
+                } else {
+                  $page_1 = ($page * $pre_page) - $pre_page;
+                }
+                $post_query = "SELECT * FROM post";
+                $query_count = mysqli_query($conn, $post_query);
+                $count = mysqli_num_rows($query_count);
+
+                $count = ceil($count / $pre_page);
+
+                $query = "SELECT * FROM post ORDER BY date desc LIMIT $page_1, $pre_page";}
                 $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
@@ -59,34 +78,52 @@
                        $post_status = $Datarow['status'];
 
                        if ($post_status == 'Published') {
-
-
                      ?>
                      <a href="Post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
-                    <div class="left">
-                    <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
-                    <h2></h2>
+                    <div class="row">
+                      <div class="grid_5">
+                        <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
+                      </div>
+                      <div class="grid_2 right">
+                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a></p>
+                      </div>
                     </div>
-                    <div class="right">
-                    <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
+                    <div class="row">
+                      <div class="grid_12">
+                        <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
+                      </div>
                     </div>
-                    <div class="clear"></div>
-                    <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
                     <?php } } ?>
+                    <div class="row">
+                      <div class="grid_8">
+                        <ul class="pagination">
+                          <?php 
+                          for ($i = 1; $i <= $count; $i++) {
+                          if ($i == $page ) {
+                             echo "<li><a href='Blog?page=$i' class='active'>$i</a></li>";
+                           } else {
+                            echo "<li><a href='Blog?page=$i'>$i</a></li>";
+                           }
+                            
+                          }
+                          ?>
+                          </ul>
+                      </div>
+                    </div>
                   </div>
               <div class="grid_4">
                 <!-- Search form -->
                  <form action="Blog" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
-                        <div class="clear"></div>
-                        <div class="lf">
-                          <input type="text" name="Search" placeholder="Search for...">
+                        <div class="row down">
+                          <div class="grid_1 sea">
+                            <input type="text" name="Search" placeholder="Search for...">
+                          </div>
+                          <div class="grid_1_2">
+                            <button class="btn" name="searchbutton" type="submit">Search</button>
+                          </div>
                         </div>
-                        <div class="rt">
-                          <button class="btn" name="searchbutton" type="submit">search</button>
-                        </div>
-                        <div class="clear"></div>
                         <hr>
                       </div>
                   </form>

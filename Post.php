@@ -51,7 +51,11 @@
                   $query = "SELECT * FROM post WHERE id = $the_post_id"; }
                   $post_query = mysqli_query($conn, $query);
 
+                  $view_count = "UPDATE post SET view_count = view_count + 1 WHERE id = $the_post_id";
+                  $send_view = mysqli_query($conn, $view_count);
+
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
+                       $post_id = $Datarow['id'];
                        $post_title = $Datarow['title'];
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
@@ -59,15 +63,17 @@
                        $post_content = $Datarow['content'];
 
                      ?>
-                    <?php Success_Message(); ?>
+                    <?php Success_Message(); 
+                    Error_Message() ?>
                     <img src="upload/<?php echo $post_image ?>" class="post" alt="">
-                    <div class="left">
-                    <h2><?php echo htmlentities($post_title); ?></h2>
+                    <div class="row">
+                      <div class="grid_5">
+                        <h2><?php echo htmlentities($post_title); ?></h2>
+                      </div>
+                      <div class="grid_2 right">
+                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a></p>
+                      </div>
                     </div>
-                    <div class="right">
-                    <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
-                    </div>
-                    <div class="clear"></div>
                     <p><?php echo $post_content; ?></p>
                     <hr>
                     <?php 
@@ -94,7 +100,7 @@
 
                       </div>
 
-                    <?php } ?>
+                    <?php }?>
                     <hr>
                     <h3>Leave a comment</h3>
                     <?php Comment_database ();?>
@@ -122,14 +128,14 @@
                  <form action="Blog.php" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
-                        <div class="clear"></div>
-                        <div class="lf">
-                          <input type="text" name="Search" placeholder="Search for...">
+                        <div class="row down">
+                          <div class="grid_1 sea">
+                            <input type="text" name="Search" placeholder="Search for...">
+                          </div>
+                          <div class="grid_1_2">
+                            <button class="btn" name="searchbutton" type="submit">Search</button>
+                          </div>
                         </div>
-                        <div class="rt">
-                          <button class="btn" name="searchbutton" type="submit">search</button>
-                        </div>
-                        <div class="clear"></div>
                         <hr>
                       </div>
                   </form>
