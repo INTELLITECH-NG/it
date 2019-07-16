@@ -79,7 +79,6 @@
                     <th>First name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Image</th>
                     <th>Role</th>
                     <th>Date</th>
                     <th>Admin</th>

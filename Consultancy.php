@@ -1,3 +1,4 @@
+<?php $current = 'Services' ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

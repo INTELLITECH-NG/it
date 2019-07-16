@@ -99,16 +99,18 @@ function Table() {
 		} 
 
 		if (isset($_GET['del'])) {
-			$the_id = mysqli_real_escape_string($conn, $_GET['del']);
+      if (isset($_SESSION['role'])) {
+        if (isset($_SESSION['role']) == 'Admin') {
+          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+          $query = "DELETE FROM categories WHERE id = {$the_id}";
+          $delete_category = mysqli_query($conn, $query) ;
 
-			$query = "DELETE FROM categories WHERE id = {$the_id}";
-			$delete_category = mysqli_query($conn, $query) ;
-
-			$_SESSION['ErrorMessage'] = "Category as Been Deleted";
-			Redirect("categories");
-		}
-		
-	}
+          $_SESSION['ErrorMessage'] = "Category as Been Deleted";
+          Redirect("categories");
+        }
+      }
+    }
+  }
 // Add Post
 function AddPost() {
 	global $conn;
@@ -204,7 +206,13 @@ function View_All_Post() {
         echo "<td>$status</td>";
         echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
         echo "<td>$tags</td>";
-        echo "<td>$comment</td>";
+
+        $Query = "SELECT * FROM comment WHERE post = $id ";
+        $send_comment = mysqli_query($conn, $Query);
+        $count_comment = mysqli_num_rows($send_comment);
+        echo "<td>$count_comment</td>";
+
+
         echo "<td><a href='viewpost?reset={$id}' onClick=\"javascript: return confirm('Are you sure you want to Reset View count') \">$view_count</a></td>";
         echo "<td>$date</td>";
         echo "<td><a href='../Post?post={$id}' class='btn btn-dark' target='_blank'>View Post</a></td>";
@@ -217,33 +225,44 @@ function View_All_Post() {
 
       /// Delete Post
           if (isset($_GET['del'])) {
-          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+            if (isset($_SESSION['role'])) {
+              if (isset($_SESSION['role']) == 'Admin') {
+                $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+                $query = "DELETE FROM post WHERE id = {$the_id}";
+                $delete_category = mysqli_query($conn, $query) ;
 
-            $query = "DELETE FROM post WHERE id = {$the_id}";
-            $delete_category = mysqli_query($conn, $query) ;
-
-            $_SESSION['ErrorMessage'] = "Post as Been Deleted";
-            Redirect("viewpost");
-        }
+                $_SESSION['ErrorMessage'] = "Post as Been Deleted";
+                Redirect("viewpost");
+              }
+            }
+          }
       /// Reset Count
          if (isset($_GET['reset'])) {
-          $the_id = mysqli_real_escape_string($conn, $_GET['reset']);
+          if (isset($_SESSION['role'])) {
+            if (isset($_SESSION['role']) == 'Admin') {
+              $the_id = mysqli_real_escape_string($conn, $_GET['reset']);
 
-          $reset = "UPDATE post SET view_count = 0 WHERE id = $the_id ";
-          $reset_count = mysqli_query($conn, $reset);
+              $reset = "UPDATE post SET view_count = 0 WHERE id = $the_id ";
+              $reset_count = mysqli_query($conn, $reset);
 
-          $_SESSION['SuccessMessage'] = "View Reset";
-          Redirect("viewpost");
-         }
+              $_SESSION['SuccessMessage'] = "View Reset";
+              Redirect("viewpost");
+            }
+          }
+        }
       /// Draft Post
         if (isset($_GET['draft'])) {
-          $draft_id = mysqli_real_escape_string($conn, $_GET['draft']);
+          if (isset($_SESSION['role'])) {
+            if (isset($_SESSION['role']) == 'Admin') {
+              $draft_id = mysqli_real_escape_string($conn, $_GET['draft']);
 
-          $query = "UPDATE post SET status = 'Draft' WHERE id = $draft_id ";
-          $draft = mysqli_query($conn, $query);
+              $query = "UPDATE post SET status = 'Draft' WHERE id = $draft_id ";
+              $draft = mysqli_query($conn, $query);
 
-          $_SESSION['ErrorMessage'] = "Post Has Been Draft";
-          Redirect("viewpost");
+              $_SESSION['ErrorMessage'] = "Post Has Been Draft";
+              Redirect("viewpost");
+            }
+          }
         }
 
 
@@ -342,7 +361,11 @@ function View_Comment () {
         echo "<td>$author</td>";
         echo "<td>$comment</td>";
         echo "<td>$email</td>";
-        echo "<td>$status</td>";
+        if ($status == 'Approved') {
+          echo "<td><span class='btn btn-outline-success'>$status</span></td>";
+        } else {
+          echo "<td><span class='btn btn-outline-warning'>$status</span></td>";
+        }
 
         $query = "SELECT * FROM post WHERE id = '$Post' ORDER BY id";
         $select_post_id = mysqli_query($conn, $query);
@@ -356,28 +379,32 @@ function View_Comment () {
         
 
         echo "<td>$date</td>";
-        echo "<td><a href='comment?approve={$id}' class='btn btn-success'>Approve</a></td>";
-        echo "<td><a href='comment?unapprove={$id}' class='btn btn-dark'>Unapprove</a></td>";
+        echo "<td><a href='comment?Approve={$id}' class='btn btn-success'>Approve</a></td>";
+        echo "<td><a href='comment?Unapprove={$id}' class='btn btn-dark'>Unapprove</a></td>";
         echo "<td><a onClick=\"javascript: return confirm('Are you Sure you want to delete'); \" href='comment?del={$id}' class='btn btn-danger'>Delete</a></td>";
         echo "</tr>";
     }
 
       /// Delete Comment
           if (isset($_GET['del'])) {
-          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+            if (isset($_SESSION['role'])) {
+              if (isset($_SESSION['role']) == 'Admin') {
+                $the_id = mysqli_real_escape_string($conn, $_GET['del']);
 
-            $query = "DELETE FROM comment WHERE id = {$the_id}";
-            $delete_comment = mysqli_query($conn, $query) ;
+                $query = "DELETE FROM comment WHERE id = {$the_id}";
+                $delete_comment = mysqli_query($conn, $query) ;
 
-            $_SESSION['ErrorMessage'] = "Comment as Been Deleted";
-            Redirect("comment");
-        }
+                $_SESSION['ErrorMessage'] = "Comment as Been Deleted";
+                Redirect("comment");
+              }
+            }
+          }
 
     /// Unapprove Comment
-        if (isset($_GET['unapprove'])) {
-        	$unapprove_id = mysqli_real_escape_string($conn, $_GET['unapprove']);
+        if (isset($_GET['Unapprove'])) {
+        	$unapprove_id = mysqli_real_escape_string($conn, $_GET['Unapprove']);
 
-        	$query = "UPDATE comment SET status = 'unapproved' WHERE id = $unapprove_id ";
+        	$query = "UPDATE comment SET status = 'Unapproved' WHERE id = $unapprove_id ";
         	$unapprove_comment = mysqli_query($conn, $query);
 
         	$_SESSION['ErrorMessage'] = "Comment Has been Un-Approve";
@@ -385,10 +412,10 @@ function View_Comment () {
 
         }
     /// Approve Comment
-        if (isset($_GET['approve'])) {
-        	$approve_id = mysqli_real_escape_string($conn, $_GET['approve']);
+        if (isset($_GET['Approve'])) {
+        	$approve_id = mysqli_real_escape_string($conn, $_GET['Approve']);
 
-        	$query = "UPDATE comment SET status = 'approved' WHERE id = $approve_id ";
+        	$query = "UPDATE comment SET status = 'Approved' WHERE id = $approve_id ";
         	$approve_comment = mysqli_query($conn, $query);
 
         	$_SESSION['SuccessMessage'] = "Comment Has been Approve";
@@ -414,10 +441,10 @@ function Comment_database () {
 	global $conn;
 	if (isset($_POST['comment'])) {
 
-		$the_post_id = $_GET['post'];
-		$author = $_POST['author'];
-		$email = $_POST['email'];
-		$content = $_POST['content'];
+		$the_post_id = mysqli_real_escape_string($conn, $_GET['post']);
+		$author = mysqli_real_escape_string($conn, $_POST['author']);
+		$email = mysqli_real_escape_string($conn, $_POST['email']);
+		$content = mysqli_real_escape_string($conn, $_POST['content']);
 
     if (!empty($author) && !empty($email) && !empty($content)) {
 
@@ -429,9 +456,9 @@ function Comment_database () {
         die('Query Failed' .mysqli_error($conn));
       }
 
-      $query = "UPDATE post SET comment_count = comment_count + 1 WHERE id = $the_post_id";
+      /*$query = "UPDATE post SET comment_count = comment_count + 1 WHERE id = $the_post_id";
       $count_comment = mysqli_query($conn, $query);
-
+*/
       echo "<script>alert('Commented Successfully')</script>";
     }
   }
@@ -461,8 +488,11 @@ function View_All_User() {
         echo "<td>$firstname</td>";
         echo "<td>$lastname</td>";
         echo "<td>$email</td>";
-        echo "<td><img src='../upload/$image' alt='Post Image' width='125px'></td>";
-        echo "<td>$role</td>";
+        if ($role == 'Admin') {
+          echo "<td><span class='btn btn-outline-success'>$role</span></td>";
+        } else {
+          echo "<td><span class='btn btn-outline-warning'>$role</span></td>";
+        }
         echo "<td>$date</td>";
         echo "<td><a href='viewusers?ad={$id}' class='btn btn-success'>Admin</a></td>";
         echo "<td><a href='viewusers?sub={$id}' class='btn btn-secondary'>Subscriber</a></td>";
@@ -473,14 +503,18 @@ function View_All_User() {
 
       /// Delete User
           if (isset($_GET['del'])) {
-          $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+            if (isset($_SESSION['role'])) {
+              if (isset($_SESSION['role']) == 'Admin') {
+                $the_id = mysqli_real_escape_string($conn, $_GET['del']);
 
-            $query = "DELETE FROM users WHERE id = {$the_id}";
-            $delete_user = mysqli_query($conn, $query) ;
+                $query = "DELETE FROM users WHERE id = {$the_id}";
+                $delete_user = mysqli_query($conn, $query) ;
 
-            $_SESSION['ErrorMessage'] = "User as Been Deleted";
-            Redirect("viewusers");
-        }
+                $_SESSION['ErrorMessage'] = "User as Been Deleted";
+                Redirect("viewusers");
+              }
+            }
+          }
      /// Change User to Admin
         if (isset($_GET['ad'])) {
         	$admin = mysqli_real_escape_string($conn, $_GET['ad']);
@@ -522,6 +556,9 @@ function AddUser() {
         }
         else {
 
+
+        $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+/*
         $rand = "SELECT randSalt FROM users";
         $select_rand = mysqli_query($conn, $rand);
 
@@ -531,7 +568,7 @@ function AddUser() {
 
         $row = mysqli_fetch_array($select_rand);
         $salt = $row['randSalt'];
-        $password = crypt($password, $salt);
+        $password = crypt($password, $salt);*/
 
         $query = "INSERT INTO users(username, firstname, date, lastname, email, role, password) 
         VALUE('$username', '$firstname', now(), '$lastname', '$email', '$role', '$password')";
@@ -580,20 +617,14 @@ function Admin_Login () {
 
 		while ($row = mysqli_fetch_array($login_user)) {
 			$id = $row['id'];
-			$user = $row['username'];
-			$word = $row['password'];
-			$firstname = $row['firstname'];
-			$lastname = $row['lastname'];
-			$role = $row['role'];
+			$user = mysqli_real_escape_string($conn, $row['username']);
+			$word = mysqli_real_escape_string($conn, $row['password']);
+			$firstname = mysqli_real_escape_string($conn, $row['firstname']);
+			$lastname = mysqli_real_escape_string($conn, $row['lastname']);
+			$role = mysqli_real_escape_string($conn, $row['role']);
 		}
-
-    $password = crypt($password, $word);
     
-		if ($username !== $user && $password !== $word) {
-			$_SESSION['ErrorMessage'] = "No User Like That in Our Database";
-      redirect("login");
-
-		} else if ($username == $user && $password == $word) {
+		if (password_verify($password, $word)) {
 			$_SESSION['username'] = $user;
 			$_SESSION['firstname'] = $firstname;
 			$_SESSION['lastname'] = $lastname;
@@ -623,9 +654,9 @@ function Check_Admin () {
 function User_log () {
   global $conn;
   if (isset($_POST['userlog'])) {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-    $email = $_POST['email'];
+    $user = mysqli_real_escape_string($conn, $_POST['username']);
+    $pass = mysqli_real_escape_string($conn, $_POST['password']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
 
     $Query = "SELECT * FROM users WHERE username = '$user' ";
     $userlog = mysqli_query($conn, $Query);
@@ -635,22 +666,16 @@ function User_log () {
       }
 
       while ($row = mysqli_fetch_array($userlog)) {
-        $id = $row['id'];
-        $username = $row['username'];
-        $user_password = $row['password'];
-        $firstname = $row['firstname'];
-        $lastname = $row['lastname'];
-        $email = $row['email'];
-        $role = $row['role'];
+        $id = mysqli_real_escape_string($conn, $row['id']);
+        $username = mysqli_real_escape_string($conn, $row['username']);
+        $user_password = mysqli_real_escape_string($conn, $row['password']);
+        $firstname = mysqli_real_escape_string($conn, $row['firstname']);
+        $lastname = mysqli_real_escape_string($conn, $row['lastname']);
+        $email = mysqli_real_escape_string($conn, $row['email']);
+        $role = mysqli_real_escape_string($conn, $row['role']);
       }
 
-      $pass = crypt($pass, $user_password);
-
-      if ($user !== $username && $pass !== $user_password) {
-        $_SESSION['ErrorMessage'] = "User cannot be Found";
-        Redirect("login");
-
-      } elseif ($user == $username && $pass == $user_password) {
+      if (password_verify($pass, $user_password)) {
         $_SESSION['username'] = $user;
         $_SESSION['firstname'] = $firstname;
         $_SESSION['lastname'] = $lastname;
@@ -717,6 +742,21 @@ function Reg_User () {
         die("Am a Killer " . mysqli_error($conn));
       }
     }
+  }
+}
+
+function Contact () {
+  global $conn;
+  if (isset($_POST['contact'])) {
+    $to = 'configureall@gmail.com';
+    $subject = wordwrap($_POST['subject'], 70);
+    $message = $_POST['message'];
+    $name = $_POST['name'];
+    $header = "From: " .$_POST['email'];
+
+    mail($to, $subject, $message, $header, $name);
+
+    echo "<script>alert('Mail Send Successfully')</script>";
   }
 }
 ?>

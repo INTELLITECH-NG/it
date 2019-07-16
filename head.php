@@ -8,25 +8,25 @@
           <div class="container">
             <nav class="nav">
               <ul data-type="navbar" class="sf-menu">
-                <li><a href="./">Home</a></li>
-                <li><a href="Services">Services</a>
+                <li <?php if($current == 'Home') {echo 'class="active"';} ?>><a href="./">HOME</a></li>
+                <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Services">SERVICES</a>
                   <ul>
-                    <li><a href="Maintenance">MAINTENENCE</a></li>
-                    <li><a href="Training">TRAINING</a></li>
-                    <li><a href="Consultancy">CONSULTANCY</a></li>
-                    <li><a href="Sales">SALES</a></li>
-                    <li><a href="Network">NETWORK DESIGN</a>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Maintenance">MAINTENENCE</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Training">TRAINING</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Consultancy">CONSULTANCY</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Sales">SALES</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Network">NETWORK DESIGN</a>
                       <ul>
-                        <li><a href="Security">SECURITY</a></li>
+                        <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Security">SECURITY</a></li>
                       </ul>
                     </li>
-                    <li><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
                   </ul>
-                  <li><a href="">PRODUCT</a></li>
+                  <li <?php if($current == 'Product') {echo 'class="active"';} ?>><a href="">PRODUCT</a></li>
                 </li>
-                <li><a href="Blog">Blog</a></li>
-                <li><a href="About">About</a></li>
-                <li><a href="Contacts">Contacts</a></li>
+                <li <?php if($current == 'Blog') {echo 'class="active"';} ?>><a href="Blog">BLOG</a></li>
+                <li <?php if($current == 'About') {echo 'class="active"';} ?>><a href="About">ABOUT</a></li>
+                <li <?php if($current == 'Contacts') {echo 'class="active"';} ?>><a href="Contacts">CONTACTS</a></li>
               </ul>
               <?php include('social.php') ?>
             </nav>

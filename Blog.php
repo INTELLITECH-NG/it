@@ -1,3 +1,4 @@
+<?php $current = 'Blog' ?>
 <?php include('inc/database.php') ?>
 <?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/publicstyle.css">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script><!--[if lt IE 9]>
     <html class="lt-ie9">
@@ -47,7 +48,7 @@
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
                 }else {
 
-                  $pre_page = 2;
+                  $pre_page = 3;
 
                 if (isset($_GET['page'])) {
                   $page = $_GET['page'];
@@ -65,7 +66,7 @@
 
                 $count = ceil($count / $pre_page);
 
-                $query = "SELECT * FROM post ORDER BY date desc LIMIT $page_1, $pre_page";}
+                $query = "SELECT * FROM post ORDER BY id desc LIMIT $page_1, $pre_page";}
                 $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
@@ -85,7 +86,13 @@
                         <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
                       </div>
                       <div class="grid_2 right">
-                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a></p>
+                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a> <span class="fa-comment"> <?php 
+
+                        $Query = "SELECT * FROM comment WHERE post = $post_id";
+                        $comment_view = mysqli_query($conn, $Query);
+                        $viewcount = mysqli_num_rows($comment_view);
+                        echo "$viewcount";
+                        ?></span></p>
                       </div>
                     </div>
                     <div class="row">
@@ -102,7 +109,7 @@
                           if ($i == $page ) {
                              echo "<li><a href='Blog?page=$i' class='active'>$i</a></li>";
                            } else {
-                            echo "<li><a href='Blog?page=$i'>$i</a></li>";
+                            echo "<li><a href='Blog?page=$i' >$i</a></li>";
                            }
                             
                           }

@@ -1,3 +1,4 @@
+<?php $current = 'Blog' ?>
 <?php include('inc/database.php') ?>
 <?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
@@ -71,7 +72,13 @@
                         <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
                       </div>
                       <div class="grid_2 right">
-                        <p>All Post by <?php echo $post_author; ?> at <?php echo $post_date ?></p>
+                        <p>All Post by <?php echo $post_author; ?> at <?php echo $post_date ?> <span class="fa-comment"> <?php 
+
+                        $Query = "SELECT * FROM comment WHERE post = $post_id";
+                        $comment_view = mysqli_query($conn, $Query);
+                        $viewcount = mysqli_num_rows($comment_view);
+                        echo "$viewcount";
+                        ?></span></p>
                       </div>
                     </div>
                     <div class="row">

@@ -1,3 +1,4 @@
+<?php $current = 'Blog' ?>
 <?php include('inc/database.php') ?>
 <?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
@@ -71,7 +72,13 @@
                         <h2><?php echo htmlentities($post_title); ?></h2>
                       </div>
                       <div class="grid_2 right">
-                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a></p>
+                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a> <span class="fa-comment"> <?php 
+
+                        $Query = "SELECT * FROM comment WHERE post = $post_id";
+                        $comment_view = mysqli_query($conn, $Query);
+                        $viewcount = mysqli_num_rows($comment_view);
+                        echo "$viewcount";
+                        ?></span></p>
                       </div>
                     </div>
                     <p><?php echo $post_content; ?></p>

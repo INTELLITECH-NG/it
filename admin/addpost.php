@@ -78,7 +78,7 @@
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Author</label>
-              <input type="text" name="Post_author" class="form-control" placeholder="Author Title" value="<?php echo $_SESSION['firstname'] ?>">
+              <input type="text" name="Post_author" readonly class="form-control" placeholder="Author Title" value="<?php echo $_SESSION['firstname'], " ", $_SESSION['lastname']?>">
             </div>
             <div class="col-xl-6 form-group">
               <label for="title">Image</label>

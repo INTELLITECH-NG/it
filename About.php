@@ -1,3 +1,4 @@
+<?php $current = 'About' ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

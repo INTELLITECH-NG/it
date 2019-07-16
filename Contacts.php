@@ -1,3 +1,6 @@
+<?php $current = 'Contacts' ?>
+<?php include('inc/database.php') ?>
+<?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/google-map.css">
     <link rel="stylesheet" href="css/mailform.css">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script><!--[if lt IE 9]>
     <html class="lt-ie9">
@@ -47,24 +50,44 @@
         </section>
         <section class="well1">
           <div class="container">
-            <h2>Feedback</h2>
-            <form method="post" action="bat/rd-mailform.php" class="mailform off2">
+            <?php Contact () ?>
+            <h2>Contact Us</h2>
+            <!-- <form method="post" action="" class="mailform off2">
               <input type="hidden" name="form-type" value="contact">
               <fieldset class="row">
-                <label class="grid_4">
-                  <input type="text" name="name" placeholder="Your Name:" data-constraints="@LettersOnly @NotEmpty">
+                <label class="grid_6">
+                  <input type="text" name="name" placeholder="Your Name:">
                 </label>
-                <label class="grid_4">
-                  <input type="text" name="phone" placeholder="Telephone:" data-constraints="@Phone">
-                </label>
-                <label class="grid_4">
-                  <input type="text" name="email" placeholder="Email:" data-constraints="@Email @NotEmpty">
+                <label class="grid_6">
+                  <input type="text" name="email" placeholder="Email:">
                 </label>
                 <label class="grid_12">
-                  <textarea name="message" placeholder="Message:" data-constraints="@NotEmpty"></textarea>
+                  <input type="text" name="subject" placeholder="Subject:">
+                </label>
+                <label class="grid_12">
+                  <textarea name="message" placeholder="Message:"></textarea>
                 </label>
                 <div class="mfControls grid_12">
-                  <button type="submit" class="btn">Sumbit comment</button>
+                  <input type="submit" value="Sumbit comment" name="contact" class="btn postbo">
+                </div>
+              </fieldset>
+            </form> -->
+            <form action="" method="POST" class="mailform off2">
+              <fieldset class="row">
+                <label for="name" class="grid_6">
+                  <input type="text" name="name" placeholder="Your Name:">
+                </label>
+                <label for="email" class="grid_6">
+                  <input type="email" name="email" placeholder="Email:">
+                </label>
+                <label for="subject" class="grid_12">
+                  <input type="text" name="subject" placeholder="Subject:">
+                </label>
+                <label for="message" class="grid_12">
+                  <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </label>
+                <div class="grid_12">
+                  <input type="submit" class="btn postbo" name="contact" value="Sumbit comment">
                 </div>
               </fieldset>
             </form>

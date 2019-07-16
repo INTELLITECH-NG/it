@@ -1,3 +1,4 @@
+<?php $current = 'Home' ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +39,7 @@
       ========================================================
       -->
       <header>
-        <?php include('head.php') ?>
+        <?php include('head.php');?>
       </header>
       <!--
       ========================================================
@@ -235,18 +236,17 @@
           </div>
         </section>
         <section>
-        	<div class="container well1">
-        		<h2>Our Client</h2>
-        		<div class="row">
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
-        			<div class="grid_2 wow fadeInRight" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
-        		</div>
-        	</div>
-        </section>
+        	<div class="container">
+            <h2>Our Client</h2>
+            <div class="row owl-carousel">
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+            </div>
+          </div>
       </main>
       <!--
       ========================================================
@@ -257,6 +257,25 @@
         <?php include("footer.php"); ?>
       </footer>
     </div>
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/script.js"></script>
+    <script>
+      var owl = $('.owl-carousel');
+      owl.owlCarousel({
+        nav:false,
+        items:4,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true
+      });
+      $('.play').on('click',function(){
+        owl.trigger('play.owl.autoplay',[1000])
+      })
+      $('.stop').on('click',function(){
+        owl.trigger('stop.owl.autoplay')
+      })
+    </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+<?php $current = 'Blog' ?>
 <?php include('inc/database.php') ?>
 <?php include('admin/inc/fun.php') ?>
 <!DOCTYPE html>
