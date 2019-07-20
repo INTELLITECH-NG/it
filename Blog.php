@@ -60,13 +60,17 @@
                 } else {
                   $page_1 = ($page * $pre_page) - $pre_page;
                 }
-                $post_query = "SELECT * FROM post";
+                $post_query = "SELECT * FROM post WHERE status = 'Published' ";
                 $query_count = mysqli_query($conn, $post_query);
                 $count = mysqli_num_rows($query_count);
 
+                if ($count < 1) {
+                  echo "<h1 class='blog'>No Post!! Come Back Later</h1>";
+                } else {}
+
                 $count = ceil($count / $pre_page);
 
-                $query = "SELECT * FROM post ORDER BY id desc LIMIT $page_1, $pre_page";}
+                $query = "SELECT * FROM post LIMIT $page_1, $pre_page";}
                 $post_query = mysqli_query($conn, $query);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
@@ -91,7 +95,7 @@
                         $Query = "SELECT * FROM comment WHERE post = $post_id";
                         $comment_view = mysqli_query($conn, $Query);
                         $viewcount = mysqli_num_rows($comment_view);
-                        echo "$viewcount";
+                        echo $viewcount;
                         ?></span></p>
                       </div>
                     </div>
