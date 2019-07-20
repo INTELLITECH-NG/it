@@ -51,8 +51,12 @@
                   $the_post_id = $_GET['post'];
                   $the_post_author = $_GET['author'];
 
-                  $query = "SELECT * FROM post WHERE author = '$the_post_author' "; }
+                  $query = "SELECT * FROM post WHERE author = '$the_post_author' AND status = 'Published' "; }
                   $post_query = mysqli_query($conn, $query);
+
+                  if (mysqli_num_rows($post_query) < 1) {
+                    echo "<h1 class='blog'>No Author!! Come Back Later</h1>";
+                  } else {
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
                        $post_id = $Datarow['id'];
@@ -86,7 +90,7 @@
                         <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
                       </div>
                     </div>
-                    <?php } ?>
+                    <?php } }?>
 
                   </div>
               <div class="grid_4">

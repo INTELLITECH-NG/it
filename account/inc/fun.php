@@ -737,56 +737,6 @@ function Check_Admin () {
   }
  }
 
-function User_log () {
-  global $conn;
-  if (isset($_POST['userlog'])) {
-    $user = mysqli_real_escape_string($conn, $_POST['username']);
-    $pass = mysqli_real_escape_string($conn, $_POST['password']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-
-    $Query = "SELECT * FROM users WHERE username = '$user' ";
-    $userlog = mysqli_query($conn, $Query);
-
-    if (!$userlog) {
-        die("Am a Killer" . mysqli_error($conn));
-      }
-
-      while ($row = mysqli_fetch_array($userlog)) {
-        $id = mysqli_real_escape_string($conn, $row['id']);
-        $username = mysqli_real_escape_string($conn, $row['username']);
-        $user_password = mysqli_real_escape_string($conn, $row['password']);
-        $firstname = mysqli_real_escape_string($conn, $row['firstname']);
-        $lastname = mysqli_real_escape_string($conn, $row['lastname']);
-        $email = mysqli_real_escape_string($conn, $row['email']);
-        $role = mysqli_real_escape_string($conn, $row['role']);
-      }
-
-      if (password_verify($pass, $user_password)) {
-        $_SESSION['username'] = $user;
-        $_SESSION['firstname'] = $firstname;
-        $_SESSION['lastname'] = $lastname;
-        $_SESSION['role'] = $role;
-        $_SESSION['SuccessMessage'] = "$username Has Been Granted Access";
-        Redirect("index");
-
-      } else {
-        $_SESSION['ErrorMessage'] = "Username or Password is incorrect";
-        Redirect("login");
-      }
-    }
-}
-
-function Check_User () {
-  global $conn;
-  if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] !==  'Admin') {
-      $_SESSION['ErrorMessage'] = "Your account cannot access Admin Panel";
-      Redirect("login");
-    }
-  } elseif (!isset($_SESSION['role'])) {
-    Redirect("login");
-  }
- }
 function Reg_User () {
   global $conn;
   if (isset($_POST['reguser'])) {
@@ -843,6 +793,24 @@ function Contact () {
     mail($to, $subject, $message, $header, $name);
 
     echo "<script>alert('Mail Send Successfully')</script>";
+  }
+}
+
+function is_admin ($user = "") {
+  global $conn;
+  $Query = "SELECT role FROM users WHERE username = '$user' ";
+  $send = mysqli_query($conn, $Query);
+
+  if ($send) {
+    die("Am a Killer" . mysqli_error($conn));
+  }
+
+  $row = mysqli_fetch_array($send);
+
+  if ($row['role'] == 'Admin') {
+    return ture;
+  } else {
+    return false;
   }
 }
 ?>

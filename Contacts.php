@@ -1,6 +1,6 @@
 <?php $current = 'Contacts' ?>
 <?php include('inc/database.php') ?>
-<?php include('admin/inc/fun.php') ?>
+<?php include('account/inc/fun.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,44 +52,24 @@
           <div class="container">
             <?php Contact () ?>
             <h2>Contact Us</h2>
-            <!-- <form method="post" action="" class="mailform off2">
-              <input type="hidden" name="form-type" value="contact">
-              <fieldset class="row">
-                <label class="grid_6">
+            <form action="" method="POST" class="well1">
+              <div class="row">
+                <div class="grid_6 comment1">
                   <input type="text" name="name" placeholder="Your Name:">
-                </label>
-                <label class="grid_6">
-                  <input type="text" name="email" placeholder="Email:">
-                </label>
-                <label class="grid_12">
-                  <input type="text" name="subject" placeholder="Subject:">
-                </label>
-                <label class="grid_12">
-                  <textarea name="message" placeholder="Message:"></textarea>
-                </label>
-                <div class="mfControls grid_12">
-                  <input type="submit" value="Sumbit comment" name="contact" class="btn postbo">
                 </div>
-              </fieldset>
-            </form> -->
-            <form action="" method="POST" class="mailform off2">
-              <fieldset class="row">
-                <label for="name" class="grid_6">
-                  <input type="text" name="name" placeholder="Your Name:">
-                </label>
-                <label for="email" class="grid_6">
+                <div class="grid_6 comment2">
                   <input type="email" name="email" placeholder="Email:">
-                </label>
-                <label for="subject" class="grid_12">
-                  <input type="text" name="subject" placeholder="Subject:">
-                </label>
-                <label for="message" class="grid_12">
-                  <textarea name="message" id="message" cols="30" rows="10"></textarea>
-                </label>
-                <div class="grid_12">
-                  <input type="submit" class="btn postbo" name="contact" value="Sumbit comment">
                 </div>
-              </fieldset>
+                <div class="grid_12 comment4">
+                  <input type="text" name="subject" placeholder="Subject:">
+                </div>
+                <div class="grid_12 comment3">
+                  <textarea name="message" id="" cols="60" rows="10" class="comment" placeholder="Meaasage:"></textarea>
+                </div>
+                <div class="grid_12 mfControls">
+                  <input type="submit" value="Messenger" name="contact" class="btn ">
+                </div>
+              </div>
             </form>
           </div>
         </section>

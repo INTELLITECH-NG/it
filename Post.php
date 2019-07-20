@@ -49,10 +49,14 @@
                 }else {
 
                   $the_post_id = $_GET['post'];
-                  $query = "SELECT * FROM post WHERE id = $the_post_id"; }
+                  $query = "SELECT * FROM post WHERE id = $the_post_id AND status = 'Published' "; }
                   $post_query = mysqli_query($conn, $query);
 
-                  $view_count = "UPDATE post SET view_count = view_count + 1 WHERE id = $the_post_id";
+                  if (mysqli_num_rows($post_query) < 1) {
+                    echo "<h1 class='blog'>No Post!! Come Back Later</h1>";
+                  } else {
+
+                  $view_count = "UPDATE post SET view_count = view_count + 1 WHERE id = $the_post_id ";
                   $send_view = mysqli_query($conn, $view_count);
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
@@ -84,7 +88,7 @@
                     <p><?php echo $post_content; ?></p>
                     <hr>
                     <?php 
-                    $query = "SELECT * FROM comment WHERE post = $the_post_id AND status = 'approved' ORDER by id desc ";
+                    $query = "SELECT * FROM comment WHERE post = $the_post_id AND status = 'Approved' ORDER by id desc ";
 
                     $view_comment = mysqli_query($conn, $query);
 
@@ -107,7 +111,7 @@
 
                       </div>
 
-                    <?php }?>
+                    <?php } ?>
                     <hr>
                     <h3>Leave a comment</h3>
                     <?php Comment_database ();?>
@@ -127,7 +131,7 @@
                         </div>
                       </div>
                     </form>
-                    <?php } ?>
+                    <?php } }?>
 
                   </div>
               <div class="grid_4">

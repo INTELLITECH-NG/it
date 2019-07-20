@@ -1,3 +1,4 @@
+<?php $current = 'Privacy Policy' ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

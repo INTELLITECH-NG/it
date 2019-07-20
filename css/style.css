@@ -56,6 +56,9 @@ img {
 .post {
     padding-top: 7px;
 }
+.blog {
+    margin: 30% 15%;
+}
 small {
     font-size: 15px;
 }
@@ -94,7 +97,15 @@ small {
     background-color: #f5f5f5;
 }
 .comment2 input{
-    width: 100%;
+    width: 102%;
+    height: 50px;
+    padding: 0 5px;
+    border: none;
+    background-color: #f5f5f5;
+}
+.comment4 input{
+    margin-top: 2%;
+    width: 101%;
     height: 50px;
     padding: 0 5px;
     border: none;

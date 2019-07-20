@@ -5,9 +5,10 @@
     <title>Home</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="INTELLITECH is an information Technology Company, focused on providing optimal, Contemporary and Prospective ICT solutions in the World. Our team is composed of IT Support, Web and Software Development, Network Design and Consultancy">
     <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />
+    <meta name='dmca-site-verification' content='d0N0d1c2bVZGbU5PUUpiRFpuYmI0UT090' />
     <meta name="author" content="Bright Robert">
     <meta name="zipcode" content="500272">
     <meta name="city" content="Port Harcourt, Nigeria">
@@ -237,7 +238,7 @@
         </section>
         <section>
         	<div class="container">
-            <h2>Our Client</h2>
+<!--             <h2>Our Client</h2> -->
             <div class="row owl-carousel">
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>

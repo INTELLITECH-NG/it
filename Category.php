@@ -47,12 +47,15 @@
                   $Search = mysqli_real_escape_string($conn, $_GET["Search"]);
                   $query = "SELECT * FROM post WHERE content LIKE '%$Search%' OR title LIKE '%$Search%' OR tags LIKE '%$Search%'";
                 }else { 
-                  if (isset($_GET['category'])) {
-                    $post_category = $_GET['category'];
-                  }
-                  
-                  $query = "SELECT * FROM post WHERE category = '$post_category'";}
+
+                  $post_category = $_GET['category'];
+
+                  $query = "SELECT * FROM post WHERE category = '$post_category' AND status = 'Published' ";}
                   $post_query = mysqli_query($conn, $query);
+
+                  if (mysqli_num_rows($post_query) < 1) {
+                    echo "<h1 class='blog'>No Category!! Come Back Later</h1>";
+                  } else {
 
                 while ($Datarow = mysqli_fetch_assoc($post_query)) {
                        $post_id = $Datarow['id'];
@@ -63,31 +66,41 @@
                        $post_content = substr($Datarow['content'], 0,100);
 
                      ?>
-                    <a href="post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
-                    <div class="left">
-                    <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
-                    <h2></h2>
+                    <a href="Post?post=<?php echo $post_id; ?>"><img src="upload/<?php echo $post_image ?>" alt=""></a>
+                    <div class="row">
+                      <div class="grid_5">
+                        <h2><a href="post?post=<?php echo $post_id; ?>"><?php echo htmlentities($post_title); ?></a></h2>
+                      </div>
+                      <div class="grid_2 right">
+                        <p>Published on <?php echo $post_date; ?> by <a href="Author?author=<?php echo $post_author; ?>&post=<?php echo $post_id; ?>" class="author"><?php echo $post_author;?></a> <span class="fa-comment"> <?php 
+
+                        $Query = "SELECT * FROM comment WHERE post = $post_id";
+                        $comment_view = mysqli_query($conn, $Query);
+                        $viewcount = mysqli_num_rows($comment_view);
+                        echo $viewcount;
+                        ?></span></p>
+                      </div>
                     </div>
-                    <div class="right">
-                    <p>Published on <?php echo $post_date; ?> by <a href="#" class="author"><?php echo $post_author; ?></a></p>
+                    <div class="row">
+                      <div class="grid_12">
+                        <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
+                      </div>
                     </div>
-                    <div class="clear"></div>
-                    <p><?php echo $post_content; ?></p><a href="#" class="btn postbo">Read more</a>
-                    <?php } ?>
+                    <?php } }?>
                   </div>
               <div class="grid_4">
                 <!-- Search form -->
                  <form action="Blog" method="get" enctype="multipart/form-data">
                       <div class="info-box">
                         <hr>
-                        <div class="clear"></div>
-                        <div class="lf">
-                          <input type="text" name="Search" placeholder="Search for...">
+                        <div class="row down">
+                          <div class="grid_1 sea">
+                            <input type="text" name="Search" placeholder="Search for...">
+                          </div>
+                          <div class="grid_1_2">
+                            <button class="btn" name="searchbutton" type="submit">Search</button>
+                          </div>
                         </div>
-                        <div class="rt">
-                          <button class="btn" name="searchbutton" type="submit">search</button>
-                        </div>
-                        <div class="clear"></div>
                         <hr>
                       </div>
                   </form>
