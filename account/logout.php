@@ -7,7 +7,7 @@ $_SESSION['firstname'] = null;
 $_SESSION['lastname'] = null;
 $_SESSION['role'] = null;
 
-$_SESSION['SuccessMessage'] = " This Use Has Been Log Out Successfuly";
+$_SESSION['SuccessMessage'] = " This User Has Been Log Out Successfuly";
 Redirect("login");
 
 ?>

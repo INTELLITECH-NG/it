@@ -1,4 +1,3 @@
-
 <?php include 'inc/head.php'; ?>
 
 <body id="page-top">
@@ -55,13 +54,25 @@
   <div id="wrapper">
     <!-- Sidebar -->
     <?php include 'inc/nav.php'; ?>
-
+    <?php if (!is_admin($_SESSION['username'])) {
+      Redirect("index");
+    } ?>
     <div id="content-wrapper">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">
-              Welcome <span><?php echo $_SESSION['username'] ?></span>
+              Welcome <span><?php echo $_SESSION['username'] ?></span> <sup>
+                <?php 
+                if (isset($_SESSION['role'])) {
+                  if ($_SESSION['role'] ==  'Admin') {
+                    echo "Admin";
+                  } else {
+                    echo "Subscriber";
+                  }
+                } 
+                 ?>
+              </sup>
             </h2>
             <hr>
           </div>

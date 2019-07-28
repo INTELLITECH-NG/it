@@ -61,7 +61,17 @@
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">
-              Welcome <span><?php echo $_SESSION['username'] ?></span>
+              Welcome <span><?php echo $_SESSION['username'] ?></span> <sup>
+                <?php 
+                if (isset($_SESSION['role'])) {
+                  if ($_SESSION['role'] ==  'Admin') {
+                    echo "Admin";
+                  } else {
+                    echo "Subscriber";
+                  }
+                } 
+                 ?>
+              </sup>
             </h2>
             <hr>
           </div>

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Forgot Password</title>
+  <title>Forgot Password</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,11 +36,11 @@
               <label for="inputEmail">Enter email address</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.html">Reset Password</a>
+          <a class="btn btn-primary btn-block" href="login">Reset Password</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Register an Account</a>
-          <a class="d-block small" href="login.html">Login Page</a>
+          <a class="d-block small mt-3" href="register">Register an Account</a>
+          <a class="d-block small" href="login">Login Page</a>
         </div>
       </div>
     </div>

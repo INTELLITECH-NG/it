@@ -219,17 +219,28 @@ function View_All_Post() {
         echo "<td>$date</td>";
         echo "<td><a href='../Post?post={$id}' class='btn btn-dark' target='_blank'>View Post</a></td>";
         echo "<td><a href='editpost?edit={$id}' class='btn btn-info'>Edit</a></td>";
-        echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete') \" href='viewpost?del={$id}' class='btn btn-danger'>Delete</a></td>";
+
+        ?>
+
+        <form action="" method="POST">
+          <input type="hidden" name="id" value="<?php echo $id ?>">
+        <?php 
+          echo '<td><input type="submit" value="Delete" name="del" class="btn btn-danger"></td>';
+        ?>
+        </form>
+
+        <?php
+
         echo "<td><a href='viewpost?draft={$id}' class='btn btn-secondary'>Draft</a></td>";
         echo "<td><a href='viewpost?publish={$id}' class='btn btn-success'>Published</a></td>";
         echo "</tr>";
     }
 
       /// Delete Post
-          if (isset($_GET['del'])) {
+          if (isset($_POST['del'])) {
             if (isset($_SESSION['role'])) {
               if (isset($_SESSION['role']) == 'Admin') {
-                $the_id = mysqli_real_escape_string($conn, $_GET['del']);
+                $the_id = mysqli_real_escape_string($conn, $_POST['id']);
                 $query = "DELETE FROM post WHERE id = {$the_id}";
                 $delete_category = mysqli_query($conn, $query) ;
 
@@ -708,9 +719,14 @@ function Admin_Login () {
 			$firstname = mysqli_real_escape_string($conn, $row['firstname']);
 			$lastname = mysqli_real_escape_string($conn, $row['lastname']);
 			$role = mysqli_real_escape_string($conn, $row['role']);
+      $email = mysqli_real_escape_string($conn, $row['email']);
 		}
-    
-		if (password_verify($password, $word)) {
+
+    if ($user == "" || empty($user) && $word == "" || empty($word)) {
+      $_SESSION['ErrorMessage'] = "All Fields Must Be fills";
+      Redirect("login");
+    } elseif (password_verify($password, $word)) {
+  
 			$_SESSION['username'] = $user;
 			$_SESSION['firstname'] = $firstname;
 			$_SESSION['lastname'] = $lastname;
@@ -720,7 +736,7 @@ function Admin_Login () {
 
 		} else {
 			$_SESSION['ErrorMessage'] = "Invalid Username or Password";
-		}
+		} 
 	}
 }
 
@@ -732,7 +748,7 @@ function Check_Admin () {
       Redirect("login");
     }
   } elseif (!isset($_SESSION['role'])) {
-    $_SESSION['ErrorMessage'] = "Login in your Admin Account";
+    $_SESSION['ErrorMessage'] = "Login in your Account";
     Redirect("login");
   }
  }
@@ -740,42 +756,45 @@ function Check_Admin () {
 function Reg_User () {
   global $conn;
   if (isset($_POST['reguser'])) {
-    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
-    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $firstname = mysqli_real_escape_string($conn, trim($_POST['firstname']));
+    $lastname = mysqli_real_escape_string($conn, trim($_POST['lastname']));
+    $username = mysqli_real_escape_string($conn, trim($_POST['username']));
+    $password = mysqli_real_escape_string($conn, trim($_POST['password']));
+    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
     $role = "Subscriber";
 
-    if ($firstname == "" || empty($firstname) && $lastname == "" || empty($lastname) && $username == "" || empty($username) && $password == "" || empty($password) && $email == "" || empty($email)) {
 
-      $_SESSION['ErrorMessage'] = "All Fields Must be Fill";
+    if (Username_exist($username)) {
+      $_SESSION['ErrorMessage'] = "Username Already Existing";
       Redirect("register");
-      
     } else {
 
-      $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+      if (Email_exist($email)) {
+        $_SESSION['ErrorMessage'] = "Email Address is Already Exist";
+        Redirect("register");
+      } else { 
 
-      /*$rand = "SELECT randSalt FROM users";
-      $select_rand = mysqli_query($conn, $rand);
+        if ($firstname == "" || empty($firstname) && $lastname == "" || empty($lastname) && $username == "" || empty($username) && $password == "" || empty($password) && $email == "" || empty($email)) {
 
-      if (!$select_rand) {
-        die("Am a Killer " . mysqli_error($conn));
-      }
+          $_SESSION['ErrorMessage'] = "All Fields Must be Fill";
+          Redirect("register");
+        } else {
 
-      $row = mysqli_fetch_array($select_rand);
-      $salt = $row['randSalt'];
-      $password = crypt($password, $salt);*/
+          $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
-      $Query = "INSERT INTO users(firstname, lastname, username, password, email, date, role)
-      VALUE('$firstname', '$lastname', '$username', '$password', '$email', now(), '$role')";
+          $Query = "INSERT INTO users(firstname, lastname, username, password, email, date, role)
+          VALUE('$firstname', '$lastname', '$username', '$password', '$email', now(), '$role')";
 
-      $user_reg = mysqli_query($conn, $Query);
-      $_SESSION['SuccessMessage'] = "Registration Successfully";
-      Redirect("login");
+          $user_reg = mysqli_query($conn, $Query);
+          $_SESSION['SuccessMessage'] = "Registration Successfully";
+          Redirect("login");
 
-      if (!$user_reg) {
-        die("Am a Killer " . mysqli_error($conn));
+          if (!$user_reg) {
+            die("Am a Killer " . mysqli_error($conn));
+          } elseif (Username_exist($user)) {
+            $_SESSION['ErrorMessage'] = "Error Creating User";
+          }
+        }
       }
     }
   }
@@ -796,19 +815,39 @@ function Contact () {
   }
 }
 
-function is_admin ($user = "") {
+function is_admin ($user) {
   global $conn;
   $Query = "SELECT role FROM users WHERE username = '$user' ";
   $send = mysqli_query($conn, $Query);
-
-  if ($send) {
-    die("Am a Killer" . mysqli_error($conn));
-  }
 
   $row = mysqli_fetch_array($send);
 
   if ($row['role'] == 'Admin') {
     return ture;
+  } else {
+    return false;
+  }
+}
+
+function Username_exist($user) {
+  global $conn;
+  $Query = "SELECT username FROM users WHERE username = '$user' ";
+  $Exist = mysqli_query($conn, $Query);
+
+  if (mysqli_num_rows($Exist) > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function Email_exist($email) {
+  global $conn;
+  $Query = "SELECT email FROM users WHERE email = '$email' ";
+  $Exist = mysqli_query($conn, $Query);
+
+  if (mysqli_num_rows($Exist)) {
+    return true;
   } else {
     return false;
   }

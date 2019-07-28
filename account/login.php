@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="">
+<body class="bg-dark">
   <?php Admin_Login (); ?>
   <div class="container">
     <div class="card card-login mx-auto mt-5">
