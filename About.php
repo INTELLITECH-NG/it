@@ -5,7 +5,7 @@
     <title>About</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="INTELLITECH is an information Technology Company, focused on providing optimal, Contemporary and Prospective ICT solutions in the World. Our team is composed of IT Support, Web and Software Development, Network Design and Consultancy">
     <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
     <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />

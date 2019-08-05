@@ -20,9 +20,9 @@
                         <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Security">SECURITY</a></li>
                       </ul>
                     </li>
-                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Web">WEB &#38; SOFTWARE DEVELOPMENT</a></li>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Software">SOFTWARE DEVELOPMENT</a></li>
                   </ul>
-                  <li <?php if($current == 'Product') {echo 'class="active"';} ?>><a href="">PRODUCT</a></li>
+                  <li <?php if($current == 'Product') {echo 'class="active"';} ?>><a href="Product">PRODUCT</a></li>
                 </li>
                 <li <?php if($current == 'Blog') {echo 'class="active"';} ?>><a href="Blog">BLOG</a></li>
                 <li <?php if($current == 'About') {echo 'class="active"';} ?>><a href="About">ABOUT</a></li>

@@ -7,7 +7,7 @@
     <title>Blog</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
@@ -79,7 +79,7 @@
                        $post_author = $Datarow['author'];
                        $post_date = $Datarow['date'];
                        $post_image = $Datarow['image'];
-                       $post_content = substr($Datarow['content'], 0,100);
+                       $post_content = substr($Datarow['content'], 0,200);
                        $post_status = $Datarow['status'];
 
                        if ($post_status == 'Published') {
@@ -100,7 +100,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="grid_12">
+                      <div class="grid_8">
                         <p><?php echo $post_content; ?></p><a href="Post?post=<?php echo $post_id; ?>" class="btn postbo">Read more</a>
                       </div>
                     </div>

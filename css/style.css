@@ -13,6 +13,10 @@ body {
     font: 400 14px/28px "Roboto", sans-serif;
     -webkit-text-size-adjust: none;
 }
+.bgg {
+    background-color: #56585a;
+    height: 200px;
+}
 
 img {
     max-width: 100%;
@@ -63,6 +67,13 @@ small {
     font-size: 15px;
 }
 
+.line {
+    margin-top: 50px;
+}
+.line2 {
+    margin-top: 20px;
+}
+
 .right {
     border-left: 4px solid #62bfe6;
     padding-left: 10px;
@@ -110,6 +121,38 @@ small {
     padding: 0 5px;
     border: none;
     background-color: #f5f5f5;
+}
+
+.product {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cen {
+    text-align: center;
+}
+
+.cenn {
+    margin: 10px auto;
+    padding: 10px;
+    color: #fff;
+}
+
+.len {
+    width: 40%;
+    margin: 0 auto;
+}
+.hmm {
+    font-size: 16px;
+    font-weight: bold;
+}
+.product span {
+    font-weight: normal;
+}
+.intel {
+    border-bottom: 3px solid #62bfe6;
+    width: 5%;
+    clear: both;
 }
 
 .comment3 textarea {
@@ -211,6 +254,7 @@ section.padsection4{ padding:11px 0 56px 0;}
     margin: 0px 15% 10px 0px;
 }
 /* End Line for traning */
+
 
 h1,
 h2,
@@ -344,13 +388,11 @@ hr {
         width: auto;
         height: auto;
     }
-    .left {
-        float: none;
+    .len {
         width: 100%;
     }
-    .right {
-        float: none;
-        width: 100%;
+    .bgg {
+        height: 20%;
     }
     .rt {
         float: none;

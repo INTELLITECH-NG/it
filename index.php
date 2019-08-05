@@ -14,7 +14,7 @@
     <meta name="city" content="Port Harcourt, Nigeria">
     <meta name="country" content="Nigeria">
     <meta name="Copyright" content="Intellitech Technologies">
-    <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
+    <meta name="keywords" content="INTELLITECH TECHNOLOGIES LIMITED, INTELLITECH.NG INTELLITECHNG, INTELLITECH">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
@@ -113,8 +113,8 @@
                 <p>Whether you only need basic maintenance and support or you would like to free up the time of your key people, the choice is yours.</p>
               </li>
               <li>
-                <div class="fa-lightbulb-o"><a href="Web"></a></div>
-                <h3>WEB &#38; SOFTWARE DEVELOPMENT</h3>
+                <div class="fa-lightbulb-o"><a href="Software"></a></div>
+                <h3>SOFTWARE DEVELOPMENT</h3>
                 <p>In the modern business world, a website is a crucial asset. We can ensure your website represents your brand values.</p>
               </li>
               <li>
@@ -238,14 +238,15 @@
         </section>
         <section>
         	<div class="container">
-<!--             <h2>Our Client</h2> -->
+            <h2>Our Client</h2>
             <div class="row owl-carousel">
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
+              <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+              <div class="grid_2 wow line fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
+              <div class="grid_2 wow  line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
+              <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
+              <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img14.png" alt=""></div>
+              <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img15.png" alt=""></div>
             </div>
           </div>
       </main>

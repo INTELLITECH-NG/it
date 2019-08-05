@@ -5,7 +5,7 @@
     <title>Training</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="INTELLITECH Train on different Course like Web design and Developing, Software Developing, Database Management, Cloud Computing and Networking">
     <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
     <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />

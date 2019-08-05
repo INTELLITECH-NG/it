@@ -5,7 +5,7 @@
     <title>Services</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="INTELLITECH focus of services are IT Support, Web and Software Developing, Network Design as well as configuring of Servers, Training, Consult, providing maintenace of System's and Software">
   <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
   <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />
