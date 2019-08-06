@@ -1,0 +1,32 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/intellit1/public_html/
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R account $DEPLOYPATH
+    - /bin/cp About.php $DEPLOYPATH
+    - /bin/cp Author.php $DEPLOYPATH
+    - /bin/cp Blog.php $DEPLOYPATH
+    - /bin/cp Category.php $DEPLOYPATH
+    - /bin/cp Consultancy.php $DEPLOYPATH
+    - /bin/cp Contacts.php $DEPLOYPATH
+    - /bin/cp Error.php $DEPLOYPATH
+    - /bin/cp FAQS.php $DEPLOYPATH
+    - /bin/cp footer.php $DEPLOYPATH
+    - /bin/cp head.php $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp IntelliPro.php $DEPLOYPATH
+    - /bin/cp IntelliSales.php $DEPLOYPATH
+    - /bin/cp IntelliSense.php $DEPLOYPATH
+    - /bin/cp Maintenance.php $DEPLOYPATH
+    - /bin/cp Network.php $DEPLOYPATH
+    - /bin/cp PerfectStay.php $DEPLOYPATH
+    - /bin/cp Post.php $DEPLOYPATH
+    - /bin/cp Privacy Policy.php $DEPLOYPATH
+    - /bin/cp Product.php $DEPLOYPATH
+    - /bin/cp Sales.php $DEPLOYPATH
+    - /bin/cp Security.php $DEPLOYPATH
+    - /bin/cp Services.php $DEPLOYPATH
+    - /bin/cp Social.php $DEPLOYPATH
+    - /bin/cp Software.php $DEPLOYPATH
+    - /bin/cp Training.php $DEPLOYPATH
