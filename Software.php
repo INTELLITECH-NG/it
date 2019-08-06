@@ -64,7 +64,6 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_cnt__no-flow">
-                    <div class="icon2 fa-heart" style="margin: 0 auto"></div>
                     <h3 class="product cen">CUSTOMIZED SOLUTIONS</h3>
                     <p style="text-align: justify"><span class="product">INTELLITECH</span> customized applications are the kind of software includes both mobile and web application with other customized services.</p>
                   </div>
