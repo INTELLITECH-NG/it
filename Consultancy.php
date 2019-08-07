@@ -42,30 +42,44 @@
                                   CONTENT
       ========================================================
       -->
-	  <main>
-	  <div class="container">
-	  <br>
-	  <h2>IT Consultancy</h2>
-		<p>See and feel massive improvements right across your business utilising INTELLITECH IT consultancy services, giving your business unrivalled web and IT expertise.</p>
-		<p>Our consultants have vast experience in the field of:</p>
-		<ul class="guru">
-		<li><a href="#">Website Development</a></li>
-		<li><a href="#">Network Security</a></li>
-		<li><a href="#">IT Infrastructure</a></li>
-		<li><a href="#">Virtualisation</a></li>
-		<li><a href="#">Data Loss Prevention</a></li>
-		</ul>
-		<p>We have helped hundreds of companies achieve their goals, within budget.</p>
-		<p>We can help your company in the following ways:</p>
-		<ul class="guru">
-		<li><a href="#">Increased productivity</a></li>
-		<li><a href="#">Maximised revenues</a></li>
-		<li><a href="#">Enhanced security</a></li>
-		<li><a href="#">Improved disaster recovery</a></li>
-		</ul>
-		<p>To see how INTELLITECH can improve your business, with fixed-cost solutions, call <strong>+234-080-6701-3794</strong>.</p>
-</div>
-		</main>
+      <main>
+        <section class="container well1">
+          <h2 class="product">CONSULTANCY</h2>
+          <p style="text-align: justify"><span class="product">INTELLITECH</span> provides implementation solutions for our customers from pre-sales assistance through to “go-live” events. These solutions are based on a proven implementation methodologies developed over the years and are continually enhanced to address new technology developments and evolving market-driven business needs.</p>
+          <p style="text-align: justify">Our comprehensive implementation team includes dedicated professionals who are experienced project managers, business analysts, developers, technologists and trainers with in-depth industry-specific business expertise. Our implementation support services include, but are not limited to:</p>
+          <ul class="row product-list">
+              <li class="grid_6">
+                <div class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow">
+                    <ul style="list-style: square">
+                      <li>Complete product implementations.</li>
+                      <li>encompassing all implementation phases from project definition to the final production “go-live”.</li>
+                      <li>Development, testing and deployment.</li>
+                      <li>Improved disaster recovery.</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+              </li>
+              <li class="grid_6">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow">
+                    <ul style="list-style: square">
+                      <li>Business and functional design, gap analysis, and transition planning.</li>
+                      <li>IT Infrastructure, Data Loss Prevention.</li>
+                      <li>System upgrades and regression testing services.</li>
+                      <li>Functional and technical operational support.</li>
+                      <li>Assistance in deploying add-on modules and new business solutions.</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+              </li>
+            </ul>
+            <p style="text-align: justify">Our professionals share a vision and are selected based on quality, like-mindedness, and commitment to client service. Outstanding client service continues to be our top priority.</p>
+            <p style="text-align: justify">We have helped hundreds of companies achieve their goals, within budget. </p>
+        </section>
+      </main>
       <!--
       ========================================================
                                   FOOTER
