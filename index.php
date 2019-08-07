@@ -222,14 +222,13 @@
                     <dt>Saturday:</dt>
                     <dd>10am-3pm</dd>
                   </dl>
-                  <dl>
-                    <dt>Sunday:</dt>
-                    <dd>1pm-5pm</dd>
-                  </dl>
                   <hr>
                   <h3>24/7 Online Support:</h3>
                   <dl>
-                    <dt>+234-080-6701-3794</dt>
+                    <dt>Call: <a href="callto:+2348090224422">+234-809-022-4422</a></dt>
+                  </dl>
+                  <dl>
+                    <dt>Email: <a href="mailto:info@intellitech.ng">info@intellitech.ng</a></dt>
                   </dl>
                 </div>
               </div>

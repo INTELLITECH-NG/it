@@ -152,7 +152,10 @@
                   <hr>
                   <h3>24/7 Online Support:</h3>
                   <dl>
-                    <dt>800-2345-6789</dt>
+                    <dt>Call: <a href="callto:+2348090224422">+234-809-022-4422</a></dt>
+                  </dl>
+                  <dl>
+                    <dt>Email: <a href="mailto:info@intellitech.ng">info@intellitech.ng</a></dt>
                   </dl>
                 </div>
               </div>
