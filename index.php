@@ -237,7 +237,7 @@
         </section>
         <section>
         	<div class="container">
-            <h2>Our Client</h2>
+            <h3 line class="product intel">Our Client</h3 line>
             <div class="row owl-carousel">
               <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>

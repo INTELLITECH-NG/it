@@ -149,10 +149,10 @@ small {
 .product span {
     font-weight: normal;
 }
-.intel {
+.intel{
     border-bottom: 3px solid #62bfe6;
     width: 5%;
-    clear: both;
+    display: inline;
 }
 
 .comment3 textarea {
@@ -403,6 +403,12 @@ hr {
         float: none;
         width: 100%;
         margin-bottom: 10px;
+    }
+    .line {
+        margin-top: 50px;
+        }
+    .line2 {
+        margin-top: 20px;
     }
 }
 

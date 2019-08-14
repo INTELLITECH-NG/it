@@ -44,7 +44,7 @@
       -->
       <main>
         <section class="well ins1">
-          <div class="container hr">
+          <div class="container well1">
             <h2 class="product well1">Product <span class="">Overview</span></h2>
             <ul class="row product-list">
               <li class="grid_6">
