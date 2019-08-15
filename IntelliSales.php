@@ -50,7 +50,7 @@
               <li class="grid_4">
                 <div class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-heart"></div>
+                    <div class="icon fas fa-users"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">ADMINISTRATION/SETUP</h6>
@@ -69,7 +69,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-database"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">DATABASE / BARCODE SETTINGS</h6>
@@ -87,7 +87,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-shopping-cart"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">PURCHASE /ORDER</h6>
@@ -108,7 +108,7 @@
               <li class="grid_4">
                 <div class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-heart"></div>
+                    <div class="icon fa-cc-mastercard"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">SALES/ PAYMENTS</h6>
@@ -129,7 +129,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-clock-o"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">ALARMS /EXPIRY ALERT</h6>
@@ -148,7 +148,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-location-arrow"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="product">STOCK ENTRY/LOCATION</h6>

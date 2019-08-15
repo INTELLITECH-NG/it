@@ -50,7 +50,7 @@
               <li class="grid_6">
                 <div class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-cogs"></div>
+                    <div class="icon fa-list"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">FEATURES DESCRIPTION</h5>
@@ -85,7 +85,7 @@
               <li class="grid_6">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-database"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">MASTER ENTRIES</h5>

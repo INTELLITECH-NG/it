@@ -47,33 +47,50 @@
           <h2 class="product">CONSULTANCY</h2>
           <p style="text-align: justify"><span class="product">INTELLITECH</span> provides implementation solutions for our customers from pre-sales assistance through to “go-live” events. These solutions are based on a proven implementation methodologies developed over the years and are continually enhanced to address new technology developments and evolving market-driven business needs.</p>
           <p style="text-align: justify">Our comprehensive implementation team includes dedicated professionals who are experienced project managers, business analysts, developers, technologists and trainers with in-depth industry-specific business expertise. Our implementation support services include, but are not limited to:</p>
-          <ul class="row product-list">
-              <li class="grid_6">
+            <ul class="row product-list">
+              <li class="grid_4">
                 <div class="box wow fadeInRight">
                   <div class="box_cnt__no-flow">
+                    <h6 class="product cen">IT Application Specification</h6>
+                    <p style="text-align: justify">When you can't find what your looking for, before turning to a bespoke solution talk to us to find out how to minimise the risks and get the best out of a new project.</p>
                     <ul style="list-style: square">
-                      <li>Complete product implementations.</li>
-                      <li>encompassing all implementation phases from project definition to the final production “go-live”.</li>
-                      <li>Development, testing and deployment.</li>
-                      <li>Improved disaster recovery.</li>
+                      <li>Requirement Gathering</li>
+                      <li>Application Design</li>
+                      <li>Website Design</li>
+                      <li>Content Management Systems</li>
                     </ul>
                   </div>
                 </div>
-                <hr>
               </li>
-              <li class="grid_6">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_cnt__no-flow">
+                    <h6 class="product cen"> IT Management and Support</h6>
+                    <p style="text-align: justify">What are the options available, manage it yourself or ask a supplier to do it for you. Ensuring the right strategy is in place that fits the goals of your organisation, talk to one of our consultants to see where we can help.</p>
                     <ul style="list-style: square">
-                      <li>Business and functional design, gap analysis, and transition planning.</li>
-                      <li>IT Infrastructure, Data Loss Prevention.</li>
-                      <li>System upgrades and regression testing services.</li>
-                      <li>Functional and technical operational support.</li>
-                      <li>Assistance in deploying add-on modules and new business solutions.</li>
+                      <li>Management and Operation of IT systems</li>
+                      <li>IT Strategy - Development and review</li>
+                      <li>Infrastructure Strategy - Development and review</li>
+                      <li>Business Continuity Planning</li>
                     </ul>
                   </div>
                 </div>
-                <hr>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow">
+                    <h6 class="product cen"> IT Procurement</h6>
+                    <p style="text-align: justify">The minefield of picking the right supplier. Have you asked them the right questions, are you comparing oranges for apples. We can be involved as much or as little as needed.</p>
+                    <ul style="list-style: square">
+                      <li>Requirements Gathering</li>
+                      <li>Product selection</li>
+                      <li>Procurement Management</li>
+                      <li>Client-side representation</li>
+                      <li>Contractual and Legal guidance</li>
+                      <li>Development of SLA's</li>
+                    </ul>
+                  </div>
+                </div>
               </li>
             </ul>
             <p style="text-align: justify">Our professionals share a vision and are selected based on quality, like-mindedness, and commitment to client service. Outstanding client service continues to be our top priority.</p>

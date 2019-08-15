@@ -45,12 +45,12 @@
       <main>
         <section class="container well1">
           <h2 class="product intel">IntelliSense</h2>
-          <p><span style="font-weight: bold">IntelliSense</span> is a school management system we've developed to specially ease the stress and increase the efficiency of school administrative process. It manages both students and teachers information, student assessment and exam records, class and lecture schedules.</p>
+          <p><span style="font-weight: bold">IntelliSense</span> is a <span class="product">erp</span> school management system we've developed to specially ease the stress and increase the efficiency of school administrative process. It manages both students and teachers information, student assessment and exam records, class and lecture schedules.</p>
           <ul class="row product-list">
               <li class="grid_4">
                 <div class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-cogs"></div>
+                    <div class="icon fa-list"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">WEBSITE FEATURES</h5>
@@ -67,7 +67,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-check"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">FINANCIAL FEATURES</h5>
@@ -84,7 +84,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-cogs"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h3 class="product">IT SUPPORT</h3>

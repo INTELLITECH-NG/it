@@ -50,7 +50,7 @@
               <li class="grid_4">
                 <div class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-cogs"></div>
+                    <div class="icon fa-users"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">ADMINISTRATION/SETUP</h5>
@@ -67,7 +67,7 @@
                 <hr>
                 <div data-wow-delay="0.2s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-shield"></div>
+                    <div class="icon fa-cc-visa"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">SALES / PAYMENT</h5>
@@ -83,7 +83,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-user"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">VENDORS ACCOUNTS</h5>
@@ -100,7 +100,7 @@
                 <hr>
                 <div data-wow-delay="0.4s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-certificate"></div>
+                    <div class="icon fa-bell"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">ALERTS</h5>
@@ -117,7 +117,7 @@
               <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-lightbulb-o"></div>
+                    <div class="icon fa-shopping-cart"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h3 class="product">PURCHASE ORDER</h3>
@@ -134,7 +134,7 @@
                 <hr>
                 <div data-wow-delay="0.4s" class="box wow fadeInRight">
                   <div class="box_aside">
-                    <div class="icon fa-certificate"></div>
+                    <div class="icon fa-info"></div>
                   </div>
                   <div class="box_cnt__no-flow">
                     <h5 class="product">PAYMENT /RECEIVING/EXPENSES REPORTS</h5>

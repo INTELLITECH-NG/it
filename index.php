@@ -48,7 +48,7 @@
       ========================================================
       -->
       <main>
-        <section id="slider" class="container-full">
+        <section id="slider">
           <div class="flexslider">
             <ul class="slides clearfix ">
               <li>

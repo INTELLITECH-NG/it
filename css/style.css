@@ -18,6 +18,10 @@ body {
     height: 200px;
 }
 
+.full {
+    display: inline-block;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -666,7 +670,7 @@ p+.btn_wr {
     line-height: 70px;
     font-size: 34px;
     text-align: center;
-    color: #62bfe6;
+    color: #fff;
     background: #4a4c4d;
 }
 

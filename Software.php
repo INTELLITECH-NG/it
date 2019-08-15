@@ -123,111 +123,106 @@
             </div>
           </div>
         </section>
-        <section class="well">
+        <section class="well ins1">
           <div class="container">
-            <ul class="row">
-              <li class="grid_3">
+            <ul class="row product-list">
+              <li class="grid_4">
                 <div class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-heart"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">User Experience and Friendliness</h6>
                     <p style="text-align: justify">Softwares with capacity to appeal to it users and make it easy for users to navigate.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-fast-forward"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Fast and Responsive</h6>
                     <p style="text-align: justify">Tablets, Mobile, Smartphones, iOS, Android, Windows Phone. Our Web solutions are suite for all screens.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-code"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">World-Class Technology Stack</h6>
                     <p style="text-align: justify">Java, C#, Go, JavaScript, PHP and Python. QL, Oracle MySQL, MongoDB, Redis. JSF, NodeJS, AngularJS, ReactJS. Ionic,  React-native. Our Team is packed with skills.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
-                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+            </ul>
+            <ul class="row product-list">
+              <li class="grid_4">
+                <div class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-cog"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Free 1 Year Technical Support</h6>
                     <p style="text-align: justify">Swift Technical support with quick response time, Our customer service team will always be there.</p>
                   </div>
                 </div>
               </li>
-            </ul>
-          </div>
-        </section>
-        <section class="">
-          <div class="container">
-            <ul class="row">
-              <li class="grid_3">
-                <div class="box wow fadeInRight">
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-mobile"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Mobile Application</h6>
                     <p style="text-align: justify">Apple iOS, Android, Mobile Applications and Software that are build to scale and perform better on low specification devices.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-shield"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Safety and Security First</h6>
-                    <p style="text-align: justify">Server security, Code Security, Framework, Hosting, Git/ Version Control Systems. We cant afford to leave unnecessary trails .</p>
-                  </div>
-                </div>
-              </li>
-              <li class="grid_3">
-                <div data-wow-delay="0.3s" class="box wow fadeInRight">
-                  <div class="box_cnt__no-flow">
-                    <h6 class="hmm">World Class Solutions</h6>
-                    <p style="text-align: justify">Fast, Scalable, Safe and Secure architecture, Our Software development team are the best.</p>
-                  </div>
-                </div>
-              </li>
-              <li class="grid_3">
-                <div data-wow-delay="0.3s" class="box wow fadeInRight">
-                  <div class="box_cnt__no-flow">
-                    <h6 class="hmm">Enterprise Solutions</h6>
-                    <p style="text-align: justify">Banks, Schools, Financial Institutes, Payment Gateways, Large, Medium and Small Business and more, you mention it, We deliever it.</p>
+                    <p style="text-align: justify">Server security, Code Security, Framework, Hosting, Git/ Version Control Systems. We cant afford to leave unnecessary trails.</p>
                   </div>
                 </div>
               </li>
             </ul>
-          </div>
-        </section>
-        <section class="well">
-          <div class="container">
-            <ul class="row">
-              <li class="grid_3">
+            <ul class="row product-list">
+              <li class="grid_4">
                 <div class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-home"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Training & Tutorials</h6>
                     <p style="text-align: justify">Step by step our team puts your staff and IT specialist through on how to completeley take control of your own solutions, You will only need us in special cases.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
-                  <div class="box_cnt__no-flow">
-                    <h6 class="hmm">Web Application</h6>
-                    <p style="text-align: justify">Web Design, Web development, Web Application, Portal and Customized solutions, If it's going to run on the web, Our team will bring it to life.</p>
+                  <div class="box_aside">
+                    <div class="icon2 fa-users"></div>
                   </div>
-                </div>
-              </li>
-              <li class="grid_3">
-                <div data-wow-delay="0.3s" class="box wow fadeInRight">
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">Expert Support Team</h6>
                     <p style="text-align: justify">Technical support is irreplacible and can't be subtituted, We'll get the right Software Engineer on it ASAP.</p>
                   </div>
                 </div>
               </li>
-              <li class="grid_3">
+              <li class="grid_4">
                 <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon2 fa-lightbulb-o"></div>
+                  </div>
                   <div class="box_cnt__no-flow">
                     <h6 class="hmm">E-Commerce Solutions</h6>
                     <p style="text-align: justify">Going Bigger? We'll customize the solution, We want to provide solutions that will suit your business and make it easier for us to support you without having to struggle with third party plugins. We always recomend customized E-Commerce solutions for our beloved clients. But is you insist, We do Magento, Woocomerce, Virtual mart</p>
