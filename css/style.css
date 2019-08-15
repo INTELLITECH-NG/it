@@ -27,6 +27,18 @@ img {
     height: auto;
 }
 
+.error {
+    font-size: 150px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20%;
+}
+
+[error] {
+    font-size: 25px;
+    text-align: center;
+}
+
 .mission h2 {
     text-transform: uppercase;
     text-align: center;
@@ -413,6 +425,13 @@ hr {
         }
     .line2 {
         margin-top: 20px;
+    }
+
+    .error {
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20%;
     }
 }
 

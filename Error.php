@@ -47,8 +47,8 @@
         <section class="container">
           <div class="row well1">
             <div class="grid_8">
-              <h1 style="font-size: 150px; font-weight: bold; text-align: center; margin-top: 20%" class="well1">Oops!</h1>
-              <p style="font-size: 25px; text-align: center">We can't seem to find the page you're looking for.</p>
+              <h1 class="error well1">Oops!</h1>
+              <p error>We can't seem to find the page you're looking for.</p>
             </div>
             <div class="grid_4"><img src="images/error.gif" alt=""></div>
           </div>
