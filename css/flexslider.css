@@ -754,7 +754,6 @@ html[xmlns] .slides {
     #slider section .desc {
         font-size: 43px;
     }
-
 }
 
 
@@ -769,6 +768,9 @@ html[xmlns] .slides {
     }
     #slider section .desc {
         font-size: 40px;
+    }
+    #carousel {
+        display: none;
     }
 }
 
@@ -812,5 +814,35 @@ only screen and ( min-resolution: 2dppx) {
     }
     .banner {
         top: -40px;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+  #carousel {
+    position: absolute;
+    bottom: 68%;
+    left: 37.7%;
+  }
+  .cont {
+  width: 1400px;
+  margin: 0 auto;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+    #carousel {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #carousel {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    #carousel {
+        display: none;
     }
 }
