@@ -846,3 +846,16 @@ only screen and ( min-resolution: 2dppx) {
         display: none;
     }
 }
+
+
+@media screen and (min-width: 1400px) {
+    .cont {
+        margin: 0 auto;
+        width: 1400px;
+    }
+    #carousel {
+        position: absolute;
+        bottom: 15%;
+        left: 17.6%;
+    }
+}
