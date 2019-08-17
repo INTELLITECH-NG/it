@@ -42,6 +42,127 @@
                                   CONTENT
       ========================================================
       -->
+      <main>
+        <section class="well">
+          <div class="container">
+            <ul class="row product-list">
+              <li class="grid_4">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 fa-cog" line></div>
+                    <h3>Quick Repair</h3>
+                    <p>Our company is reliable, and our work is trusted. We provide worry-free service you can always count on</p>
+                  </div>
+                </div>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow" move>
+                    <div class="icon3 fa-wrench" line></div>
+                    <h3>Honest Services</h3>
+                    <p>We are so confident with our service that if we can’t fix the problem, you don’t pay. All repairs come with a 30 day guarantee</p>
+                  </div>
+                </div>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow" move>
+                    <div class="icon3 fa-clock-o" line></div>
+                    <h3>On time delivery</h3>
+                    <p>Choose the delivery method that matches your requirements. We provides fast and quick pick and drop facility</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <section class="container">
+            <div move>
+              <h3 style="margin-top: 70px;" class="product">Specialist in Quick Service</h3>
+              <p style="font-size: 15px">fastest repair service with best price!</p>
+            </div>
+          </section>
+        </section>
+        <section class="well">
+          <div class="container">
+            <ul class="row product-list">
+              <li class="grid_4">
+                <div class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-laptop"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>Laptop Service</h6>
+                    <p>Our company offers the most efficient and the greenest repair service for your laptops with 30 days warranty</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-desktop"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>PC Service</h6>
+                    <p>We are one of the leading computer service center, we undertake desktop and laptop service with all major brands.</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-bug"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>Virus Removal</h6>
+                    <p>We are experts in Virus, spyware and other malware removal from your affected Laptop / Personal Computer</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+            </ul>
+            <ul class="row product-list">
+              <li class="grid_4">
+                <div class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-database"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>Data Recovery</h6>
+                    <p>We are expert to recover data from all situations, including viruses, accidental deletion, hardware failure.</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-globe"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>Network Services</h6>
+                    <p>Network down? No Internet? We provide reliable and timely service, We solving your networking problem in your location</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_aside">
+                    <div class="icon4 fa-windows"></div>
+                  </div>
+                  <div class="box_cnt__no-flow">
+                    <h6>Software Installation</h6>
+                    <p>Operating System Installations / Upgrade Services for your Laptop, Computer, Install setup at your door step.</p>
+                  </div>
+                </div>
+                <hr>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
 
       <!--
       ========================================================

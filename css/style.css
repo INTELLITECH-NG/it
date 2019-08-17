@@ -38,7 +38,13 @@ img {
     font-size: 25px;
     text-align: center;
 }
+[line] {
+    margin: 0 auto;
+}
 
+[move] {
+    text-align: center;
+}
 .mission h2 {
     text-transform: uppercase;
     text-align: center;
@@ -694,6 +700,45 @@ p+.btn_wr {
 }
 
 .icon2:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.icon3 {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    font-size: 52px;
+    text-align: center;
+    color: #62bfe6;
+    -moz-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    transition: 0.3s all ease;
+}
+
+.icon3:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.icon4 {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 34px;
+    text-align: center;
+    color: #4a4c4d;
+}
+
+.icon4:before {
     position: absolute;
     top: 0;
     right: 0;
