@@ -66,8 +66,24 @@ img {
     margin-left: 21.8%;
 }
 
-.so a:hover {
-    color: #62bfe6;
+.facebook a:hover {
+    color: #3b5998;
+}
+
+.twitter a:hover {
+    color: #00acee;
+}
+
+.instagram a:hover {
+    color: #c13584;
+}
+
+.linkedin a:hover {
+    color: #0077B5;
+}
+
+.youtube a:hover {
+    color: #c4302b;
 }
 .sl {
     padding: 0 5px;
