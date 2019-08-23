@@ -762,6 +762,15 @@ p+.btn_wr {
     left: 0;
 }
 
+.network {
+    background: repeat-y url('../images/svg/network.svg');
+}
+.cctv {
+    background: repeat-y url('../images/svg/cctv.svg');
+}
+.finger {
+    background: repeat-y url('../images/svg/finger.svg');
+}
 
 /*==================    Buttons    ======================*/
 

@@ -15,7 +15,7 @@
                     <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Training">TRAINING</a></li>
                     <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Consultancy">CONSULTANCY</a></li>
                     <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Sales">SALES</a></li>
-                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Network">NETWORK DESIGN</a>
+                    <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Network">NETWORK</a>
                       <ul>
                         <li <?php if($current == 'Services') {echo 'class="active"';} ?>><a href="Security">SECURITY</a></li>
                       </ul>

@@ -34,21 +34,45 @@
                                   CONTENT
       ========================================================
       -->
-	  <main>
-	  <br>
-	  <div class="container">
-		<h2>Network Installations</h2><br>
- 
-		<div id="content">
-				<div class="entry-content">
-		<p>INTELLITECH Support specialises in both local and wide area Network design and installation. From initial strategic planning to applications development and systems integration, we have the expertise to help clients expand their existing computer systems. We provide all the systems engineering required to design and install all sizes of Networks and to ensure connectivity with virtually all types of systems. It is imperative that sound, long-term planning is implemented before major expenditure on computing is undertaken.</p><br>
-		<p>We help our clients to develop plans with their commercial ambitions and embrace all aspects of technology. Most importantly, we review the plans on a regular basis to take into account advances in commercial emphasis and technical developments. We will research and make recommendations on all aspects of computing, both pre and post installation, covering such topics as cabling, type of hardware, bespoke software, operating systems, security, communications, site to site connectivity and disaster recovery.</p>
-               		<br class="clear" />	
-				</div>
-			</div>
-		</div>
-		</div>
-		</main>
+      <main>
+        <section class="well">
+          <div class="container">
+            <h2 class="product">NETWORK</h2>
+          <p style="text-align: justify">We turn ideas into reality through technology infrastructure, cyber security, web development, information systems engineering, unified communications, enterprise solutions.</p>
+          <p style="text-align: justify">We provide an extensive range of Network equipment, which we can tailor to meet the individual needs of your business. We offer a choice of networking such us:</p>
+            <ul class="row product-list">
+              <li class="grid_4">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 network" line></div>
+                    <h3>Networking (LAN, WAN & Wifi)</h3>
+                    <p>Our portfolio includes elements which are necessary to build an efficient and reliable wired and wireless networks.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow" move>
+                    <div class="icon3 cctv" line></div>
+                    <h3>CCTV Installation</h3>
+                    <p>We offer expert services in planning, design, installation, and maintenance of structured surveillance system.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="grid_4">
+                <div data-wow-delay="0.3s" class="box wow fadeInRight">
+                  <div class="box_cnt__no-flow" move>
+                    <div class="icon3 finger" line></div>
+                    <h3>Biometric Installation ( Time Attendance & Access Control)</h3>
+                    <p>Choose the delivery method that matches your requirements. We provides fast and quick pick and drop facility</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <p style="text-align: justify">We advise you on the best solution to meet your current and future requirements. We have no allegiance to any one brand of equipment and offer free independent advice on the equipment that is right for you.</p>
+          </div>
+        </section>
+      </main>
       <!--
       ========================================================
                                   FOOTER
