@@ -443,10 +443,7 @@ hr {
         margin-bottom: 10px;
     }
     .line {
-        margin-top: 50px;
-        }
-    .line2 {
-        margin-top: 20px;
+        margin: 10px auto;
     }
 
     .error {
