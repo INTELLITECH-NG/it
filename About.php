@@ -83,7 +83,61 @@
               </div>
             </div>
           </div>
-		  </div>
+        </div>
+        </section>
+        <section class="well">
+          <div class="container">
+            <div class="row">
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 customer" line></div>
+                    <h3>Customer Commitment </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 quality" line></div>
+                    <h3>Quality</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 professor" line></div>
+                    <h3>Professionalism</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 innovation" line></div>
+                    <h3>Innovation</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 teamwork" line></div>
+                    <h3>Teamwork</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="grid_2">
+                <div class="box wow fadeInRight" move>
+                  <div class="box_cnt__no-flow">
+                    <div class="icon3 bald" line></div>
+                    <h3>interactive</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
         <section class="well1 ins3">
           <div class="container">

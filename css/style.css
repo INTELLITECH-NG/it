@@ -768,6 +768,28 @@ p+.btn_wr {
 .finger {
     background: repeat-y url('../images/svg/finger.svg');
 }
+.quality {
+    background: repeat-y url('../images/svg/quality.svg');
+}
+.teamwork {
+    background: repeat-y url('../images/svg/teamwork.svg');
+}
+.innovation {
+    background: repeat-y url('../images/svg/innovation.svg');
+}
+.professor {
+    background: repeat-y url('../images/svg/professor.svg');
+}
+.bald {
+    background: url('../images/svg/bald.svg');
+    background-repeat: no-repeat;
+    background-size: 80px
+}
+.customer {
+    background: url('../images/svg/customer-service.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 /*==================    Buttons    ======================*/
 
