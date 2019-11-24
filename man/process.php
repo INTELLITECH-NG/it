@@ -6,10 +6,10 @@ $pause = 1;
 
 // DATABASE SETTINGS
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'man');
+define('DB_NAME', 'intellit1_mail');
 define('DB_CHARSET', 'utf8');
-define('DB_USER', 'man');
-define('DB_PASSWORD', 'man');
+define('DB_USER', 'intellit1_mail');
+define('DB_PASSWORD', 'intellit1_mail');
 
 // LOAD LIBRARY + EMAIL TEMPLATE FROM FILE
 require __DIR__ . DIRECTORY_SEPARATOR . "newsletter.php";
