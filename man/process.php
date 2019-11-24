@@ -17,9 +17,9 @@ $news = new Newsletter();
 $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "template.html");
 
 // EMAIL SETTINGS
-$subject = "[STORE] Crazy sales";
-$headers = "From: abc@xyz.com" . PHP_EOL;
-$headers .= "Reply-To: abc@xyz.com" . PHP_EOL;
+$subject = "INTERNSHIP";
+$headers = "From: internship@intellitech.ng" . PHP_EOL;
+$headers .= "Reply-To: noreply@intellitech.ng" . PHP_EOL;
 $headers .= "MIME-Version: 1.0" . PHP_EOL;
 $headers .= "Content-Type: text/html; charset=ISO-8859-1" . PHP_EOL;
 $news->prime($headers, $subject);
