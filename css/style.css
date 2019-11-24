@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 @import url(animate.css);
 @import url(font-awesome.min.css);
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,700);
@@ -727,6 +727,7 @@ p+.btn_wr {
     font-size: 52px;
     text-align: center;
     color: #62bfe6;
+    #fb6303
     -moz-transition: 0.3s all ease;
     -o-transition: 0.3s all ease;
     -webkit-transition: 0.3s all ease;

@@ -1,0 +1,15 @@
+.content-wrapper,.content-bg{background-color: #ecf0f5;}
+.login-bg{background-image: url(../img/login-bg.jpg); background-size: cover;}
+.box-bg {background: rgba(255, 255, 255, 0.1);box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);}
+.box-body{padding: 10px 20px;}
+.login-box, .register-box{margin-top: 10%}
+div.dt-buttons{position:relative;float:right;clear: both;margin-bottom: 10px; }
+.btn-style{width: 102px !important; margin-bottom: 3px !important; font-weight: 900;}
+.checkbox label, .radio label{margin-right: 10px;}
+.select2-container{width: 100% !important}
+.bootstrap-tagsinput{width: 100% !important;padding: 5px 0px;border-radius: 0;}
+.bootstrap-tagsinput .tag {font-size: 14px;margin-left: 5px;margin-right: -2px;}
+.borderRight{border-right: 2px solid #ccc}
+@media screen and (max-width: 800px) {
+    .borderRight{border-right: 0px solid #ccc}
+}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>LaraMailer - Documentation</title>
+
+    <!-- Styles -->
+    <link href="assets/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/skin-blue.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://laramailer.alustech.com/">
+    <link rel="icon" href="assets/img/favicon.png">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar" data-offset="200">
+
+    <!-- Sidebar -->
+    <aside class="sidebar sidebar-boxed sidebar-dark">
+
+        <a class="sidebar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
+
+        <ul class="nav sidenav dropable">
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#smtp">What is SMTP?</a></li>
+            <li><a href="#sample">Sample Files</a></li>
+            <li><a href="#edit">How To Edit</a></li>
+            <li><a href="#html">HTML Structure</a></li>
+            <li><a href="#css">CSS Folder location</a></li>
+            <li><a href="#js">JS Folder location</a></li>
+            <li><a href="#cron-job">Cron Job</a></li>
+            <li><a href="#faq">Frequently Asked Question</a></li>
+            <li><a href="#support">Support</a></li>
+        </ul>
+
+    </aside>
+    <!-- END Sidebar -->
+
+    <header class="site-header navbar-transparent">
+
+        <!-- Top navbar & branding -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <!-- Toggle buttons and brand -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+                        <span class="glyphicon glyphicon-option-vertical"></span>
+                    </button>
+
+                    <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <!-- END Toggle buttons and brand -->
+
+                <!-- Top navbar -->
+                <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hero"><a href="#" target="_blank">Purchase</a></li>
+                    </ul>
+                </div>
+                <!-- END Top navbar -->
+
+            </div>
+        </nav>
+        <!-- END Top navbar & branding -->
+
+        <!-- Banner -->
+        <div class="banner auto-size" style="background-color: #58a3d3" id="introduction">
+            <div class="container-fluid text-white">
+                <h1><strong>LaraMailer</strong> documentation</h1>
+                <h5>For a quick and easy installation we created for you this technical support.</h5>
+                <br>
+                <strong>Created At: </strong> 30-11-2017
+                <br>
+                <strong>Powered By: </strong> <a href="https://alustech.com" style="color: #fff">Alu's Tech</a>
+                <br>
+                <strong>Contact At: </strong> <a href="mailto:contact@alustech.com" style="color: #fff">contact@alustech.com</a>
+                <br>
+                <br>
+                <p>If you have any questions that are beyond the scope of this help file, please feel free to email, via my user page contact form or put a ticket at Support Center .
+                <br>Thank you so much!</p>
+            </div>
+        </div>
+        <!-- END Banner -->
+
+    </header>
+
+    <main class="container-fluid">
+
+        <!-- Main content -->
+        <article class="main-content" role="main">
+
+            <p class="lead" style="padding-bottom: 50px">Please use the left navigation bar to browse through this support. Let’s go !</p>
+
+            <section>
+                <h2 id="installation"><strong>Installation</strong></h2>
+
+                <strong>Before install, please make sure you have the components bellow enable on your server</strong>
+                <pre>
+<code>
+PHP 7.0.0 or greater (with PHP exec function, etc.)
+OpenSSL PHP Extension
+PDO PHP Extension
+Mbstring PHP Extension
+Tokenizer PHP Extension
+XML PHP Extension
+PHP Fileinfo extension
+PHP Zip Archive
+Rewrite Module
+</code>
+</pre>
+                <strong>File and folder permissions</strong>
+                <pre>
+<code>
+/bootstrap        775
+/public/uploads   775
+/storage          775 (recursively)
+</code>
+</pre>
+
+            </section>
+            <section>
+                <h2 id="installation-apache"><strong>Installation with Apache</strong></h2>
+                <h4><strong>Creating a new Database</strong></h4>
+
+                <p>First thing you want to do before installing <strong>LaraMailer</strong> is to create a new database on your mysql server. If you already know how to do this/or have already created one just skip to the next step.</p>
+                <p>Your hosting provider will most likely have <strong>phpMyAdmin</strong> as mysql manager. If that is the case here is a step by step guide (if not the process will be very similar on other managers).</p>
+                <p>Login to your control panel, find and click phpMyAdmin link.</p>
+                <p>Click on the database tab in the top menu, enter any name for your database and click create.</p>
+
+                <h4><strong>Uploading Files</strong></h4>
+
+                <p>After creating a database, unzip the file you donwloaded from CodeCanyon and upload the <strong>contents</strong> of <strong>LaraMailer</strong> folder to your server root, usually called <strong>www</strong> or <strong>html</strong> or <strong>public_html</strong>.</p>
+
+                <div class="alert alert-warning" role="alert">
+                    <strong>Important:</strong> Always use a desktop application like <a href="https://filezilla-project.org/" target="_blank" rel="noopener noreferrer">FileZilla</a> to upload files to FTP as opposed to web based file managers to avoid issues with corrupted or not properly uploaded files.
+                </div>
+
+                <div class="alert alert-warning" role="alert">
+                    <strong>Important:</strong> Make sure that <strong>.htaccess</strong> file got copied properly from the download to main LaraMailer folder on your server.
+                </div>
+
+            </section>
+
+            <section>
+
+                <h2 id="setup"><strong>Setup</strong></h2>
+                <ul>
+                    <li>Upload laramailer.zip to your host and unzip</li>
+                    <li> Create mySQL Database and upload laramailer.sql (From Database Folder).</li>
+                    <li> Goto File Manager and Copy Paste Database Information at .env File.</li>
+                    <li> Now Run your Website.</li>
+                    <li> Visit your site http://YourSiteName.com</li>
+                    <li> Admin Username: admin@mail.com || Admin Password: 123456</li>
+                    <li> System is fully dynamic so you able to change anythings from admin panel.</li>
+                </ul>
+                <p><strong>NOTE:</strong> If you still unable to install then pls mail us, we will install it for FREE</p>
+                <br><br>
+
+
+                <h4>Take A look about..</h4>
+                <a href="https://www.youtube.com/watch?v=tbXIEmn_Csw" target="_blank">How to upload Files in Cpanel</a><br/>
+                <a href="https://www.youtube.com/watch?v=URaJotkQaJg" target="_blank">How to upload Database in Cpanel</a><br/>
+
+            </section>
+
+            <section>
+                <h2 id="smtp"><strong>What is SMTP ?</strong></h2>
+                <br <p>Short for Simple Mail Transfer Protocol, a protocol for sending e-mail messages between servers. Most e-mail systems that send mail over the Internet use SMTP to send messages from one server to another; the messages can then be retrieved with an e-mail client using either POP or IMAP. In addition, SMTP is generally used to send messages from a mail client to a mail server. This is why you need to specify both the POP or IMAP server and the SMTP server when you configure your e-mail application.</p>
+                <strong>Please note that some hosting providers blocks port 25 or 465 in that case you have change your SMTP email server or contact your hosting provider</strong>
+
+            </section>
+
+            <section>
+                <h2 id="add-smtp-server"><strong>Add SMTP Server</strong></h2>
+                <strong>Using your own or some SMTP server</strong>
+                <strong>Admin panel setup</strong>
+                <ul>
+                    <li>Go to your <strong>Admin</strong> / <strong>Add Mailer</strong></li>
+                    <li>Set '<strong>Mail driver</strong>', '<strong>Mail host</strong>', '<strong>Mail port</strong>', '<strong>Mail encryption</strong>', '<strong>Mail username</strong>' and '<strong>Mail password</strong>'</li>
+                    <li>And save your changes.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 id="sample"><strong>Sample Files</strong></h2>
+                <h5>At the time of Uploading Excel or Text File please follow the below structure please..</h5>
+                <br>
+
+                <center>
+                    <img src="assets/img/sample_excel.png" alt="banner" height="100%" width="100%">
+                 </center> 
+
+                 <br><br> 
+
+                <center>
+                    <img src="assets/img/sample_text.png" alt="banner" height="100%" width="100%">
+                 </center>  
+
+            </section>
+
+            <section>
+                <h2 id="edit"><strong>How To Edit Code</strong></h2> Once You Install The Product on Your Server, You Will have Two Folder and Few Files.
+                <br>
+                <br> On Folder <b>"assets"</b>, We keep all kind of asset like <b>CSS, JS, Images</b>. So if You Want To Edit Or Change Any Asset, Have a Look on This Folder.
+                <br>
+                <br> On File Manager, We directly keep The Core of <b>Laravel</b>.
+                <br>
+                <br> We Maintain Laravel Structure(MVC) on This Project.
+                <br>
+                <br>
+                <b>"routes/web.php"</b> All Routes (URL) in This Folder. You can find the ControllerName@FunctionName Here.
+                <br>
+                <br>
+                <b>"app"</b> All Models are in This Folder.
+                <br>
+                <br>
+                <b>"app/Http"</b> All Controller are in This Folder. You can Change anything you want if you need to change any functionality.
+                <br>
+                <br>
+                <b>"resources/views"</b> You Have All HTML Structure Here. You can Change anything you want if you need to change anything on HTML.
+
+            </section>
+
+            <section>
+                <h2 id="html"><strong>Template HTML Structure</strong></h2>
+                <h3>The html template uses Latest <strong>Bootstrap v3.3.7</strong> with valid HTML5 tags. This theme is a responisve layout with 12 column Support column. All of the information in content area is nested within a class and comes with predefined classes.</h3>
+
+                <center>
+                    <img src="assets/img/html.png" alt="banner" height="100%" width="100%">
+                 </center>  
+
+            </section>
+
+            <section>
+                <h2 id="css"><strong>CSS Folder location</strong></h2>
+                <p><strong> Used Css File For Various Purpose :</strong></p>
+
+                <br>
+                <strong>NOTE:</strong> CSS Folder location <strong>assets/css</strong>
+                <br>
+                <br>
+
+                <p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p>
+
+            </section>
+
+            <section>
+                <h2 id="js"><strong>JavaScript Folder location</strong></h2>
+                <ul>
+
+                    <br>
+                    <li><strong>jQuery</strong> is a Javascript library that greatly reduces the amount of code that you must write.</li>
+                    <li>Most of the animation in this site is carried out from the customs scripts. There are a few functions worth looking over.</li>
+                </ul>
+                <br>
+                <br>
+                <strong>NOTE:</strong> JavaScript Folder location <strong>assets/js</strong>
+                <br>
+                <br>
+                <p>In addition to the custom scripts, I have implemented few "tried and true" plugins to create the effects. This plugin is packed, so you won't need to manually edit anything in the file. The only necessary thing to know is how to call the method</p>
+
+            </section>
+
+            <section>
+                <h2 id="cron-job"><strong>Cron Job</strong></h2>
+                <h4><strong>How can I set the Cron Job?</strong></h4>
+                <p>To set the Ads Cleaner command you need to add the code below in the Cron Job tool of your server:</p>
+                <pre>{PHP_BIN_PATH} -q /path/to/YourWebsite/artisan ads:clean</pre>
+                <p style="text-decoration: underline;">NOTE</p>
+                <ul>
+                    <li><code>{PHP_BIN_PATH}</code> => Ex: <code>/usr/bin/php7.0</code>, <code>/usr/bin/php</code>, <code>/usr/lib/php</code></li>
+                    <li><code>/path/to/YourWebsite/</code> => You have to replace this path by your real path.</li>
+                    <li>You can set the Cron Job to run every hour or day. You can also run it on a specific hour every day.</li>
+                    <li>Don't hesitate to ask more information about it from your hosting provider.</li>
+                </ul>
+
+                <hr>
+
+                <h4><strong>More information about Cron Job:</strong></h4>
+                <ul>
+                    <li><a href="https://crontab.guru/every-1-hour" target="_blank" rel="noopener">https://crontab.guru/every-1-hour</a></li>
+                    <li><a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800" target="_blank" rel="noopener">https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800</a></li>
+                    <li><a href="http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job" target="_blank" rel="noopener">http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job</a></li>
+                </ul>
+
+                <hr>
+
+            </section>
+
+            <section>
+                <h2 id="faq"><strong>Frequently Asked Question</strong></h2>
+                <h5><strong>Do i need <span class="s1">VPS OR Dedicated Server?</span></strong></h5>
+                <ul>
+                    <li>No you can run our product with shared server too.</li>
+                </ul>
+
+                <h5><strong>Which <span class="s1">Hosting Provider</span>  will be best you think? </strong></h5>
+                <ul>
+                    <li>Any hosting provider who provide <strong>Cpanel Based Hosting</strong>. Even if you can run this in <strong>Local Host</strong> too</li>
+                </ul>
+
+                <h5><strong>What is Cpanel?</strong></h5>
+                <ul>
+                    <li>Cpanel is a Control panel for server. You can Check More <a href='http://cpanel.net/' target='_blank'> Here </a></li>
+                </ul>
+                Please see more features by visiting your <strong>Admin panel</strong> / <strong>Settings</strong>...
+            </section>
+
+            <section>
+                <h2 id="credit"><strong>Source and Credit</strong></h2>
+                <p>Fonts Used in the template are google fonts, you can find them on Google Fonts API. <a href="http://fonts.googleapis.com/css?family=Raleway" target="_blank">http://fonts.googleapis.com/css?family=Raleway</a></p>
+                <br>
+
+                <p><strong> Development Framework Used are:</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>Laravel 5.5</strong> <a href="https://laravel.com/" target="_blank">https://laravel.com/</a></p>
+                <br>
+
+                <p><strong> Design Framework Used are:</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>Bootstrap</strong> <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a></p>
+                <br>
+
+                <p><strong> JavaScript Library Used are:</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>jQuery</strong> <a href="https://jquery.com/" target="_blank">https://jquery.com/</a></p>
+                <br>
+
+                <p><strong> Icon Used are:</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>Fontawsome Icons</strong> <a href="https://fortawesome.github.io/Font-Awesome/" target="_blank">https://fortawesome.github.io/Font-Awesome/</a></p>
+                <br>
+
+                <p><strong> And Others:</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>Select2</strong> <a href="https://select2.org/" target="_blank">https://select2.org/</a></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>DataTables</strong> <a href="https://datatables.net/" target="_blank">https://datatables.net/</a></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>Sweet Alert</strong> <a href="https://sweetalert.js.org/" target="_blank">https://sweetalert.js.org/</a></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>TnyMCE</strong> <a href="https://www.tinymce.com/" target="_blank">https://www.tinymce.com/</a></p>
+                <br>
+
+                <p><strong> And Specially Thanks To the Team AdminLTE, We used their Template. They made our task more easiar.</strong></p>
+                <p><strong><i class="fa fa-check" aria-hidden="true"></i>AdminLTE Template</strong> <a href="https://adminlte.io/" target="_blank">https://adminlte.io/Font-Awesome/</a></p>
+                <br>
+            </section>
+
+            <section>
+                <h2 id="support"><strong>Support</strong></h2>
+                <h5 class="text-justify">Once again, thank you so much . As I said at the beginning, I'd be glad to help you if you have any questions relating to this Script. No guarantees, but I'll do my best to assist. If you have any queries, please feel free to contact us at Support Center.</h5>
+
+                <p>Email Us at : <a href="mailto:contact@alustech.com">contact@alustech.com</a> </p>
+            </section>
+
+        </article>
+        <!-- END Main content -->
+
+        <!-- Footer -->
+        <footer class="site-footer" style="display: block">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright &copy;2017. All right reserved. Developed BY <a href="https://alustech.com" target="_blank">Alu's Tech</a></p>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/all.min.js"></script>
+
+</body>
+
+</html>
