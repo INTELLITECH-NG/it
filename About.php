@@ -70,12 +70,11 @@
                       <dt>Expertise</dt>
                       <dd>
                         <ul>
-                          <li>Windows, Mac, Linux</li>
-                          <li>Wireless and Lan</li>
-                          <li>VoIP and Asterisk</li>
-                          <li>Virtualization</li>
-                          <li>Web Developers</li>
-                          <li>Software Deleveloper</li>
+                          <li>Software Engineers</li>
+                          <li>Hardware Engineers</li>
+                          <li>Networking Administrator</li>
+                          <li>Networking Engineers</li>
+                          <li>Virtualization Engineers</li>
                         </ul>
                       </dd>
                     </dl>
