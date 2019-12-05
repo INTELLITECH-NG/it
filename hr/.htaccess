@@ -25,3 +25,5 @@
     # Please comment this if you have uncommented the above
     RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
 </IfModule>
+
+php_value allow_url_fopen On
