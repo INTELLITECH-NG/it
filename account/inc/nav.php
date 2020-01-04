@@ -32,11 +32,21 @@
           <a class="dropdown-item" href="viewusers">All User</a>
           <a class="dropdown-item" href="adduser">Add User</a>
         </div>
-      </li>      
+      </li>     
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-users-cog"></i>
           <span>Manage Admin</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="email">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="interns">
+          <i class="fas fa-user"></i>
+          <span>Interns</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="comment">

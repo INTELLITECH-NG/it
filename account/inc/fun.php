@@ -723,7 +723,7 @@ function Admin_Login () {
 		}
 
     if ($user == "" || empty($user) && $word == "" || empty($word)) {
-      $_SESSION['ErrorMessage'] = "All Fields Must Be fills";
+      $_SESSION['ErrorMessage'] = "Login";
       Redirect("login");
     } elseif (password_verify($password, $word)) {
   
@@ -752,6 +752,18 @@ function Check_Admin () {
     Redirect("login");
   }
  }
+
+function Username_exist($username){
+  global $conn;
+  $Query = "SELECT username FROM users WHERE username = '$username' ";
+  $Exist = mysqli_query($conn, $Query);
+
+  if (mysqli_num_rows($Exist) > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function Reg_User () {
   global $conn;
@@ -791,7 +803,7 @@ function Reg_User () {
 
           if (!$user_reg) {
             die("Am a Killer " . mysqli_error($conn));
-          } elseif (Username_exist($user)) {
+          } elseif (Username_exist($username)) {
             $_SESSION['ErrorMessage'] = "Error Creating User";
           }
         }
@@ -823,18 +835,6 @@ function is_admin ($user) {
   $row = mysqli_fetch_array($send);
 
   if ($row['role'] == 'Admin') {
-    return ture;
-  } else {
-    return false;
-  }
-}
-
-function Username_exist($user) {
-  global $conn;
-  $Query = "SELECT username FROM users WHERE username = '$user' ";
-  $Exist = mysqli_query($conn, $Query);
-
-  if (mysqli_num_rows($Exist) > 0) {
     return true;
   } else {
     return false;
@@ -843,13 +843,90 @@ function Username_exist($user) {
 
 function Email_exist($email) {
   global $conn;
-  $Query = "SELECT email FROM users WHERE email = '$email' ";
+  $Query = "SELECT email FROM intern WHERE email = '$email' ";
   $Exist = mysqli_query($conn, $Query);
 
   if (mysqli_num_rows($Exist)) {
     return true;
   } else {
     return false;
+  }
+}
+
+function Email_exist_intern($conn, $email) {
+  $Query = "SELECT id FROM users WHERE email = '$email' ";
+  $Exist = mysqli_query($conn, $Query);
+
+  if (mysqli_num_rows($Exist) == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validate_intern ($conn) {
+  $errors = [];
+  $min = 3;
+  $max = 20;
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $firstname = mysqli_real_escape_string($conn, trim($_POST['firstName']));
+    $lastname = mysqli_real_escape_string($conn, trim($_POST['lastName']));
+    $track = mysqli_real_escape_string($conn, trim($_POST['track']));
+    $level = mysqli_real_escape_string($conn, trim($_POST['level']));
+    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+
+    if (strlen($firstname) < $min) {
+      echo "<script>alert('Your First Name cannot be less than {$min} words')</script>";
+    }
+    if (strlen($firstname > $max)) {
+      echo "<script>alert('Your First Name cannot be more than {$max} word')</script>";
+    }
+
+    if (strlen($lastname) < $min) {
+      echo "<script>alert('Your Last Name cannot be less than {$min} words')</script>";
+    }
+    if (strlen($lastname > $max)) {
+      echo "<script>alert('Your Last Name cannot be more than {$max} words')</script>";
+    }
+
+    if (Email_exist_intern($conn, $email)) {
+      $errors[] =  "<script>alert('Email Address already existing')</script>";
+    }
+
+    if (!empty($errors)) {
+      foreach ($errors as $error) {
+        echo  $error;
+      }
+    }
+  }
+}
+
+function View_All_Interns() {
+  global $conn;
+  $query = "SELECT * FROM intern ORDER BY date";
+  $Select_post_query = mysqli_query($conn, $query);
+
+  while ($row = mysqli_fetch_assoc($Select_post_query)) {
+    $id = mysqli_real_escape_string($conn, $row['id']);
+    $firstname = mysqli_real_escape_string($conn, $row['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $row['lastname']);
+    $track = mysqli_real_escape_string($conn, $row['track']);
+    $level = mysqli_real_escape_string($conn, $row['level']);
+    $email = mysqli_real_escape_string($conn, $row['email']);
+    $date = mysqli_real_escape_string($conn, $row['date']);
+
+    // User Table
+
+    echo "<tr>";
+    echo "<td>$id</td>";
+    echo "<td>$firstname</td>";
+    echo "<td>$lastname</td>";
+    echo "<td>$track</td>";
+    echo "<td>$level</td>";
+    echo "<td>$email</td>";
+    echo "<td>$date</td>";
+    echo "</tr>";
   }
 }
 ?>

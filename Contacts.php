@@ -55,16 +55,16 @@
             <form action="" method="POST" class="well1">
               <div class="row">
                 <div class="grid_6 comment1">
-                  <input type="text" name="name" placeholder="Your Name:">
+                  <input type="text" name="name" placeholder="Your Name:" required>
                 </div>
                 <div class="grid_6 comment2">
-                  <input type="email" name="email" placeholder="Email:">
+                  <input type="email" name="email" placeholder="Email:" required>
                 </div>
                 <div class="grid_12 comment4">
-                  <input type="text" name="subject" placeholder="Subject:">
+                  <input type="text" name="subject" placeholder="Subject:" required>
                 </div>
                 <div class="grid_12 comment3">
-                  <textarea name="message" id="" cols="60" rows="10" class="comment" placeholder="Meaasage:"></textarea>
+                  <textarea name="message" id="" cols="60" rows="10" class="comment" placeholder="Meaasage:" required></textarea>
                 </div>
                 <div class="grid_12 mfControls">
                   <input type="submit" value="Messenger" name="contact" class="btn ">
