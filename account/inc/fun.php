@@ -871,20 +871,22 @@ function validate_intern($conn) {
 
         if (strlen($firstname) < $min) {
             echo "<script>alert('Your First Name cannot be less than {$min} words')</script>";
-        }
-        if (strlen($firstname > $max)) {
+        } elseif (strlen($firstname > $max)) {
             echo "<script>alert('Your First Name cannot be more than {$max} word')</script>";
-        }
-
-        if (strlen($lastname) < $min) {
+        } elseif (strlen($lastname) < $min) {
             echo "<script>alert('Your Last Name cannot be less than {$min} words')</script>";
-        }
-        if (strlen($lastname > $max)) {
+        } elseif (strlen($lastname > $max)) {
             echo "<script>alert('Your Last Name cannot be more than {$max} words')</script>";
-        }
+        } elseif (Email_exist_intern($conn, $email)) {
+            echo "<script>alert('Email Address already existing')</script>";
+        } else {
 
-        if (Email_exist_intern($conn, $email)) {
-            $errors[] = "<script>alert('Email Address already existing')</script>";
+            $Query = "INSERT INTO intern(firstname, lastname, track, level, date, email)
+            VALUE('$firstname', '$lastname', '$track', '$level', now(), '$email')";
+            
+            $intern_reg = mysqli_query($conn, $Query);
+
+            echo "<script>alert('Registration Successfully')</script>";
         }
 
         if (!empty($errors)) {
@@ -942,8 +944,3 @@ function sendMail() {
         }
     }
 }
-
-function getEmailFromText() {
-    
-}
-?>
