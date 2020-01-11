@@ -14,7 +14,7 @@ class MailUtility {
         $this->mail->SMTPSecure = "ssl";
         $this->mail->Port = 465;
         $this->mail->Username = "configureall@gmail.com";
-        $this->mail->Password = "kingofpop50";
+        $this->mail->Password = "###########";
         $this->mail->Host = "smtp.gmail.com";
         $this->mail->Mailer = "smtp";
         $this->mail->SetFrom("configurell@gmail.com", "INTELLITECH");
