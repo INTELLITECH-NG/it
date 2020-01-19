@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "intellitech";
-$password = "intellitech";
-$database = "intellitech";
+$username = "intellit1_db";
+$password = "jyMmb==u7+s8";
+$database = "intellit1_db";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -12,4 +12,3 @@ $connDB = mysqli_select_db($conn,'intellitech');
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-?>

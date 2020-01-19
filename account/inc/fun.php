@@ -623,7 +623,7 @@ function View_All_User() {
         $Subscribe = mysqli_real_escape_string($conn, $_GET['sub']);
 
         $subscribe_role = "UPDATE users SET role = 'Subscriber' WHERE id = $Subscribe ";
-        $subscri = mysqli_query($conn, $subscribe_role);
+        $subscribe = mysqli_query($conn, $subscribe_role);
 
         $_SESSION['ErrorMessage'] = "User as Been Change to Subscribe";
         Redirect("viewusers");
@@ -758,6 +758,18 @@ function Username_exist($username) {
     }
 }
 
+function Email_exist($email) {
+    global $conn;
+    $Query = "SELECT email FROM users WHERE email = '$email' ";
+    $Exist = mysqli_query($conn, $Query);
+
+    if (mysqli_num_rows($Exist) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function Reg_User() {
     global $conn;
     if (isset($_POST['reguser'])) {
@@ -767,7 +779,6 @@ function Reg_User() {
         $password = mysqli_real_escape_string($conn, trim($_POST['password']));
         $email = mysqli_real_escape_string($conn, trim($_POST['email']));
         $role = "Subscriber";
-
 
         if (Username_exist($username)) {
             $_SESSION['ErrorMessage'] = "Username Already Existing";
@@ -788,7 +799,7 @@ function Reg_User() {
                     $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
                     $Query = "INSERT INTO users(firstname, lastname, username, password, email, date, role)
-          VALUE('$firstname', '$lastname', '$username', '$password', '$email', now(), '$role')";
+                    VALUE('$firstname', '$lastname', '$username', '$password', '$email', now(), '$role')";
 
                     $user_reg = mysqli_query($conn, $Query);
                     $_SESSION['SuccessMessage'] = "Registration Successfully";
@@ -834,23 +845,12 @@ function is_admin($user) {
     }
 }
 
-function Email_exist($email) {
+function Email_exist_intern($email_intern) {
     global $conn;
-    $Query = "SELECT email FROM intern WHERE email = '$email' ";
-    $Exist = mysqli_query($conn, $Query);
+    $Query = "SELECT email FROM intern WHERE email = '$email_intern' ";
+    $Intern = mysqli_query($conn, $Query);
 
-    if (mysqli_num_rows($Exist)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function Email_exist_intern($conn, $email) {
-    $Query = "SELECT id FROM users WHERE email = '$email' ";
-    $Exist = mysqli_query($conn, $Query);
-
-    if (mysqli_num_rows($Exist) == 1) {
+    if (mysqli_num_rows($Intern) > 0) {
         return true;
     } else {
         return false;
@@ -867,32 +867,91 @@ function validate_intern($conn) {
         $lastname = mysqli_real_escape_string($conn, trim($_POST['lastName']));
         $track = mysqli_real_escape_string($conn, trim($_POST['track']));
         $level = mysqli_real_escape_string($conn, trim($_POST['level']));
-        $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+        $email_intern = mysqli_real_escape_string($conn, trim($_POST['email']));
 
         if (strlen($firstname) < $min) {
             echo "<script>alert('Your First Name cannot be less than {$min} words')</script>";
-        } elseif (strlen($firstname > $max)) {
-            echo "<script>alert('Your First Name cannot be more than {$max} word')</script>";
-        } elseif (strlen($lastname) < $min) {
-            echo "<script>alert('Your Last Name cannot be less than {$min} words')</script>";
-        } elseif (strlen($lastname > $max)) {
-            echo "<script>alert('Your Last Name cannot be more than {$max} words')</script>";
-        } elseif (Email_exist_intern($conn, $email)) {
-            echo "<script>alert('Email Address already existing')</script>";
         } else {
-
-            $Query = "INSERT INTO intern(firstname, lastname, track, level, date, email)
-            VALUE('$firstname', '$lastname', '$track', '$level', now(), '$email')";
             
-            $intern_reg = mysqli_query($conn, $Query);
+            if (strlen($firstname) > $max) {
+                echo "<script>alert('Your First Name cannot be more than {$max} word')</script>";
+            } else {
+                
+                if (strlen($lastname) < $min) {
+                    echo "<script>alert('Your Last Name cannot be less than {$min} words')</script>";
+                } else {
+                    
+                    if (strlen($lastname) > $max) {
+                        echo "<script>alert('Your Last Name cannot be more than {$max} words')</script>";
+                    } else {
+                        
+                        if (Email_exist_intern($email_intern)) {
+                            echo "<script>alert('This Email Address has already been Registered')</script>";
+                        } else {
+                            
+                            if ($firstname == "" || empty($firstname) && $lastname == "" || empty($lastname) && $track == "" || empty($track) && $level == "" || empty($level) && $email_intern == "" || empty($email_intern)) {
+                                echo "<script>alert('All Fields Must be Filled')</script>";
+                            } else {
 
-            echo "<script>alert('Registration Successfully')</script>";
-        }
+                                $Query = "INSERT INTO intern(firstname, lastname, track, level, date, email)
+                                VALUE('$firstname', '$lastname', '$track', '$level', now(), '$email_intern')";
+            
+                                $intern_reg = mysqli_query($conn, $Query);
 
-        if (!empty($errors)) {
-            foreach ($errors as $error) {
-                echo $error;
-            }
+                                require 'PHPMailerAutoload.php';
+
+                                $mail = new PHPMailer;
+
+                                //$mail->SMTPDebug = 1;                               // Enable verbose debug output
+
+                                $mail->isSMTP();                                      // Set mailer to use SMTP
+                                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                $mail->Username = 'configureall@gmail.com';                 // SMTP username
+                                $mail->Password = 'Kingofpop@50';                           // SMTP password
+                                $mail->SMTPSecure = 'ssl';
+                                $mail->Mailer = "smtp";                            // Enable TLS encryption, `ssl` also accepted
+                                $mail->Port = 465;                                    // TCP port to connect to
+
+                                $mail->setFrom('no-reply@intellitech.ng', 'INTELLITECH');
+                                $mail->addAddress($email_intern, $firstname . '' . $lastname);     // Add a recipient
+                                //$mail->addAddress('ellen@example.com');               // Name is optional
+                                //$mail->addReplyTo('info@example.com', 'Information');
+                                //$mail->addCC('cc@example.com');
+                                //$mail->addBCC('bcc@example.com');
+
+                                //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                $mail->isHTML(true);                                  // Set email format to HTML
+
+                                $mail->Subject = 'INTERNSHIP';
+                                $mail->Body    = '<p>Hi ' . $firstname . ' ' . $lastname . '</p>
+
+                                <p>
+                                We received below details from you.
+                                </p>
+
+                                <p>
+                                ' . $track . ' <br>
+                                ' . $level . '
+                                </p>
+                                
+                                <p>
+                                Thanks,<br>
+                                INTELLITECH Team.
+                                </p>';
+                                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                                if (!$mail->send()) {
+                                    echo "<script>alert('Registration Declined')</script>";
+                                } else {
+                                    echo "<script>alert('Registration Successfully')</script>";
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
         }
     }
 }
@@ -929,10 +988,10 @@ function View_All_Interns() {
 function sendMail() {
     global $conn;
     if (isset($_POST['sendmail'])) {
-        require('../lib/phpmailer/MailUtility.php');
+        require('MailUtility.php');
         $mail = new MailUtility();
         $to = explode(',', $_POST['recipients']);
-        $subject = $_POST['recipients'];
+        $subject = $_POST['subject'];
         $message = $_POST['message'];
         $result = $mail->sendMail($to, $subject, $message);
         if ($result) {
