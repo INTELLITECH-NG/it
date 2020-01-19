@@ -9,7 +9,7 @@ class MailUtility {
     function __construct() {
         $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
-        $this->mail->SMTPDebug = 3;
+        $this->mail->SMTPDebug = 1;
         $this->mail->SMTPAuth = TRUE;
         $this->mail->SMTPSecure = "ssl";
         $this->mail->Port = 465;
