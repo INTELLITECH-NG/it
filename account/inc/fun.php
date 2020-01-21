@@ -868,7 +868,7 @@ function validate_intern($conn) {
         $track = mysqli_real_escape_string($conn, trim($_POST['track']));
         $level = mysqli_real_escape_string($conn, trim($_POST['level']));
         $email_intern = mysqli_real_escape_string($conn, trim($_POST['email']));
-        date_default_timezone_set("Africa/Lagos");
+        date_default_timezone_set("WAT");
         $date = date("h:i:s a m/d/Y");
         $forward = '<body>
         <head>
