@@ -1130,6 +1130,7 @@ function validate_intern($conn) {
                                 $mail->Password = 'Kingofpop@50';                           // SMTP password
                                 $mail->SMTPSecure = 'tls';
                                 $mail->Mailer = "smtp";                            // Enable TLS encryption, `ssl` also accepted
+                                $mail->SMTPKeepAlive = true;
                                 $mail->Port = 587;                                    // TCP port to connect to
 
                                 $mail->setFrom('no-reply@intellitech.ng', 'INTELLITECH');
