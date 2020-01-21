@@ -868,6 +868,7 @@ function validate_intern($conn) {
         $track = mysqli_real_escape_string($conn, trim($_POST['track']));
         $level = mysqli_real_escape_string($conn, trim($_POST['level']));
         $email_intern = mysqli_real_escape_string($conn, trim($_POST['email']));
+        date_default_timezone_set("WAT");
         $date = date("h:i:s a m/d/Y");
         $forward = '<body>
         <head>
@@ -1120,7 +1121,7 @@ function validate_intern($conn) {
 
                                 $mail = new PHPMailer;
 
-                                //$mail->SMTPDebug = 1;                               // Enable verbose debug output
+                                $mail->SMTPDebug = 1;                               // Enable verbose debug output
 
                                 $mail->isSMTP();                                      // Set mailer to use SMTP
                                 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
