@@ -1124,14 +1124,14 @@ function validate_intern($conn) {
                                 $mail->SMTPDebug = 1;                               // Enable verbose debug output
 
                                 $mail->isSMTP();                                      // Set mailer to use SMTP
-                                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                $mail->Host = 'mail.intellitech.ng';  // Specify main and backup SMTP servers
                                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                                $mail->Username = 'configureall@gmail.com';                 // SMTP username
+                                $mail->Username = 'info@intellitech.ng';                 // SMTP username
                                 $mail->Password = 'Kingofpop@50';                           // SMTP password
-                                $mail->SMTPSecure = 'tls';
+                                $mail->SMTPSecure = 'ssl';
                                 $mail->Mailer = "smtp";                            // Enable TLS encryption, `ssl` also accepted
                                 $mail->SMTPKeepAlive = true;
-                                $mail->Port = 587;                                    // TCP port to connect to
+                                $mail->Port = 465;                                    // TCP port to connect to
 
                                 $mail->setFrom('no-reply@intellitech.ng', 'INTELLITECH');
                                 $mail->addAddress($email_intern, $firstname . '' . $lastname);     // Add a recipient
