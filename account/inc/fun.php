@@ -1194,18 +1194,20 @@ function View_All_Interns() {
 function sendMail() {
     global $conn;
     if (isset($_POST['sendmail'])) {
-        require('MailUtility.php');
+        include 'MailUtility.php';
         $mail = new MailUtility();
         $to = explode(',', $_POST['recipients']);
-        $subject = $_POST['subject'];
+        $subject = $_POST['recipients'];
         $message = $_POST['message'];
-        $result = $mail->sendMail($to, $subject, $message);
-        if ($result) {
-            $_SESSION['SuccessMessage'] = "Mail Sent";
-            redirect("email");
-        } else {
-            $_SESSION['ErrorMessage'] = "Failed to send mail";
-            redirect("email");
-        }
+        foreach($to as $email){
+            $result = $mail->sendMail($email, $subject, $message);
+            if ($result) {
+                $_SESSION['SuccessMessage'] = "Mail Sent";
+                redirect("email");
+            } else {
+                $_SESSION['ErrorMessage'] = "Failed to send mail";
+                redirect("email");
+            }
+        }        
     }
 }

@@ -9,7 +9,7 @@ class MailUtility {
     function __construct() {
         $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
-        $this->mail->SMTPDebug = 1;
+        $this->mail->SMTPDebug = 0;
         $this->mail->SMTPAuth = TRUE;
         $this->mail->SMTPSecure = "ssl";
         $this->mail->Port = 465;
@@ -21,10 +21,15 @@ class MailUtility {
         //$this->mail->AddReplyTo("configureall@gmail.com", "INTELLITECH");
     }
 
-    function sendMail($toList = [], $subject = '', $message = '') {
-        foreach ($toList as $to) {
-            $this->mail->AddAddress($to);
+    function sendMail($toList, $subject, $message) {
+        if(is_array($toList)){
+            foreach ($toList as $to) {
+                $this->mail->AddAddress($to);
+            }
+        }else{
+            $this->mail->AddAddress($toList);
         }
+        
         $this->mail->Subject = $subject;
         $this->mail->WordWrap = 80;
         $this->mail->MsgHTML($message);
