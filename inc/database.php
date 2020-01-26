@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "intellit1_db";
-$password = "jyMmb==u7+s8";
-$database = "intellit1_db";
+$username = "intellitech";
+$password = "intellitech";
+$database = "intellitech";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
