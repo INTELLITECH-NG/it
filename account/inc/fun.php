@@ -24,7 +24,7 @@ function Error_Message() {
     }
 }
 
-/// Success Meassage Echo
+/// Success Message Echo
 function Success_Message() {
     if (isset($_SESSION['SuccessMessage'])) {
         $Output = "<div class='alert alert-success'>";
@@ -1127,7 +1127,7 @@ function validate_intern($conn) {
                                 $mail->Host = 'mail.intellitech.ng';  // Specify main and backup SMTP servers
                                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
                                 $mail->Username = 'info@intellitech.ng';                 // SMTP username
-                                $mail->Password = 'Kingofpop@50';                           // SMTP password
+                                $mail->Password = '#######';                           // SMTP password
                                 $mail->SMTPSecure = 'ssl';
                                 $mail->Mailer = "smtp";                            // Enable TLS encryption, `ssl` also accepted
                                 $mail->SMTPKeepAlive = true;

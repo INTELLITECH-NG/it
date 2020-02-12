@@ -13,11 +13,11 @@ class MailUtility {
         $this->mail->SMTPAuth = TRUE;
         $this->mail->SMTPSecure = "ssl";
         $this->mail->Port = 465;
-        $this->mail->Username = "configureall@gmail.com";
-        $this->mail->Password = "Kingofpop@50";
-        $this->mail->Host = "smtp.gmail.com";
+        $this->mail->Username = "bright.robert@intellitech.ng";
+        $this->mail->Password = "########";
+        $this->mail->Host = "mail.intellitech.ng";
         $this->mail->Mailer = "smtp";
-        $this->mail->SetFrom("configurell@gmail.com", "INTELLITECH");
+        $this->mail->SetFrom("bright.robert@intellitech.ng", "INTELLITECH");
         //$this->mail->AddReplyTo("configureall@gmail.com", "INTELLITECH");
     }
 
