@@ -80,7 +80,7 @@
                     echo Error_Message();
                     echo Success_Message();
                     ?></div>
-                <form action="email" method="POST">
+                <form id='campaignForm' action="email" method="POST">
                     <div class="row">
                         <div class="col-xl-7 form-group">
                             <label for="subject">SUBJECT:</label>
@@ -118,7 +118,7 @@
                     <p id="results"></p>
                 </form>
 
-                
+
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -294,24 +294,32 @@
 </script>
 
 <script>
-                $("button").click(function(){
-                  var Subject = $('#subject').val();
-                  var Recipients = $('#recipients').val();
-                  var btnFile = $('#btn_file').val();
-                  var btnUpload = $('#btn_upload').val();
-                  var Message = $('#message').val();
+$("campaignForm").submit(function(e){
+  e.preventDefault();
+  var Subject = $('#subject').val();
+  var Recipients = $('#recipients').val();
+  var btnFile = $('#btn_file').val();
+  var btnUpload = $('#btn_upload').val();
+  var Message = $('#message').val();
+  var form = $(this);
+  var url = form.attr('action');
+  
+    $.post(url, {
 
-                    $.post("demo_test.asp", {
+      subject: Subject,
+      recipients: Recipients,
+      btn_file: btnFile,
+      btn_upload: btnUpload,
+      message: Message,
 
-                      subject: Subject,
-                      recipients: Recipients,
-                      btn_file: btnFile,
-                      btn_upload: btnUpload,
-                      message: Message,
+    } ,function(data, status){
+      // alert("Data: " + data + "\nStatus: " + status);
+      $('#results').val(data +'\n');
+    });
 
-                    } ,function(data, status){
-                      // alert("Data: " + data + "\nStatus: " + status);
-                      $('#results').val(data +'\n');
-                    });
-                  });
+});
+
+$("button").click(function(){
+
+  });
 </script>
