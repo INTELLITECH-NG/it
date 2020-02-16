@@ -1,4 +1,4 @@
-<?php include 'inc/head.php'; ?>
+﻿<?php include 'inc/head.php'; ?>
 
 <body id="page-top">
 
@@ -114,7 +114,11 @@
                             <input type="submit" value="SEND" name="sendmail" class="btn btn-success">
                         </div>
                     </div>
+
+                    <p id="results"></p>
                 </form>
+
+                
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -261,7 +265,7 @@
                             email = email.trim();
                            if (emailCheck(email) && email != '') {
                                 resultEmail.push(email);
-                            } 
+                            }
                         //                            else {
                         //                                alert("Wrong email : " + email);
                     //                                return false;
@@ -287,4 +291,27 @@
         }
     }
 
+</script>
+
+<script>
+                $("button").click(function(){
+                  var Subject = $('#subject').val();
+                  var Recipients = $('#recipients').val();
+                  var btnFile = $('#btn_file').val();
+                  var btnUpload = $('#btn_upload').val();
+                  var Message = $('#message').val();
+
+                    $.post("demo_test.asp", {
+
+                      subject: Subject,
+                      recipients: Recipients,
+                      btn_file: btnFile,
+                      btn_upload: btnUpload,
+                      message: Message,
+
+                    } ,function(data, status){
+                      // alert("Data: " + data + "\nStatus: " + status);
+                      $('#results').val(data +'\n');
+                    });
+                  });
 </script>
