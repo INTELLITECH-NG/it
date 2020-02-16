@@ -303,23 +303,17 @@ $("campaignForm").submit(function(e){
   var Message = $('#message').val();
   var form = $(this);
   var url = form.attr('action');
-  
-    $.post(url, {
 
+    $.post(url, {
       subject: Subject,
       recipients: Recipients,
       btn_file: btnFile,
       btn_upload: btnUpload,
       message: Message,
-
     } ,function(data, status){
       // alert("Data: " + data + "\nStatus: " + status);
       $('#results').val(data +'\n');
     });
-
 });
 
-$("button").click(function(){
-
-  });
 </script>

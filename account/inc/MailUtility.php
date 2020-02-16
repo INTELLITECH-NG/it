@@ -12,6 +12,7 @@ class MailUtility {
         $this->mail->SMTPDebug = 0;
         $this->mail->SMTPAuth = TRUE;
         $this->mail->SMTPSecure = "ssl";
+        $this->SMTPKeepAlive = true;
         $this->mail->Port = 465;
         $this->mail->Username = "bright.robert@intellitech.ng";
         $this->mail->Password = "########";
