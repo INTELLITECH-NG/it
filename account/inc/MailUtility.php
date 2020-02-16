@@ -13,9 +13,9 @@ class MailUtility {
         $this->mail->SMTPAuth = TRUE;
         $this->mail->SMTPSecure = "ssl";
         $this->mail->Port = 465;
-        $this->mail->Username = "bright.robert@intellitech.ng";
-        $this->mail->Password = "########";
-        $this->mail->Host = "mail.intellitech.ng";
+        $this->mail->Username = "configureall@gmail.com";
+        $this->mail->Password = "Kingofpop@50";
+        $this->mail->Host = "smtp.gmail.com";
         $this->mail->Mailer = "smtp";
         $this->mail->SetFrom("bright.robert@intellitech.ng", "INTELLITECH");
         //$this->mail->AddReplyTo("configureall@gmail.com", "INTELLITECH");
@@ -24,10 +24,10 @@ class MailUtility {
     function sendMail($toList, $subject, $message) {
         if(is_array($toList)){
             foreach ($toList as $to) {
-                $this->mail->AddAddress($to);
+                $this->mail->AddBCC(trim($to));
             }
         }else{
-            $this->mail->AddAddress($toList);
+            $this->mail->AddBcc(trim($toList));
         }
         
         $this->mail->Subject = $subject;
