@@ -22,36 +22,18 @@ class MailUtility {
     }
 
     function sendMail($toList, $subject, $message) {
-        if(is_array($toList)){
-            foreach ($toList as $to) {
-
-                $this->mail->AddAddress($to);
-                $this->mail->Subject = $subject;
-                $this->mail->WordWrap = 80;
-                $this->mail->MsgHTML($message);
-                $this->mail->IsHTML(true);
-
-                if (!$this->mail->Send())
-                {
-                  echo "Couldn't send to {$to}\n";
-                }else {
-                  echo "sent Successfuly to {$to}\n";
-                }
-            }
-        }else{
+       
             $this->mail->AddAddress($toList);
             $this->mail->Subject = $subject;
             $this->mail->WordWrap = 80;
             $this->mail->MsgHTML($message);
             $this->mail->IsHTML(true);
             if (!$this->mail->Send()){
-              echo "sent successfuly to {$to}\n";
+              return FALSE;
             }else{
-              echo "Couldn't send to {$to}\n";
+              return TRUE;
             }
-        }
-
-        return TRUE;
+            $this->mail->SmtpClose();
     }
 
 }

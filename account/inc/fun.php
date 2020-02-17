@@ -1195,19 +1195,21 @@ function sendMail() {
     global $conn;
     if (isset($_POST['sendmail'])) {
         include 'MailUtility.php';
-        $mail = new MailUtility();
-        $to = explode(',', $_POST['recipients']);
+        
+        $removedSpaces = preg_replace('/\s/', '', $_POST['recipients']);
+        $to = explode(',', $removedSpaces);
         $subject = $_POST['subject'];
         $message = $_POST['message'];
         foreach($to as $email){
+            $mail = new MailUtility();
             $result = $mail->sendMail($email, $subject, $message);
             if ($result) {
-                $_SESSION['SuccessMessage'] = "Mail Sent";
-                redirect("email");
+                $_SESSION['SuccessMessage'] = "Emails Sent successfully.";
+                
             } else {
-                $_SESSION['ErrorMessage'] = "Failed to send mail";
-                redirect("email");
+                $_SESSION['ErrorMessage'] = "couldn't send some emails.";
             }
-        }        
+            unset($mail);
+        }       
     }
 }

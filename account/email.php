@@ -293,33 +293,3 @@
 
 </script>
 
-<script>
-$("campaignForm").submit(function(e){
-  e.preventDefault();
-  var Subject = $('#subject').val();
-  var Recipients = $('#recipients').val();
-  var btnFile = $('#btn_file').val();
-  var btnUpload = $('#btn_upload').val();
-  var Message = $('#message').val();
-  var form = $(this);
-  var url = form.attr('action');
-  
-    $.post(url, {
-
-      subject: Subject,
-      recipients: Recipients,
-      btn_file: btnFile,
-      btn_upload: btnUpload,
-      message: Message,
-
-    } ,function(data, status){
-      // alert("Data: " + data + "\nStatus: " + status);
-      $('#results').val(data +'\n');
-    });
-
-});
-
-$("button").click(function(){
-
-  });
-</script>
