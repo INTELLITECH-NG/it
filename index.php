@@ -242,8 +242,6 @@
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img9.png" alt=""></div>
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img10.png" alt=""></div>
               <div class="grid_2 wow line fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img11.png" alt=""></div>
-              <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img12.png" alt=""></div>
-              <div class="grid_2 wow line2 fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img13.png" alt=""></div>
               <div class="grid_2 wow line fadeInRight item" data-wow-delay="0.4s"><img src="images/1page_img14.png" alt=""></div>
               <div class="grid_2 wow fadeInRight item" data-wow-delay="0.4s" style="width: 100px"><img src="images/1page_img15.png" alt=""></div>
             </div>
