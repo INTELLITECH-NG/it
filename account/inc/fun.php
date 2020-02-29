@@ -857,6 +857,11 @@ function Email_exist_intern($email_intern) {
     }
 }
 
+function random_strings($length_of_string) { 
+    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
+    return substr(str_shuffle($str_result), 0, $length_of_string); 
+}
+
 function validate_intern($conn) {
     $errors = [];
     $min = 3;
@@ -870,6 +875,7 @@ function validate_intern($conn) {
         $email_intern = mysqli_real_escape_string($conn, trim($_POST['email']));
         date_default_timezone_set("Africa/Lagos");
         $date = date("h:i:s a m/d/Y");
+        $badge = random_strings(8);
         $forward = '<body>
         <head>
         <title></title>
@@ -1016,11 +1022,15 @@ function validate_intern($conn) {
                                                                         <table cellpadding="0" cellspacing="0" style="cellspacing:0px;color:#3A3D3E;font-family:Lato, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;" width="100%" border="0">
                                                                             <tbody>
                                                                                 <tr style="text-align: left;">
-                                                                                    <th style="color: #949698; font-weight: normal; font-weight: 400; padding-bottom: 12px;">Track</th>
+                                                                                    <th style="color: #949698; font-weight: normal; font-weight: 400; padding-bottom: 12px;">Badge Id:</th>
+                                                                                    <td style="padding-bottom: 12px;">' . $badge . '</td>
+                                                                                </tr>
+                                                                                <tr style="text-align: left;">
+                                                                                    <th style="color: #949698; font-weight: normal; font-weight: 400; padding-bottom: 12px;">Track:</th>
                                                                                     <td style="padding-bottom: 12px;">' . $track . '</td>
                                                                                 </tr>
                                                                                 <tr style="text-align: left;">
-                                                                                    <th style="color: #949698;  font-weight: normal; font-weight: 400; padding-bottom: 12px;">Level</th>
+                                                                                    <th style="color: #949698;  font-weight: normal; font-weight: 400; padding-bottom: 12px;">Level:</th>
                                                                                     <td style="padding-bottom: 12px;">' . $level . '</td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1089,31 +1099,32 @@ function validate_intern($conn) {
     </body>';
 
         if (strlen($firstname) < $min) {
-            echo "<script>alert('Your First Name cannot be less than {$min} words')</script>";
+            echo "<script>Swal.fire('Oops!','Your First Name cannot be less than {$min} words','error')</script>";
         } else {
             
             if (strlen($firstname) > $max) {
-                echo "<script>alert('Your First Name cannot be more than {$max} word')</script>";
+                echo "<script>Swal.fire('Oops!','Your First Name cannot be more than {$max} word','error')</script>";
             } else {
                 
                 if (strlen($lastname) < $min) {
-                    echo "<script>alert('Your Last Name cannot be less than {$min} words')</script>";
+                    echo "<script>Swal.fire('Oops!','Your Last Name cannot be less than {$min} words','error')</script>";
                 } else {
                     
                     if (strlen($lastname) > $max) {
-                        echo "<script>alert('Your Last Name cannot be more than {$max} words')</script>";
+                        echo "<script>Swal.fire('Oops!','Your Last Name cannot be more than {$max} words','error')</script>";
+
                     } else {
                         
                         if (Email_exist_intern($email_intern)) {
-                            echo "<script>alert('This Email Address has already been Registered')</script>";
+                            echo "<script>Swal.fire('Oops!','This Email Address has already been Registered','error')</script>";
                         } else {
                             
                             if ($firstname == "" || empty($firstname) && $lastname == "" || empty($lastname) && $track == "" || empty($track) && $level == "" || empty($level) && $email_intern == "" || empty($email_intern)) {
-                                echo "<script>alert('All Fields Must be Filled')</script>";
+                                echo "<script>Swal.fire('Oops!','All Fields Must be Filled','error')</script>";
                             } else {
 
-                                $Query = "INSERT INTO intern(firstname, lastname, track, level, date, email)
-                                VALUE('$firstname', '$lastname', '$track', '$level', '$date', '$email_intern')";
+                                $Query = "INSERT INTO intern(badge, firstname, lastname, track, level, date, email)
+                                VALUE('$badge','$firstname', '$lastname', '$track', '$level', '$date', '$email_intern')";
             
                                 $intern_reg = mysqli_query($conn, $Query);
 
@@ -1121,37 +1132,30 @@ function validate_intern($conn) {
 
                                 $mail = new PHPMailer;
 
-                                $mail->SMTPDebug = 1;                               // Enable verbose debug output
+                                $mail->SMTPDebug = 0;                               // Enable verbose debug output
 
                                 $mail->isSMTP();                                      // Set mailer to use SMTP
-                                $mail->Host = 'mail.intellitech.ng';  // Specify main and backup SMTP servers
+                                $mail->Host = 'intellitech.ng';  // Specify main and backup SMTP servers
                                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                                $mail->Username = 'info@intellitech.ng';                 // SMTP username
-                                $mail->Password = '#######';                           // SMTP password
+                                $mail->Username = '#######';                 // SMTP username
+                                $mail->Password = '######';                           // SMTP password
                                 $mail->SMTPSecure = 'ssl';
                                 $mail->Mailer = "smtp";                            // Enable TLS encryption, `ssl` also accepted
                                 $mail->SMTPKeepAlive = true;
                                 $mail->Port = 465;                                    // TCP port to connect to
 
-                                $mail->setFrom('no-reply@intellitech.ng', 'INTELLITECH');
+                                $mail->setFrom('####### Email', 'INTELLITECH');
                                 $mail->addAddress($email_intern, $firstname . '' . $lastname);     // Add a recipient
-                                //$mail->addAddress('ellen@example.com');               // Name is optional
-                                //$mail->addReplyTo('info@example.com', 'Information');
-                                //$mail->addCC('cc@example.com');
-                                //$mail->addBCC('bcc@example.com');
-
-                                //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
                                 $mail->isHTML(true);                                  // Set email format to HTML
 
                                 $mail->Subject = 'INTERNSHIP';
                                 $mail->Body    = $forward;
-                                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                                 if (!$mail->send()) {
-                                    echo "<script>alert('Registration Declined')</script>";
+                                    echo "<script>Swal.fire('Oops!','Registration Declined','error')</script>";
+                                    
                                 } else {
-                                    echo "<script>alert('Registration Successfully')</script>";
+                                    echo "<script>Swal.fire('Good job','Registration Successfully','success')</script>";
                                 }
                             }
                         }
