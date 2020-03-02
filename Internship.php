@@ -95,7 +95,7 @@
                 <h4>Are you looking to get into Tech?</h4>
                 <p style="text-align: center">join INTELLITECH.NG internship is free</p>
                 <p>Learn the best practices in the tech world from the best facilitators around.</p>
-                <p>Learning is the easiest when you are in a group of like-minded techies aiming at the same target.</p>
+                <p>Learning can be easy and fun when you are in a group of like-minded techies aiming at the same target.</p>
                 <p>Get into our pool of verified and selected freelancers with first dibs on the very best freelancing opportunities around.</p>
                 <div class="row off4">
                   <div class="grid_6">
