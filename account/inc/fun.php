@@ -361,7 +361,6 @@ function View_Comment() {
         $author = mysqli_real_escape_string($conn, $row['author']);
         $email = mysqli_real_escape_string($conn, $row['email']);
         $comment = mysqli_real_escape_string($conn, $row['comment']);
-        ;
         $status = mysqli_real_escape_string($conn, $row['status']);
 
         // Comment Table
@@ -1128,7 +1127,7 @@ function validate_intern($conn) {
             
                                 $intern_reg = mysqli_query($conn, $Query);
 
-                                require 'PHPMailerAutoload.php';
+                                require_once 'PHPMailerAutoload.php';
 
                                 $mail = new PHPMailer;
 
@@ -1168,7 +1167,7 @@ function validate_intern($conn) {
 
 function View_All_Interns() {
     global $conn;
-    $query = "SELECT * FROM intern ORDER BY date";
+    $query = "SELECT * FROM intern ORDER BY id";
     $Select_post_query = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_assoc($Select_post_query)) {
@@ -1215,5 +1214,2518 @@ function sendMail() {
             }
             unset($mail);
         }       
+    }
+}
+
+// Send Mail to interns
+function mailInterns() {
+    global $conn;
+    if (isset($_POST['mailInterns'])) {
+
+        //grab emails and names from database
+        $query = 'SELECT `email`,`firstname`,`lastname`,`track`,`level` FROM intern WHERE `send` = 0';
+        $select_intern = mysqli_query($conn, $query);
+
+        //start a loop to send an email to each individual
+        while ($row = mysqli_fetch_array($select_intern))  {
+                      
+            $fname = $row['firstname'];
+            $lname = $row['lastname'];
+            $email = $row['email'];
+            $track = $row['track'];
+            $level = $row['level'];
+
+
+            if (mysqli_num_rows($select_intern) > 0) {
+
+                require_once 'PHPMailerAutoload.php';
+
+                $mail = new PHPMailer;
+
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'intellitech.ng';
+                $mail->SMTPAuth = true;
+                $mail->Username = '#########';
+                $mail->Password = '######';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Mailer = "smtp";
+                $mail->SMTPKeepAlive = true;
+                $mail->Port = 465;
+
+                $mail->setFrom('internship@intellitech.ng', 'INTELLITECH');
+                $mail->addAddress($email, $fname . ' ' . $lname);
+                $mail->isHTML(true);
+
+                $mail->Subject = 'INTERNSHIP Next Level';
+
+                if ($track == 'Frontend Web Development' && $level == 'Beginner') {
+                    $mail->Body = '<style type="text/css">
+                    body,
+                    p,
+                    div {
+                        font-family: arial;
+                        font-size: 14px;
+                    }
+                    
+                    body {
+                        color: #000000;
+                    }
+                    
+                    body a {
+                        color: #1188E6;
+                        text-decoration: none;
+                    }
+        
+                    p {
+                        margin: 0;
+                        padding: 0;
+                    }
+        
+                    table.wrapper {
+                        width: 100% !important;
+                        table-layout: fixed;
+                        -webkit-font-smoothing: antialiased;
+                        -webkit-text-size-adjust: 100%;
+                        -moz-text-size-adjust: 100%;
+                        -ms-text-size-adjust: 100%;
+                    }
+        
+                    img.max-width {
+                        max-width: 100% !important;
+                    }
+    
+                    .column.of-2 {
+                        width: 50%;
+                    }
+        
+                    .column.of-3 {
+     
+                        width: 33.333%;
+     
+                    }
+              
+                    .column.of-4 {      
+                        width: 25%;
+                    }
+        
+
+                    @media screen and (max-width:480px) {        
+                        .preheader .rightColumnContent,        
+                        .footer .rightColumnContent {        
+                            text-align: left !important;
+                        }
+
+                        .preheader .rightColumnContent div,
+                        .preheader .rightColumnContent span,
+                        .footer .rightColumnContent div,
+            
+                        .footer .rightColumnContent span {
+                            text-align: left !important;
+
+                        }
+                        .preheader .rightColumnContent,
+                        .preheader .leftColumnContent {
+                            font-size: 80% !important;
+                            padding: 5px 0;
+                        }
+           
+                        table.wrapper-mobile {
+                            width: 100% !important;
+                            table-layout: fixed;
+                        }
+            
+                        img.max-width {
+                            height: auto !important;
+                            max-width: 480px !important;
+                        }
+           
+                        a.bulletproof-button {
+                            display: block !important;
+                            width: auto !important;
+                            font-size: 80%;
+                            padding-left: 0 !important;
+                            padding-right: 0 !important;
+                        }
+                        
+                        .columns {
+                            width: 100% !important;
+                        }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png" alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                This is where it all begins! A hands-on
+                                                                                introduction to all of the essential
+                                                                                tools you\'ll need to build real, working
+                                                                                websites. You\'ll learn what web
+                                                                                developers actually do – the foundations
+                                                                                you\'ll need for later courses.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><span style="font-size:14px;"><strong>The Front End</strong><br>
+                                                                                In this section you\'ll spend a good deal
+                                                                                of time getting familiar with the major
+                                                                                client-side (browser-based) languages
+                                                                                like HTML, CSS, and Javascript. You\'ll
+                                                                                get to build a webpage with HTML/CSS and
+                                                                                learn some programming fundamentals with
+                                                                                Javascript.</span>
+                                                                            </div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>HTML and CSS </strong><br>
+                                                                                Good web design doesn\'t happen by
+                                                                                accident. Learn how to make all that
+                                                                                work you\'ve done on the backend look
+                                                                                great in a web browser! You\'ll be
+                                                                                equipped to deeply understand and create
+                                                                                your own design frameworks.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Javascript</strong><br>
+                                                                                Make your websites dynamic and
+                                                                                interactive with JavaScript! You\'ll
+                                                                                create features and stand-alone
+                                                                                applications. This course will wrap
+                                                                                everything you\'ve learned at The Odin
+                                                                                Project into one, final capstone
+                                                                                project.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Git Basics </strong><br>
+                                                                               In this section you will learn the basics
+                                                                               of Git and how you can upload your future
+                                                                               projects to Github so you can share your
+                                                                               work and collaborate with others on
+                                                                               projects easily.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Deploying your first Web App</strong><br>
+                                                                               Live, on the web, you can show people you
+                                                                               know what you\'ve built and have them
+                                                                               marvel at your new skills.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+</body>';
+                } elseif ($track == 'Frontend Web Development' && $level == 'Intermediate') {
+                    $mail->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section, you\'ll learn what a
+                                                                                framework is, why we use them, and get
+                                                                                acquainted with the ones we\'ll be
+                                                                                covering in future courses.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><span style="font-size:14px;"><strong>Git</strong><br>
+                                                                                In this section you will learn the
+                                                                                advance of Git and how you can upload
+                                                                                your future projects to Github so you
+                                                                                can share your work and collaborate with
+                                                                                others on projects easily.</span>
+                                                                            </div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Bootstraps</strong><br>
+                                                                                Good web design doesn\'t happen by
+                                                                                accident. Learn how to make all that
+                                                                                work you\'ve done on the backend look
+                                                                                great in a web browser! You\'ll be
+                                                                                equipped to deeply understand and create
+                                                                                your own design frameworks.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Javascript Framework</strong><br>
+                                                                                Make your websites dynamic and
+                                                                                interactive with JavaScript! You\'ll
+                                                                                create features and stand-alone
+                                                                                applications. This course will wrap
+                                                                                everything you\'ve learned at The Odin
+                                                                                Project into one, final capstone
+                                                                                project.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Deploying your first Web App</strong><br>
+                                                                               Live, on the web, you can show people you
+                                                                               know what you\'ve built and have them
+                                                                               marvel at your new skills.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>';
+                } elseif ($track == 'Frontend Web Development' && $level == 'Advanced') {
+                    $mail->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section, you\'ll build a web application with a
+                                                                                framework , why we use them, and get
+                                                                                acquainted with the ones we\'ll be
+                                                                                covering in future.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><span style="font-size:14px;"><strong>Git</strong><br>
+                                                                                Git is a distributed revision control
+                                                                                and source code management (SCM) system
+                                                                                with an emphasis on speed, data
+                                                                                integrity, and support for distributed,
+                                                                                non-linear workflows. Git was initially
+                                                                                designed and developed by Linus Torvalds
+                                                                                for Linux kernel development in 2005,
+                                                                                and has since become the most widely
+                                                                                adopted version control system for
+                                                                                software development. Students learn out
+                                                                                to use Git to store their code and
+                                                                                revisions, including creating a
+                                                                                repository, initializing a repository,
+                                                                                and adding, committing, and
+                                                                                pushing/pulling files..</span>
+                                                                            </div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Web Design and Project Planning</strong><br>
+                                                                                Students will learn use the advance principles
+                                                                                of design for the web. They will also
+                                                                                gain a foundation in project planning by
+                                                                                learning how to create user stories,
+                                                                                feature lists, wireframes and using
+                                                                                basic tools for building database
+                                                                                diagrams. This module is spread
+                                                                                throughout the course.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Test-Driven Development</strong><br>
+                                                                                Test-driven development is a software
+                                                                                development process that integrates
+                                                                                coding, design and testing together into
+                                                                                one workflow. Students will learn the
+                                                                                basics of TDD with variables and data
+                                                                                types in frameworks, writing tests for
+                                                                                user defined functions, learn to test
+                                                                                with objects and arrays, and the basics
+                                                                                of code.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Full Stack Capstone</strong><br>
+                                                                               Students will work on small teams to
+                                                                               construct a full stack web application
+                                                                               for their final project. This web
+                                                                               application will have full functionality
+                                                                               and a number of key features.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>';
+                } elseif ($track == 'Backend Web Development' && $level == 'Beginner') {
+                    $mail->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section, you\'ll Learn about how
+                                                                                a computer uses logic, syntax, and data
+                                                                                and how you too can use them to do
+                                                                                amazing things.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><span style="font-size:14px;"><strong>Html and Bootstrap</strong><br>
+                                                                                Good web design doesn\'t happen by
+                                                                                accident. Learn how to make all that
+                                                                                work you\'ve done on the backend look
+                                                                                great in a web browser! You\'ll be
+                                                                                equipped to deeply understand and create
+                                                                                your own design using frameworks.</span>
+                                                                            </div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Javascript </strong><br>
+                                                                                Make your websites dynamic and
+                                                                                interactive with JavaScript! You\'ll
+                                                                                create features and stand-alone
+                                                                                applications. This course will wrap
+                                                                                everything you\'ve learned at The Odin
+                                                                                Project into one, final capstone
+                                                                                project.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Git</strong><br>
+                                                                                In this section you will learn the
+                                                                                basics of Git and how you can upload
+                                                                                your future projects to GitHub so you
+                                                                                can share your work and collaborate with
+                                                                                others on projects easily.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>PHP</strong><br>
+                                                                               Students will learn to program using php,
+                                                                               a programming language designed as a
+                                                                               general¬-purpose programming language and
+                                                                               also used for web development. Php
+                                                                               includes free libraries with the core
+                                                                               build. Php is an Internet-¬aware system
+                                                                               with modules built in for accessing File
+                                                                               Transfer Protocol (FTP) servers, many
+                                                                               database servers, embedded SQL libraries
+                                                                               such as embedded PostgreSQL, MySQL,
+                                                                               Microsoft SQL and SQLite, LDAP servers,
+                                                                               and others.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>MySQL</strong><br>
+                                                                               Students will learn to use MySQL or its
+                                                                               equivalent, a relational database
+                                                                               management system and ships with no GUI
+                                                                               tools to administer. MySQL databases or
+                                                                               manage data contained within the
+                                                                               databases and is a central component of
+                                                                               most web development software stacks.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Deploying your first Web App</strong><br>
+                                                                               Live, on the web, you can show people you
+                                                                               know what you\'ve built and have them
+                                                                               marvel at your new skills.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>
+
+</html>';
+                } elseif ($track == 'Backend Web Development' && $level == 'Intermediate') {
+                    $mail->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section, you\'ll Learn about how
+                                                                                a computer uses logic, syntax, and data
+                                                                                and how you too can use them to do
+                                                                                amazing things.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Git</strong><br>
+                                                                                In this section you will learn the
+                                                                                basics of Git and how you can upload
+                                                                                your future projects to GitHub so you
+                                                                                can share your work and collaborate with
+                                                                                others on projects easily.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>PHP</strong><br>
+                                                                               Students will learn to program using php,
+                                                                               a programming language designed as a
+                                                                               general¬-purpose programming language and
+                                                                               also used for web development. Php
+                                                                               includes free libraries with the core
+                                                                               build. Php is an Internet-¬aware system
+                                                                               with modules built in for accessing File
+                                                                               Transfer Protocol (FTP) servers, many
+                                                                               database servers, embedded SQL libraries
+                                                                               such as embedded PostgreSQL, MySQL,
+                                                                               Microsoft SQL and SQLite, LDAP servers,
+                                                                               and others.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Object-oriented Programming (OOP) with Php</strong><br>
+                                                                               Utilizing the powerful and yet
+                                                                               easy-to-learn php programming language,
+                                                                               you will learn the principles of working
+                                                                               with data and the techniques that
+                                                                               professional developers use to structure
+                                                                               their applications.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>MySQL</strong><br>
+                                                                               Students will learn to use MySQL or its
+                                                                               equivalent, a relational database
+                                                                               management system and ships with no GUI
+                                                                               tools to administer. MySQL databases or
+                                                                               manage data contained within the
+                                                                               databases and is a central component of
+                                                                               most web development software stacks.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Deploying your first Web App</strong><br>
+                                                                               Live, on the web, you can show people you
+                                                                               know what you\'ve built and have them
+                                                                               marvel at your new skills.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>
+
+</html>';
+                } elseif ($track == 'Backend Web Development' && $level == 'Advanced') {
+                    $mail ->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section, you\'ll build a web
+                                                                                application with a
+                                                                                framework , why we use them, and get
+                                                                                acquainted with the ones we\'ll be
+                                                                                covering in future.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Git</strong><br>
+                                                                                In this section you will learn the
+                                                                                advance of Git and how you can upload
+                                                                                your future projects to GitHub so you
+                                                                                can share your work and collaborate with
+                                                                                others on projects easily.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Web Design and Project Planning</strong><br>
+                                                                               Students will learn the basic principles
+                                                                               of design for the web. They will also
+                                                                               gain a foundation in project planning by
+                                                                               learning how to create user stories,
+                                                                               feature lists, wireframes and using basic
+                                                                               tools for building database diagrams.
+                                                                               This module is spread throughout the
+                                                                               course.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Test-Driven Development</strong><br>
+                                                                               Test-driven development is a software
+                                                                               development process that integrates
+                                                                               coding, design and testing together into
+                                                                               one workflow. Students will learn the
+                                                                               basics of TDD with variables and data
+                                                                               types in JavaScript, writing tests for
+                                                                               user defined functions, learn to test
+                                                                               with objects and arrays, and the basics
+                                                                               of testing code.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+
+                                                                            <div><span style="font-size:14px;"><strong>Tying it All Together </strong><br>
+                                                                               Now that you\'ve had a healthy taste of
+                                                                               all the major components in a web
+                                                                               application, we\'ll take a step back and
+                                                                               remember where they all fit into the
+                                                                               bigger picture.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Full Stack Capstone</strong><br>
+                                                                               Students will work on small teams to
+                                                                               construct a full stack web application
+                                                                               for their final project. This web
+                                                                               application will have full functionality
+                                                                               and a number of key features.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>
+
+</html>';
+                } elseif ($track == 'Mobile App Development') {
+                    $mail->Body    = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                Mobile app development can be both
+                                                                                profitable and fun. In this beginner
+                                                                                introductory course, you will learn to
+                                                                                create and deploy an app to a physical
+                                                                                device. You learn how to setup
+                                                                                development environments for both
+                                                                                Android and Apple Apps.
+
+                                                                                <ul>
+                                                                                    <li>Setting up development environment for Android using Android Studio</li>
+                                                                                    <li>Setting up development environment for Apple using Xcode</li>
+                                                                                    <li>Create new projects in Android Studio</li>
+                                                                                    <li>Design App</li>
+                                                                                    <li>Create variables</li>
+                                                                                    <li>Create array</li>
+                                                                                    <li>Code the app logic</li>
+                                                                                    <li>Test app on virtual devices</li>
+                                                                                    <li>Deploy app to a real device</li>
+                                                                                </ul>
+                                                                            </span> Knowing how to write code is simply the beginning of building an app. The best result comes
+                                                                            from writing and practicing clean code and documentation. This is how you can organize your practice session:
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Develop an App Idea</strong><br>
+                                                                                Start by developing an app idea. Find
+                                                                                out the problems that people are facing
+                                                                                in daily life. List them out, and
+                                                                                shortlist the one that makes the most
+                                                                                sense. And once you have decided, start
+                                                                                mapping out your app.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Lay Out the Details of the App</strong><br>
+                                                                               Another important thing while developing
+                                                                               a protocol is to make sure that your app
+                                                                               is easy to understand. Users should be
+                                                                               able to figure the navigation without any
+                                                                               reference to other pages. Besides, you
+                                                                               need to figure out the features of the
+                                                                               app as well. It’s crucial that you build
+                                                                               an excellent user interface if you want
+                                                                               your users to stick around.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Collaborate or Hire the People You Need</strong><br>
+                                                                               When you are starting, it may not be
+                                                                               possible for you to develop the complete
+                                                                               app all by yourself. For instance, you
+                                                                               may be good at coding but may lack the
+                                                                               design skills. It’s better to take help
+                                                                               from someone who is already an expert in
+                                                                               the field.
+                                                                               <div>&nbsp;</div>
+                                                                               You can either hire an expert or
+                                                                               collaborate with people that agree to
+                                                                               help you.
+
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+
+                                                                            <div><span style="font-size:14px;"><strong>Test Your App</strong><br>
+                                                                               Once you have completed developing the
+                                                                               app, you need to go to the testing part.
+                                                                               Bugs are unavoidable in first cut of any
+                                                                               software.
+                                                                               <div>&nbsp;</div>
+                                                                               You can have your friends download the
+                                                                               app and let them play through it. If they
+                                                                               notice any glitches, they can communicate
+                                                                               the same to you. The feedback will help
+                                                                               you learn what works and what doesn’t in
+                                                                               an app.
+
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>Convert to Other Platforms</strong><br>
+                                                                               So once you have mastered a single
+                                                                               platform, it’s time to try your hand at
+                                                                               other areas as well. Otherwise, you will
+                                                                               miss out on customers if you don’t. Each
+                                                                               platform has its own set of features and
+                                                                               you will have to modify your app
+                                                                               accordingly.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>';
+                } elseif ($track == 'Digital Marketing') {
+                    $mail->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                In this section you will learn complete
+                                                                                digital marketing and everything you
+                                                                                need to become a digital marketing
+                                                                                expert.
+                                                                            </span>
+                                                                        </div>
+                                                                        <div>&nbsp;</div>
+                                                                        With the skills acquire in our digital marketing, you can:
+                                                                        <ul>
+                                                                            <li>GROW your own business</li>
+                                                                            <li>LAND a job in this hot marketing industry</li>
+                                                                            <li>HELP a client increase their business
+                                                                        </ul>
+                                                                        We want to help you grow your business with social media marketing, content marketing, email marketing, and more!
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            We promise to do everything we can to help you with all of these digital marketing & social media marketing strategies:
+
+                                                                            <ol>
+                                                                                <li>BRANDING</li>
+                                                                                <li>WEBSITES</li>
+                                                                                <li>EMAIL MARKETING</li>
+                                                                                <li>BLOGGING</li>
+                                                                                <li>COPYWRITING</li>
+                                                                                <li>SEO (Search Engine Optimization)</li>
+                                                                                <li>YOUTUBE</li>
+                                                                                <li>VIDEO MARKETING </li>
+                                                                                <li>FACEBOOK PAGES</li>
+                                                                                <li>FACEBOOK GROUPS</li>
+                                                                                <li>FACEBOOK ADS</li>
+                                                                                <li>FACEBOOK FOR LOCAL BUSINESSES </li>
+                                                                                <li>GOOGLE ADS</li>
+                                                                                <li>GOOGLE ANALYTICS </li>
+                                                                                <li>TWITTER</li>
+                                                                                <li>INSTAGRAM</li>
+                                                                                <li>GOOGLE PLUS</li>
+                                                                                <li>PINTEREST</li>
+                                                                                <li>LINKEDIN</li>
+                                                                                <li>PERISCOPE</li>
+                                                                                <li>LIVE-STREAMING ON SOCIAL MEDIA</li>
+                                                                                <li>PODCASTING</li>
+                                                                                <li>QUORA</li>
+                                                                            </ol>
+                                                                            <div><span style="font-size:14px;"><strong>GET READY TO TAKE ACTION</strong><br>
+                                                                                Throughout the entire lecture, you\'ll be
+                                                                                taking action!
+                                                                                <div>&nbsp;</div>
+                                                                                You\'ll learn the proper techniques and
+                                                                                strategies for each section. Then you\'ll
+                                                                                see how these strategies are used in the
+                                                                                real world with case studies. Finally,
+                                                                                you\'ll take action yourself, and see
+                                                                                real results!
+
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>NOW IS THE TIME TO START USING DIGITAL MARKETING & SOCIAL MEDIA MARKETING TO GROW YOUR BUSINESS!</strong><br>
+                                                                               Whether you\'re completely brand new to
+                                                                               all of these topics, or you use a few of
+                                                                               them, now is the perfect time to take
+                                                                               action.
+                                                                               <div>&nbsp;</div>
+                                                                               Join now so that you can take advantage
+                                                                               of the skills you learn to grow your
+                                                                               business!
+
+                                                                            </span></div>
+
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>';
+                } elseif ($track == 'UI/UX Design') {
+                    $mail ->Body = '<style type="text/css">
+        body,
+        p,
+        div {
+            font-family: arial;
+            font-size: 14px;
+        }
+        
+        body {
+            color: #000000;
+        }
+        
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+        
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        img.max-width {
+            max-width: 100% !important;
+        }
+        
+        .column.of-2 {
+            width: 50%;
+        }
+        
+        .column.of-3 {
+            width: 33.333%;
+        }
+        
+        .column.of-4 {
+            width: 25%;
+        }
+        
+        @media screen and (max-width:480px) {
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            img.max-width {
+                height: auto !important;
+                max-width: 480px !important;
+            }
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .columns {
+                width: 100% !important;
+            }
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+    <!--user entered Head Start-->
+
+    <!--End Head user entered-->
+</head>
+
+<body>
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f4f4f5;">
+        <div class="webkit">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f4f4f5">
+                <tr>
+                    <td valign="top" bgcolor="#f4f4f5" width="100%">
+                        <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                                                    <tr>
+                                                        <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#fff" width="100%" align="left">
+
+                                                            <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+                                                                <tr>
+                                                                    <td role="module-content">
+                                                                        <p></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="font-size:6px;line-height:10px;padding:20px 0px 30px 30px;background-color:#F4F4F5;" valign="top" align="left">
+                                                                        <img class="max-width" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica, arial, sans-serif;font-size:16px;max-width:10% !important;width:10%;height:auto !important;" src="https://intellitech.ng/images/OFFICIAL LOGO.png"
+                                                                            alt="" width="120">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div><span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Hi ' . $fname . ' ' . $lname . ',</span><br
+                                                                                style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;" />
+                                                                            <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">
+                                                                                User experience (UX) refers to any
+                                                                                interaction a user has with a product or
+                                                                                service. UX design considers all the
+                                                                                different elements that shape this
+                                                                                experience, and how they make the user
+                                                                                feel. Be it an easy-to-navigate website
+                                                                                or an ergonomic kettle, UX design can
+                                                                                make or break the success of a business
+                                                                                or brand.
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 18px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+
+                                                                            <div><span style="font-size:14px;"><strong>An Introduction To UX And Design Thinking</strong><br>
+                                                                                Learn how to describe the UX design and
+                                                                                design thinking processes. Apply the
+                                                                                first stage of the design thinking
+                                                                                process to a real-world problem and
+                                                                                start thinking like a UX designer.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Conduct Effective User Research</strong><br>
+                                                                               Discover user-centered design and
+                                                                               strategies for conducting effective user
+                                                                               research. Compare and evaluate research
+                                                                               methods for different design scenarios.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Build User Personas</strong><br>
+                                                                               Learn the processes for creating
+                                                                               effective, meaningful user personas and
+                                                                               user stories based on user\'s goals and
+                                                                               needs.
+
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Analyze Information Architecture</strong><br>
+                                                                               Analyze how users navigate a site and the
+                                                                               theory and best practices behind how
+                                                                               information is best structured for a
+                                                                               user\'s consumption.
+
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Make Wireframes And Prototypes</strong><br>
+                                                                               Learn how to turn your theoretical
+                                                                               knowledge into something tangible and
+                                                                               usable by creating effective prototypes
+                                                                               and wireframes that support user goals.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Do Usability Testing</strong><br>
+                                                                               Learn how usability testing should be
+                                                                               carried out and how to draft a testing
+                                                                               plan for your product.
+                                                                            </span></div>
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>How To Present Your Work</strong><br>
+                                                                               Present your design process and solution
+                                                                               to stakeholders in a clear, engaging, and
+                                                                               convincing manner, substantiating the
+                                                                               decisions you\'ve made every step of the
+                                                                               way.
+                                                                            </span></div>
+
+                                                                            <div>&nbsp;</div>
+
+                                                                            <div><span style="font-size:14px;"><strong>A Career In UX Design?</strong><br>
+                                                                               Draft a personal design profile to map
+                                                                               out a path for your continuing design
+                                                                               education and decide whether you would
+                                                                               like to pursue a creative, rewarding
+                                                                               career in UX.
+                                                                            </span></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" class="outer-td" style="padding:15px 15px 015px 15px">
+                                                                            <table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#62bfe6" class="inner-td" style="border-radius:0px;font-size:16px;text-align:center;background-color:inherit">
+                                                                                            <a style="background-color:#62bfe6;border:1px solid #333333;border-color:#62bfe6;border-radius:0px;border-width:0px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0px;line-height:16px;padding:15px 18px 15px 18px;text-align:center;text-decoration:none;width:80%"
+                                                                                                href="https://join.slack.com/t/intellitechng/shared_invite/zt-d1atymxg-KRRZq8vDmzJzrTsBehzbrQ" target="_blank">JOIN THE SLACK</a></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                                                <tr>
+                                                                    <td style="padding:18px 30px 030px 30px;line-height:22px;text-align:inherit;" height="100%" valign="top" bgcolor="">
+                                                                        <div>
+                                                                            <div><br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">Sincerely,</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                                <span style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">The INTELLITECH Team</span>
+                                                                                <br style="color: rgb(20, 28, 38); font-family: &quot;Open Sans&quot;, Helvetica;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+
+
+</body>
+
+</html>';
+                }
+
+                $confirmSend = 'UPDATE intern SET `send` = 1';
+                $sendConfirm = mysqli_query($conn, $confirmSend);
+
+                if (!$mail->send()) {
+                    $_SESSION['ErrorMessage'] = "Refuse to Sends";
+                } else {
+                    $_SESSION['SuccessMessage'] = "Successfully Send";
+                }
+
+            } 
+
+        }
+
     }
 }
