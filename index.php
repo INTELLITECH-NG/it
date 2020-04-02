@@ -158,7 +158,7 @@
       <section class="tech">
         <div class="container top">
           <div class="box wow fadeInLeft">
-            <h1 style="color:#62BFE6;">TECHNOLOGY WITH A HUMAN FACE</h1>
+            <h1 style="color:#0077B5;">TECHNOLOGY WITH A HUMAN FACE</h1>
             <p class="lead">At INTELLITECH, we see it as our purpose is to help our customers to do their own jobs, it’s that simple. We deliver all manner of services from installing and managing your on-site systems, to cloud and hybrid solutions.</p>
           </div>
         </div>

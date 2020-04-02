@@ -279,10 +279,6 @@ img {
     vertical-align: middle
 }
 
-a {
-    color: inherit
-}
-
 .w3-table,
 .w3-table-all {
     border-collapse: collapse;
@@ -1553,7 +1549,7 @@ a {
 .w3-teal,
 .w3-hover-teal:hover {
     color: #fff!important;
-    background-color: #62bfe6 !important
+    background-color: #0077B5 !important
 }
 
 .w3-yellow,

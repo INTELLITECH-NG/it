@@ -713,7 +713,7 @@ html[xmlns] .slides {
 }
 
 #carousel .slides .flex-active-slide {
-    background: #62BFE6 !important;
+    background: #0077B5 !important;
 }
 
 #carousel .slides li>a {
@@ -726,7 +726,7 @@ html[xmlns] .slides {
 }
 
 #carousel .slides h6 {
-    color: #62BFE6;
+    color: #0077B5;
 }
 
 #carousel .slides .desc {
@@ -789,6 +789,7 @@ html[xmlns] .slides {
     }
 }
 
+
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 
 @media only screen and (max-width: 479px) {
@@ -818,15 +819,15 @@ only screen and ( min-resolution: 2dppx) {
 }
 
 @media screen and (min-width: 1900px) {
-  #carousel {
-    position: absolute;
-    bottom: 68%;
-    left: 37.7%;
-  }
-  .cont {
-  width: 1400px;
-  margin: 0 auto;
-  }
+    #carousel {
+        position: absolute;
+        bottom: 68%;
+        left: 37.7%;
+    }
+    .cont {
+        width: 1400px;
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 980px) and (max-width: 1199px) {
@@ -846,7 +847,6 @@ only screen and ( min-resolution: 2dppx) {
         display: none;
     }
 }
-
 
 @media screen and (min-width: 1400px) {
     .cont {

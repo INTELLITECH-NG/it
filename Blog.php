@@ -1,6 +1,4 @@
 <?php $current = 'Blog' ?>
-<?php include('inc/database.php') ?>
-<?php include('account/inc/fun.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
