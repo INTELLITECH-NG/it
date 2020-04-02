@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="INTELLITECH Train on different Course like Web design and Developing, Software Developing, Database Management, Cloud Computing and Networking">
+  <meta name="description" content="INTELLITECH offer Systems Maintenance, Software Maintenance, Servers Maintenance and Database Management ">
   <meta name="keywords" content="INTELLITECH TECHNOLOGIES">
   <meta name="google-site-verification" content="UwlPsbLaXsUOVDTWl3srWXNaOXWQfKPEDJW0eT-TVpw" />
   <meta name="author" content="Bright Robert">
@@ -18,7 +18,6 @@
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/publicstyle.css">
   <script src="js/jquery.js"></script>
   <script src="js/jquery-migrate-1.2.1.js"></script>
   <script src="js/sweetalert2.all.min.js"></script>
@@ -58,14 +57,13 @@
         </div>
       </section>
     </main>
-
     <!--
       ========================================================
                                   FOOTER
       ========================================================
       -->
     <footer>
-      <?php include 'footer.php';; ?>
+      <?php include 'footer.php'; ?>
     </footer>
   </div>
   <script src="js/script.js"></script>

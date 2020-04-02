@@ -42,13 +42,16 @@
       ========================================================
       -->
     <main>
-      <section class="map">
-        <div id="google-map" class="map_model"></div>
+      <!-- <section class="map">
+        <div id="google" class="map_model"></div>
         <ul class="map_locations">
           <li data-x="7.047150" data-y="4.808417">
             <p> Port Harcourt, Nigeria. <span>+234-080-6701-3794</span></p>
           </li>
         </ul>
+      </section> -->
+      <section class="">
+        <iframe width="1400" height="460" id="gmap_canvas" src="https://maps.google.com/maps?q=Port%20Harcourt%20500211%2C%20Rivers%2C%20Nigeria&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
       </section>
       <section class="well1">
         <div class="container">
