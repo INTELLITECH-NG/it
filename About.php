@@ -52,7 +52,7 @@
         <div class="container hr well1 ins2 bg-image bg" style="width:auto;">
           <div class="row">
             <div class="grid_7">
-              <img alt="Logo" src="images/logo.png">
+              <img alt="Logo" src="images/OFFICIAL LOGO.png">
             </div>
             <div class="grid_6">
             </div>
