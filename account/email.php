@@ -75,12 +75,8 @@
                         <hr>
                     </div>
                 </div>
-                <?php sendMail();
-                mailInterns(); ?>
-                <div><?php
-                        echo Error_Message();
-                        echo Success_Message();
-                        ?></div>
+                <?php sendMail(); mailInterns(); getLink()?>
+                <div><?php echo Error_Message(); echo Success_Message(); ?></div>
                 <form id='campaignForm' action="email" method="POST">
                     <div class="row">
                         <div class="col-xl-7 form-group">
@@ -113,7 +109,8 @@
                         </div>
                         <div class="col-xl-12">
                             <input type="submit" value="SEND" name="sendmail" class="btn btn-success">
-                            <input type="submit" value="MAIL INTERNS" name="mailInterns" class="btn btn-primary">
+                            <!-- <input type="submit" value="MAIL INTERNS" name="mailInterns" class="btn btn-primary">
+                            <input type="submit" value="RE-INVITE" name="getlink" class="btn btn-outline-primary"> -->
                         </div>
                     </div>
 

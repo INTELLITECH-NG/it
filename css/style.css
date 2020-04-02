@@ -2049,6 +2049,7 @@ header .brand {
 }
 
 header a[href^="callto:"],
+.quote,
 header .container>p {
     clear: right;
     float: right;
@@ -2059,6 +2060,21 @@ header a[href^="callto:"] {
     position: relative;
     font-size: 24px;
     color: #777777;
+}
+
+.quote {
+    margin-top: 10px;
+    position: relative;
+}
+
+.quote:before {
+    position: absolute;
+    top: -4px;
+    left: -44px;
+}
+
+.quote:hover {
+    background: gray;
 }
 
 header a[href^="callto:"]:before {
@@ -2082,6 +2098,7 @@ header a[href^="callto:"]+p {
         text-align: center;
     }
     header .brand,
+    .quote,
     header a[href^="callto:"],
     header .container>p {
         float: none;
