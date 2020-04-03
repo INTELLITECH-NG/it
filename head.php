@@ -20,19 +20,19 @@
               <?php getQuote(); ?>
               <form action="" method="POST">
                 <label>Full Name</label>
-                <input class="w3-input w3-margin-bottom" type="text" placeholder="Full Name" name="fullname">
+                <input class="w3-input w3-margin-bottom" type="text" placeholder="Full Name" name="fullname" require>
                 <div class="w3-row">
                   <div class="w3-col s6 w3-center section">
                     <label>Phone Number</label>
-                    <input class="w3-input w3-margin-bottom" type="number" placeholder="Phone Number" name="pnum">
+                    <input class="w3-input w3-margin-bottom" type="number" placeholder="Phone Number" name="pnum" require>
                   </div>
                   <div class="w3-col s6 w3-center section">
                     <label>Email Address</label>
-                    <input class="w3-input w3-margin-bottom" type="email" placeholder="Email Address" name="email">
+                    <input class="w3-input w3-margin-bottom" type="email" placeholder="Email Address" name="email" require>
                   </div>
                 </div>
                 <div class="w3-section">
-                  <select class="w3-select" name="service">
+                  <select class="w3-select" name="service" require>
                     <option value="" disabled selected>Choose a services</option>
                     <option value="Website Design and Development">Website Design and Development</option>
                     <option value="App Design and Development">App Design and Development</option>
@@ -44,7 +44,7 @@
                   </select>
                 </div>
                 <label>Subject</label>
-                <textarea name="subject" id="" cols="30" rows="10" class="w3-input w3-margin-bottom" placeholder="Tell us about your business"></textarea>
+                <textarea name="subject" id="" cols="30" rows="10" class="w3-input w3-margin-bottom" placeholder="Tell us about your business" require></textarea>
                 <div class="w3-section">
                   <input type="submit" class="w3-btn w3-blue" value="Get Quote" name="quote">
                 </div>
